@@ -1,0 +1,72 @@
+:root {
+
+    /* ── COULEURS ─────────────────────────────────── */
+    --color-primary:            #A87A63;
+    --color-primary-hover:      #9A5F28;
+    --color-bg-warm:            #F5F0EB;
+    --color-white:              #FFFFFF;
+    --color-text:               #161A17;
+    --color-text-secondary:     #5A5A5A;
+    --color-border:             #E5E0DA;
+    --color-success:            #065F15;
+    --color-discount:           #CC0000;
+    --color-bg-cod:             #FDF6F0;
+
+
+    /* ── TYPOGRAPHIE ──────────────────────────────── */
+    --font-primary:           'Chillax', sans-serif;
+    --font-size-h1:           3rem;
+    --font-size-h2:           2.25rem;
+    --font-size-h3:           1.625rem;
+    --font-size-h4:           1.25rem;
+    --font-size-body:         1rem;
+    --font-size-small:        0.875rem;
+    --font-size-xs:           0.75rem;
+    --font-weight-light:      300;
+    --font-weight-regular:    400;
+    --font-weight-medium:     500;
+    --font-weight-semibold:   600;
+    --font-weight-bold:       700;
+    --line-height-tight:      1.2;
+    --line-height-normal:     1.5;
+    --line-height-body:       1.6;
+
+    /* ── ESPACEMENTS ──────────────────────────────── */
+    --space-1:   4px;
+    --space-2:   8px;
+    --space-3:   12px;
+    --space-4:   16px;
+    --space-5:   24px;
+    --space-6:   32px;
+    --space-8:   48px;
+    --space-10:  64px;
+    --space-16:  96px;
+
+    /* ── LAYOUT ───────────────────────────────────── */
+    --container-max:  1440px;
+    --container-pad:  var(--space-5);
+
+    /* ── HEADER ───────────────────────────────────── */
+    --header-height:        88px;
+    --header-height-mobile: 64px;
+    --header-z:             100;
+    --header-border:        1px solid rgba(0, 0, 0, 0.05);
+    --header-pad-x:         60px;
+    --color-search-border:  #897971;
+    --color-placeholder:    #5C665E;
+
+    /* ── MINI-CART ────────────────────────────────── */
+    --mini-cart-w:  400px;
+    --mini-cart-z:  9999;
+
+    /* ── TRANSITIONS ──────────────────────────────── */
+    --t-fast:   150ms ease;
+    --t-mid:    250ms ease;
+    --t-slow:   350ms cubic-bezier(.4, 0, .2, 1);
+
+    /* ── FOOTER ───────────────────────────────────── */
+    --footer-bg:     #FFFFFF;
+    --footer-text:   #161A17;
+    --footer-border: 1px solid rgba(22, 26, 23, 0.1);
+    --footer-pad-x:  54px;
+}

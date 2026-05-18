@@ -1,0 +1,126 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Targets the container only on the Track Order Custom Template */
+    .page-template-custom-pagespage-track-order-php .site-content > .container,
+    .page-template-custom-pagespage-track-order-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-track-order-php .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .track-order-wrapper {
+      background-color: #FFFFFF;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Chillax;
+      padding: 40px 24px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .track-inner {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .track-heading {
+      font-family: Chillax;
+      font-size: 42px;
+      font-weight: 500;
+      color: #1a1a1a;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .track-heading span {
+      color: #A87A63;
+      font-style: italic;
+    }
+
+    .track-sub {
+      font-size: 15px;
+      color: #5a5a5a;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .track-card {
+      background-color: #FAFAFA;
+      border-radius: 14px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .track-field { margin-bottom: 22px; width: 100%; }
+
+    .track-field label {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #A87A63;
+        margin: 0 0 20px 0;
+    }
+
+    .track-field input[type="text"],
+    .track-field input[type="email"] {
+        padding: 14px 16px;
+        font-size: 14px;
+        color: #161A17;
+        background-color: #FFFFFF;
+        border: 1px solid #343A36;
+        border-radius: 8px;
+        box-shadow: none; /* important: removes their shadow */
+        height: auto;     /* override fixed height */
+        width: 100%;
+    }
+    .track-field input::placeholder { color: #b0a89e; }
+    .track-field input:focus { border-color: #9b3a1e; }
+
+    .track-btn {
+      display: inline-block;
+      background-color: #161A17;
+      color: #FFFFFF;
+      font-family: Chillax;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 16px auto;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 18px rgba(155, 78, 56, 0.25);
+      letter-spacing: 0.01em;
+    }
+    .track-btn:hover { background-color: #7A3B1E; }
+
+    .track-footer {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #8a8078;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .track-footer a {
+      color: #9b3a1e;
+      text-decoration: none;
+    }

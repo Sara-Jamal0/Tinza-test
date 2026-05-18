@@ -1,0 +1,157 @@
+/**
+ * FAQ — Styles
+ * File : motta-child/assets/css/faq.css
+ */
+
+/* ── Section ─────────────────────────────────────────────── */
+.tfaq {
+    margin-top:    64px;
+    margin-bottom: 64px;
+}
+
+/* ── Inner — desktop ─────────────────────────────────────── */
+.tfaq__inner {
+    display:        flex;
+    flex-direction: row;
+    align-items:    flex-start;
+    gap:            59px;
+    max-width:      1320px;
+    margin:         0 auto;
+    padding:        0 24px;
+    box-sizing:     border-box;
+}
+
+/* ── Titre ───────────────────────────────────────────────── */
+.tfaq__title {
+    flex:           0 0 320px;
+    font-family:    'Chillax', sans-serif;
+    font-weight:    500;
+    font-size:      24px;
+    line-height:    34px;
+    letter-spacing: -0.01em;
+    color:          #161A17;
+    margin:         0;
+    padding-top:    8px;
+}
+
+/* ── Liste ───────────────────────────────────────────────── */
+.tfaq__list {
+    flex:           1;
+    display:        flex;
+    flex-direction: column;
+    gap:            12px;
+    min-width:      0;
+}
+
+/* ── Item ────────────────────────────────────────────────── */
+.tfaq__item {
+    display:        flex;
+    flex-direction: column;
+}
+
+/* ── Bouton ──────────────────────────────────────────────── */
+.tfaq__btn {
+    -webkit-appearance: none;
+    appearance:     none;
+    display:        flex !important;
+    align-items:    center !important;
+    gap:            4px;
+    width:          100% !important;
+    padding:        8px 12px !important;
+    background:     #FAF8F7 !important;
+    border:         none !important;
+    border-radius:  8px !important;
+    cursor:         pointer !important;
+    box-shadow:     none !important;
+    text-align:     left !important;
+    margin:         0 !important;
+    box-sizing:     border-box !important;
+}
+
+.tfaq__btn:hover {
+    background: #F0EBE7 !important;
+}
+
+/* ── Texte question ──────────────────────────────────────── */
+.tfaq__btn-text {
+    flex:           1;
+    font-family:    'Chillax', sans-serif;
+    font-weight:    500;
+    font-size:      24px;
+    line-height:    34px;
+    letter-spacing: 0.005em;
+    color:          #161A17;
+    pointer-events: none;
+}
+
+/* ── Chevron ─────────────────────────────────────────────── */
+/* SVG : 6 9 → 12 15 → 18 9 = ∨ fermé par défaut            */
+/* .open : rotate -180deg = ∧ ouvert                         */
+.tfaq__chevron {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           24px;
+    height:          24px;
+    transform:       rotate(0deg);
+    transition:      transform 0.25s ease;
+    pointer-events:  none;
+}
+
+.tfaq__chevron svg {
+    display:        block;
+    pointer-events: none;
+}
+
+.tfaq__item.open .tfaq__chevron {
+    transform: rotate(-180deg);
+}
+
+/* ── Réponse ─────────────────────────────────────────────── */
+.tfaq__answer {
+    box-sizing:  border-box;
+    overflow:    hidden;
+    max-height:  0;
+    padding:     0 20px;
+    transition:  max-height 0.35s ease, padding 0.35s ease;
+}
+
+.tfaq__item.open .tfaq__answer {
+    max-height: 600px;
+    padding:    8px 20px;
+}
+
+/* ── Texte réponse ───────────────────────────────────────── */
+.tfaq__answer-text {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    400;
+    font-size:      16px;
+    line-height:    22px;
+    letter-spacing: 0.005em;
+    color:          #161A17;
+    margin:         0;
+}
+
+/* ── Mobile ≤ 768px ──────────────────────────────────────── */
+@media (max-width: 768px) {
+    .tfaq {
+        margin-top:    48px;
+        margin-bottom: 48px;
+    }
+    .tfaq__inner {
+        flex-direction: column;
+        gap:            16px;
+        padding:        0 20px;
+    }
+    .tfaq__title {
+        flex:        none;
+        width:       100%;
+        padding-top: 0;
+    }
+    .tfaq__btn-text {
+        font-size:   20px;
+        line-height: 28px;
+    }
+}
+

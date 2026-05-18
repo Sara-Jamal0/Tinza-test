@@ -1,0 +1,1303 @@
+/* ═══════════════════════════════════════════════════════════
+   Tinza Child Theme — header.css
+═══════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════
+   1. HEADER WRAPPER
+═══════════════════════════════════════════════════════════ */
+
+/* Bande blanche sticky en haut de page
+   position:sticky + top:0 → reste visible au scroll
+   z-index:var(--header-z) → au-dessus du contenu (valeur dans variables.css) */
+.site-header {
+    box-sizing:     border-box;
+    display:        flex;
+    flex-direction: column;
+    align-items:    stretch;
+    width:          100%;
+    min-height:     88px;            /* Hauteur Figma desktop */
+    border-bottom:  1px solid rgba(0, 0, 0, 0.05);
+    background:     var(--color-white);
+    position:       sticky;
+    top:            0;
+    z-index:        var(--header-z); /* 100 dans variables.css */
+    transition:     box-shadow var(--t-fast);
+}
+
+/* Classe ajoutée par JS (initScroll) quand scrollY > 10px */
+.site-header--scrolled {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenu centré à max 1440px
+   padding 20px 60px = Figma desktop
+   gap 32px entre LEFT / SEARCH / RIGHT */
+.site-header__inner {
+    display:         flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    align-items:     center;
+    padding:         20px 60px;
+    gap:             32px;
+    width:           100%;
+    max-width:       1440px;
+    min-height:      88px;
+    margin:          0 auto;
+    flex:            none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   2. LEFT : Hamburger + Logo + Categories
+═══════════════════════════════════════════════════════════ */
+
+/* Conteneur gauche — largeur fixe 350px (Figma), gap 80px */
+.site-header__left {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    gap:            80px;
+    width:          350px;
+    height:         42px;
+    flex:           none;
+}
+
+/* ── Hamburger ──────────────────────────────────────────── */
+/* Bouton 3 barres visible uniquement sur mobile
+   display:none en desktop → affiché en flex ≤768px par le media query */
+.site-header__hamburger {
+    display:         none;          /* Caché desktop */
+    align-items:     center;
+    justify-content: center;
+    padding:         14px;
+    width:           42px;
+    height:          42px;
+    background:      none;
+    border:          none;
+    cursor:          pointer;
+    color:           #161A17;
+    box-sizing:      border-box;
+}
+.site-header__hamburger svg {
+    width:  14px;
+    height: 14px;
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+/* Lien <a> avec le texte "tinza" stylé en Chillax 40px */
+.site-header__logo {
+    display:         flex;
+    align-items:     center;
+    height:          42px;
+    text-decoration: none;
+    flex:            none;
+}
+.site-header__logo-text {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    400;
+    font-size:      40px;
+    line-height:    1;
+    letter-spacing: -0.06em;        /* Serrage typographique du Figma */
+    color:          #161A17;
+}
+
+/* ── Categories ─────────────────────────────────────────── */
+/* Wrapper = position:relative pour ancrer le mega-menu en absolute */
+.site-header__categories-wrapper {
+    position: relative;
+    flex:     none;
+}
+
+/* Bouton CATEGORIES — 151×42px (Figma), gap 8px entre icône et texte */
+.site-header__categories {
+    display:         flex;
+    align-items:     center;
+    gap:             8px;
+    width:           151px;
+    height:          42px;
+    background:      var(--color-white) !important; /* Forcer blanc sur tous états */
+    border:          none;
+    cursor:          pointer;
+    font-family:     'Chillax', sans-serif;
+    transition:      opacity var(--t-fast);
+}
+/* États interactifs : fond blanc + opacité réduite */
+.site-header__categories:hover,
+.site-header__categories:focus,
+.site-header__categories:active,
+.site-header__categories:focus-visible {
+    background: var(--color-white) !important;
+    opacity:    0.7;
+    outline:    none;
+}
+
+/* Carré 42×42 qui contient l'icône hamburger */
+.site-header__categories-square {
+    display:     flex;
+    align-items: center;
+    padding:     14px;
+    width:       42px;
+    height:      42px;
+    box-sizing:  border-box;
+    flex:        none;
+}
+
+.site-header__categories-icon {
+    width:  14px;
+    height: 14px;
+    color:  #161A17;
+}
+
+/* Label "CATEGORIES" en uppercase Semibold */
+.site-header__categories-label {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    600;
+    font-size:      16px;
+    line-height:    22px;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color:          #161A17;
+    flex:           none;
+}
+
+/* ── Mega-menu ──────────────────────────────────────────── */
+/* Dropdown categories — position:absolute sous le bouton
+   hidden géré par JS (initCategories) */
+.mega-menu {
+    position:       absolute;
+    top:            calc(100% + 8px); /* 8px d'espace sous le bouton */
+    left:           0;
+    width:          236px;
+    min-height:     213px;
+    background:     var(--color-white);
+    border:         1px solid var(--color-border);
+    border-radius:  6px;
+    box-shadow:     0 8px 24px rgba(0, 0, 0, 0.08);
+    z-index:        100;
+    padding:        12px 0;
+    display:        flex;
+    flex-direction: column;
+    gap:            8px;
+}
+
+/* Lien de catégorie dans le mega-menu */
+.mega-menu__item a {
+    display:         block;
+    padding:         8px 24px;
+    font-family:     'Chillax', sans-serif;
+    font-weight:     400;
+    font-size:       16px;
+    line-height:     22px;
+    color:           #161A17;
+    text-decoration: none;
+    transition:      color var(--t-fast), background var(--t-fast);
+}
+.mega-menu__item a:hover {
+    color:      var(--color-primary);
+    background: var(--color-bg-warm);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   3. CENTRE : Search desktop
+   ─────────────────────────────────────────────────────────
+   Technique double-wrapper :
+   .search-outer          position:relative, PAS d'overflow
+                          → le dropdown peut dépasser
+   .site-header__search   overflow:hidden
+                          → style arrondi Figma intact
+   ═══════════════════════════════════════════════════════════ */
+
+/* Outer : anchor du dropdown (position:relative) */
+.site-header__search-outer {
+    position: relative;
+    flex:     1 1 auto;     /* Prend l'espace disponible entre left et right */
+    max-width: 495px;       /* Largeur max Figma */
+}
+
+/* Inner visuel : barre stylée avec overflow:hidden
+   overflow:hidden préserve le border-radius sur les enfants */
+.site-header__search {
+    box-sizing:     border-box;
+    display:        flex !important;
+    align-items:    center !important;
+    width:          100% !important;
+    height:         48px !important;
+    background:     #FFFFFF;
+    border:         1px solid #897971 !important; /* Couleur Figma */
+    border-radius:  8px !important;
+    overflow:       hidden !important;            /* Clip les coins arrondis */
+}
+
+/* Champ de saisie — flex:1 prend tout l'espace restant */
+.site-header__search-input {
+    flex:         1 1 auto !important;
+    height:       48px !important;
+    padding:      8px 20px !important;
+    border:       none !important;
+    outline:      none !important;
+    background:   #FFFFFF !important;
+    font-family:  'Chillax', sans-serif !important;
+    font-weight:  400 !important;
+    font-size:    16px !important;
+    line-height:  22px !important;
+    color:        #5C665E !important;
+    border-radius: 0 !important; /* Reset pour ne pas interférer avec outer */
+    box-shadow:   none !important;
+}
+/* Couleur du placeholder */
+.site-header__search-input::placeholder {
+    color: #5C665E;
+}
+
+/* Bouton loupe — carré 48×48, fond cuivre #A87A63 */
+.site-header__search-btn {
+    position:        static !important;
+    transform:       none !important;
+    width:           48px !important;
+    min-width:       48px !important;
+    max-width:       48px !important;
+    flex:            0 0 48px !important;
+    height:          48px !important;
+    background:      #A87A63 !important;
+    border:          none !important;
+    border-radius:   0 !important;
+    padding:         0 !important;
+    cursor:          pointer !important;
+    display:         flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    box-shadow:      none !important;
+}
+.site-header__search-btn:hover {
+    background: #8F6450 !important; /* Plus foncé au survol */
+}
+.site-header__search-btn svg {
+    width:  20px;
+    height: 20px;
+    color:  #FFFFFF;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   4. SEARCH DROPDOWN — résultats
+   ─────────────────────────────────────────────────────────
+   Positionné sur .search-outer (position:relative).
+   left:0 / right:0 → même largeur que la barre.
+   hidden = display:none quand aucun résultat.
+═══════════════════════════════════════════════════════════ */
+.search-results-dropdown {
+    position:   absolute;
+    top:        calc(100% + 6px); /* 6px d'espace sous la barre */
+    left:       0;
+    right:      0;                /* Même largeur que le parent */
+    max-height: 420px;
+    overflow-y: auto;             /* Scroll si beaucoup de résultats */
+    background: #FFFFFF;
+    border:     1px solid #897971;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    z-index:    200;              /* Au-dessus du contenu, sous le header */
+    padding:    4px 0;
+}
+/* Masquer quand l'attribut hidden est présent */
+.search-results-dropdown[hidden] {
+    display: none;
+}
+
+/* ── Item de résultat ───────────────────────────────────── */
+/* Lien cliquable avec image + nom + prix */
+.search-result-item {
+    display:         flex;
+    align-items:     center;
+    gap:             12px;
+    padding:         10px 16px;
+    text-decoration: none;
+    color:           #161A17;
+    transition:      background var(--t-fast);
+    font-family:     'Chillax', sans-serif;
+}
+.search-result-item:hover {
+    background: #F7F4F1; /* Fond légèrement chaud au survol */
+}
+
+/* Image miniature du produit (44×44px) */
+.search-result-item__img {
+    width:         44px;
+    height:        44px;
+    object-fit:    cover;         /* Recadrage centré */
+    border-radius: 4px;
+    flex:          none;          /* Taille fixe */
+    background:    #F0EDE9;       /* Placeholder avant chargement */
+}
+
+/* Conteneur nom + prix */
+.search-result-item__info {
+    flex:      1;
+    min-width: 0;                 /* Permet le text-overflow:ellipsis */
+}
+
+/* Nom du produit — ellipsis si trop long */
+.search-result-item__name {
+    font-size:     14px;
+    font-weight:   500;
+    color:         #161A17;
+    white-space:   nowrap;
+    overflow:      hidden;
+    text-overflow: ellipsis;
+}
+
+/* Prix du produit en cuivre */
+.search-result-item__price {
+    font-size:  13px;
+    font-weight: 400;
+    color:      #A87A63;          /* Couleur primaire Tinza */
+    margin-top: 2px;
+}
+
+/* Lien "Voir tous les résultats" — dernier item */
+.search-result-item--all {
+    border-top:      1px solid #EEEBE7;
+    justify-content: center;
+    font-size:       13px;
+    font-weight:     600;
+    color:           #A87A63;
+    text-transform:  uppercase;
+    letter-spacing:  0.04em;
+    padding:         12px 16px;
+}
+
+/* Message "Aucun résultat" */
+.search-result-empty {
+    padding:    16px;
+    font-size:  14px;
+    color:      #5C665E;
+    text-align: center;
+    margin:     0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   5. RIGHT : Actions (User + Heart + Cart)
+═══════════════════════════════════════════════════════════ */
+
+/* Conteneur droite  */
+.site-header__actions {
+    display:        flex;
+    align-items:    center;
+    width:          195px;
+    height:         48px;
+    flex:           none;
+}
+
+/* Bouton Search mobile — caché en desktop, affiché ≤768px */
+.site-header__mobile-search-btn {
+    display:     none;            /* Caché desktop */
+    align-items: center;
+    gap:         4px;
+    padding:     8px 14px;
+    height:      48px;
+    background:  none;
+    border:      none;
+    cursor:      pointer;
+    color:       #161A17;
+}
+.site-header__mobile-search-btn svg {
+    width:  20px;
+    height: 20px;
+}
+/* Label "Search" à côté de l'icône */
+.site-header__mobile-search-label {
+    font-family: 'Chillax', sans-serif;
+    font-weight: 500;
+    font-size:   16px;
+    line-height: 22px;
+    color:       #161A17;
+}
+
+/* Boutons User et Heart — 48×48px, padding 14px */
+.site-header__action-btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         14px;
+    width:           48px;
+    height:          48px;
+    background:      none;
+    border:          none;
+    cursor:          pointer;
+    text-decoration: none;
+    color:           #161A17;
+    flex:            none;
+    transition:      opacity var(--t-fast);
+}
+.site-header__action-btn:hover {
+    opacity: 0.7;
+}
+.site-header__action-btn svg {
+    width:  20px;
+    height: 20px;
+    color:  #161A17;
+}
+
+/* ── Bouton Cart WooCommerce ────────────────────────────── */
+/* Lien <a> — 99×48px , padding 8 20 8 16 */
+.site-header__cart-btn {
+    display:         flex !important;
+    align-items:     center !important;
+    padding:         8px 20px 8px 16px !important;
+    gap:             8px !important;
+    width:           99px !important;
+    height:          48px !important;
+    background:      none !important;
+    border:          none !important;
+    cursor:          pointer !important;
+    text-decoration: none !important;
+    color:           #161A17 !important;
+    flex:            none !important;
+    position:        relative !important;
+    transition:      opacity var(--t-fast) !important;
+    box-sizing:      border-box !important;
+}
+.site-header__cart-btn:hover {
+    opacity: 0.7 !important;
+}
+
+/* Wrapper pour ancrer le badge compteur en position absolute */
+.site-header__cart-icon-wrap {
+    position:        relative;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           20px;
+    height:          20px;
+    flex:            none;
+}
+/* Icône chariot */
+.site-header__cart-btn svg,
+.site-header__cart-icon-wrap svg {
+    width:   20px !important;
+    height:  20px !important;
+    color:   #161A17 !important;
+    display: block !important;
+}
+
+/* Badge compteur — cercle cuivre en haut à droite de l'icône
+   Mis à jour par woocommerce_add_to_cart_fragments (functions.php) */
+.header__cart-count {
+    position:        absolute !important;
+    top:             -6px !important;
+    right:           -6px !important;
+    display:         inline-flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    min-width:       16px !important;
+    height:          16px !important;
+    background:      #A87A63 !important;
+    color:           #FFFFFF !important;
+    border-radius:   50% !important;
+    font-family:     'Chillax', sans-serif !important;
+    font-size:       10px !important;
+    font-weight:     700 !important;
+    padding:         0 3px !important;
+    line-height:     1 !important;
+    pointer-events:  none !important; /* Ne pas capturer les clics */
+}
+/* Cacher le badge si panier vide (count = 0) */
+.header__cart-count--empty,
+.header__cart-count[data-count="0"] {
+    display: none !important;
+}
+
+/* Label "Cart" texte — caché sur mobile */
+.site-header__cart-label {
+    font-family: 'Chillax', sans-serif !important;
+    font-weight: 500 !important;
+    font-size:   16px !important;
+    line-height: 22px !important;
+    color:       #161A17 !important;
+    flex:        none !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   6. MOBILE SEARCH OVERLAY
+═══════════════════════════════════════════════════════════ */
+
+/* Panneau fixe sous le header (top est défini dans le media query mobile) */
+.mobile-search-overlay__field {
+    position:  relative;
+    flex:      1 1 auto;
+    min-width: 0;
+}
+
+/* .input-wrap — style identique barre desktop */
+.mobile-search-overlay__input-wrap {
+    display:       flex;
+    align-items:   stretch;
+    height:        48px;
+    border:        1px solid #897971;
+    border-radius: 8px;
+    overflow:      hidden;
+    background:    #FFFFFF;
+    width:         100%;
+    box-sizing:    border-box;
+}
+/* Input */
+.mobile-search-overlay__input {
+    flex:          1 1 auto;
+    height:        100%;
+    border:        none;
+    outline:       none;
+    background:    #FFFFFF !important;
+    padding:       8px 14px;
+    font-family:   'Chillax', sans-serif;
+    font-size:     16px;
+    color:        #5C665E !important;
+    box-shadow:    none !important;
+    border:       none !important;
+    outline:      none !important;
+
+}
+.mobile-search-overlay__input::placeholder {
+    color: #5C665E;
+    
+}
+
+/* Bouton loupe — même cuivre que desktop */
+.mobile-search-overlay__submit {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           48px;
+    min-width:       48px;
+    height:          100%;
+    background:      #A87A63 !important;
+    border:          none;
+    border-left:     none;
+    cursor:          pointer;
+    padding:         0;
+    outline:         none;
+}
+.mobile-search-overlay__submit:hover {
+    background: #8F6450 !important;
+}
+/* ── Espace entre nom et prix dans les résultats ── */
+.search-result-item__info {
+    display:        flex;
+    flex-direction: column;
+    gap:            6px; /* ← espace entre nom et prix */
+    
+
+}
+.mobile-search-overlay__submit svg {
+    width:   18px;
+    height:  18px;
+    display: block;
+    filter:  brightness(0) invert(1);
+}
+/* Dropdown positionné sur .field (hors overflow:hidden) */
+.mobile-search-overlay__field .search-results-dropdown {
+    position:      absolute;
+    top:           calc(100% + 6px);
+    left:          0;
+    right:         0;
+    z-index:       99999;
+    max-height:    300px;
+    overflow-y:    auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   7. MOBILE NAV DRAWER
+   ─────────────────────────────────────────────────────────
+   Panneau qui glisse depuis la gauche.
+   mobile-nav[hidden] conserve display:flex (animation de fermeture).
+   mobile-nav--open → translateX(0) = visible.
+═══════════════════════════════════════════════════════════ */
+
+.mobile-nav {
+    position:       fixed;
+    top:            0;
+    left:           0;
+    width:          85%;
+    max-width:      320px;
+    height:         100dvh;         /* dvh = dynamic viewport height (mobile) */
+    background:     #FFFFFF;
+    z-index:        9998;
+    transform:      translateX(-100%); /* Hors écran par défaut */
+    transition:     transform var(--t-slow);
+    display:        flex;
+    flex-direction: column;
+    box-shadow:     4px 0 24px rgba(0, 0, 0, 0.12);
+}
+/* display:flex même quand hidden — nécessaire pour l'animation de fermeture */
+.mobile-nav[hidden] {
+    display: flex;
+}
+/* Classe ajoutée par JS pour afficher le drawer */
+.mobile-nav--open {
+    transform: translateX(0);
+}
+
+.mobile-nav__close,
+.mobile-nav__close:hover,
+.mobile-nav__close:focus,
+.mobile-nav__close:active {
+    background:  none !important;
+    border:      none !important;
+    box-shadow:  none !important;
+    outline:     none !important;
+    padding:     0 !important;
+    margin:      0 !important;
+    width:       auto !important;
+    height:      auto !important;
+    font-size:   22px !important;
+    line-height: 1 !important;
+    color:       #161A17 !important;
+    cursor:      pointer !important;
+    transition:  none !important;
+}
+
+/* En-tête du drawer */
+.mobile-nav__header {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding:         16px 20px;
+    border-bottom:   1px solid #E1E2DC;
+}
+.mobile-nav__title {
+    font-family: 'Chillax', sans-serif;
+    font-weight: 600;
+    font-size:   18px;
+    margin: 0;
+    color:       #161A17;
+}
+.mobile-search-overlay__close,
+.mobile-search-overlay__close:hover,
+.mobile-search-overlay__close:focus,
+.mobile-search-overlay__close:active {
+    display:         flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    width:           40px !important;
+    min-width:       40px !important;
+    height:          100% !important;
+    background:      none !important;      /* Pas de background */
+    border:          none !important;
+    border-left:     1px solid #E8E0DB !important; /* Séparateur discret */
+    font-size:       18px !important;
+    color:           #5C665E !important;
+    cursor:          pointer !important;
+    padding:         0 !important;
+    outline:         none !important;
+    transition:      none !important;
+}
+
+/* Liste de liens de navigation */
+.mobile-nav__content {
+    flex:           1;
+    overflow-y:     auto;
+    padding:        12px 0;
+    display:        flex;
+    flex-direction: column;
+}
+.mobile-nav__content a {
+    padding:         14px 20px;
+    font-family:     'Chillax', sans-serif;
+    font-size:       16px;
+    color:           #161A17;
+    text-decoration: none;
+    border-bottom:   1px solid #F0EDE9;
+}
+.mobile-nav__content a:hover {
+    background: #F7F4F1;
+}
+/* Séparateur hr stylé en bande grise */
+.mobile-nav__content hr {
+    border:     none;
+    height:     8px;
+    background: #F7F4F1;
+    margin:     8px 0;
+}
+
+/* Fond sombre derrière le drawer */
+.mobile-nav__overlay {
+    position:       fixed;
+    inset:          0;
+    background:     rgba(0, 0, 0, 0.45);
+    z-index:        9997;           /* Sous le drawer (9998) */
+    opacity:        0;
+    pointer-events: none;
+    transition:     opacity var(--t-slow);
+}
+/* Classe ajoutée par JS en même temps que mobile-nav--open */
+.mobile-nav__overlay--visible {
+    opacity:        1;
+    pointer-events: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   8. TABLET ≤ 1024px
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+    /* Réduire les paddings latéraux */
+    .site-header__inner {
+        padding: 16px 24px;
+        gap:     16px;
+    }
+
+    /* Left plus compact */
+    .site-header__left {
+        width: auto;
+        gap:   24px;
+    }
+
+    /* Réduire max-width de la barre de recherche */
+    .site-header__search-outer {
+        max-width: 380px;
+    }
+}
+/* ═══════════════════════════════════════════════════════════
+   Fix Probleme responsive 
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* ── Header container ── */
+    .site-header,
+    .site-header__inner {
+        height:          64px !important;
+        min-height:      64px !important;
+        padding:         0 16px !important;
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: space-between !important;
+        flex-wrap:       nowrap !important;
+        gap:             0 !important;
+        box-sizing:      border-box !important;
+    }
+
+    /* ── LEFT : hamburger + logo ──
+       flex: 0 1 auto → peut rétrécir si pas assez de place
+       max-width calculé pour laisser la place aux icônes droite  */
+    .site-header__left {
+        display:    flex !important;
+        align-items: center !important;
+        gap:        8px !important;
+        flex:       0 1 auto !important;   /* PEUT rétrécir */
+        width:      auto !important;
+        min-width:  0 !important;
+        /* Réserve au minimum 130px pour les icônes droite */
+        max-width:  calc(100% - 130px) !important;
+        overflow:   hidden !important;
+    }
+
+    /* Hamburger */
+    .site-header__hamburger {
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: center !important;
+        width:           36px !important;
+        height:          36px !important;
+        min-width:       36px !important;  /* Ne rétrécit jamais */
+        padding:         0 !important;
+        flex:            none !important;
+        background: none !important;
+        border:     none !important;
+        outline:    none !important;
+    }
+    .site-header__hamburger:hover,
+    .site-header__hamburger:focus {
+    background: none !important;
+    outline:    none !important;
+   }
+    .site-header__hamburger svg {
+        width:  16px !important;
+        height: 16px !important;
+    }
+
+    /* Logo — occupe l'espace disponible après le hamburger */
+    .site-header__logo {
+        flex:     1 1 auto !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+        height:   auto !important;
+    }
+    .site-header__logo-text {
+        font-size:     30px !important;
+        line-height:   1 !important;
+        white-space:   nowrap !important;
+        overflow:      hidden !important;
+        text-overflow: clip !important;
+        letter-spacing: -0.06em !important;
+    }
+
+    /* Categories — TOUJOURS caché sur mobile */
+    .site-header__categories-wrapper {
+        display: none !important;
+    }
+
+    /* Search desktop — TOUJOURS caché sur mobile */
+    .site-header__search-outer {
+        display: none !important;
+    }
+
+    /* ── RIGHT : icônes actions ──
+       flex: 0 0 auto → taille fixe, ne rétrécit JAMAIS
+       Les icônes sont toujours visibles peu importe la taille du logo */
+    .site-header__actions {
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: flex-end !important;
+        flex:            0 0 auto !important;  /* taille fixe garantie */
+        width:           auto !important;
+        gap:             4px !important;
+        padding-left:    8px !important;
+        min-width:       0 !important;
+    }
+
+    /* Bouton Search mobile */
+    .site-header__mobile-search-btn {
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: center !important;
+        gap:             4px !important;
+        height:          36px !important;
+        padding:         0 8px !important;
+        background:      transparent !important;
+        border:          none !important;
+        flex:            none !important;
+        cursor:          pointer !important;
+    }
+    .site-header__mobile-search-btn svg {
+        width:    18px !important;
+        height:   18px !important;
+        flex:     none !important;
+    }
+    .site-header__mobile-search-label {
+        display:     block !important;
+        font-size:   14px !important;
+        font-weight: 500 !important;
+        color:       #161A17 !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+    }
+
+    /* Icône User — CACHÉ sur mobile */
+    .site-header__action-btn--user {
+        display: none !important;
+    }
+
+    /* Heart + Cart — taille fixe */
+    .site-header__action-btn,
+    .site-header__cart-btn {
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: center !important;
+        width:           36px !important;
+        height:          36px !important;
+        min-width:       36px !important;
+        padding:         8px !important;
+        flex:            none !important;
+        background:      none !important;
+        border:          none !important;
+        cursor:          pointer !important;
+        text-decoration: none !important;
+        color:           #161A17 !important;
+        box-sizing:      border-box !important;
+        /* Reset <a> et <button> */
+        -webkit-appearance: none !important;
+        appearance:         none !important;
+        margin:             0 !important;
+    }
+    .site-header__action-btn svg,
+    .site-header__cart-btn svg,
+    .site-header__cart-icon-wrap svg {
+        width:  18px !important;
+        height: 18px !important;
+    }
+    .site-header__cart-label {
+        display: none !important;
+    }
+}
+
+
+/* ── ≤ 480px : Cacher le label "Search" ── */
+@media (max-width: 480px) {
+
+    .site-header,
+    .site-header__inner {
+        padding: 0 12px !important;
+    }
+
+    /* Agrandir l'espace réservé aux icônes (pas de texte "Search") */
+    .site-header__left {
+        max-width: calc(100% - 106px) !important;
+    }
+
+    /* Cacher le texte "Search" → icône seule */
+    .site-header__mobile-search-label {
+        display: none !important;
+    }
+
+    .site-header__mobile-search-btn {
+        padding: 0 4px !important;
+        width:   32px !important;
+    }
+
+    .site-header__logo-text {
+        font-size: 27px !important;
+    }
+}
+
+
+/* ── ≤ 390px : iPhone standard ── */
+@media (max-width: 390px) {
+
+    .site-header,
+    .site-header__inner {
+        padding: 0 10px !important;
+    }
+
+    .site-header__left {
+        gap: 4px !important;
+        max-width: calc(100% - 100px) !important;
+    }
+
+    .site-header__logo-text {
+        font-size: 25px !important;
+    }
+
+    .site-header__hamburger,
+    .site-header__action-btn,
+    .site-header__cart-btn,
+    .site-header__mobile-search-btn {
+        width:    32px !important;
+        height:   32px !important;
+        min-width: 32px !important;
+    }
+    .site-header__actions {
+        gap: 2px !important;
+    }
+}
+
+
+/* ── ≤ 360px : iPhone SE / petits Android ── */
+@media (max-width: 360px) {
+
+    .site-header,
+    .site-header__inner {
+        padding: 0 8px !important;
+    }
+
+    .site-header__left {
+        gap: 4px !important;
+        max-width: calc(100% - 96px) !important;
+    }
+
+    .site-header__logo-text {
+        font-size: 23px !important;
+    }
+
+    .site-header__hamburger {
+        width:    30px !important;
+        height:   30px !important;
+        min-width: 30px !important;
+    }
+    .site-header__hamburger svg {
+        width:  14px !important;
+        height: 14px !important;
+    }
+
+    .site-header__action-btn,
+    .site-header__cart-btn,
+    .site-header__mobile-search-btn {
+        width:    30px !important;
+        height:   30px !important;
+        min-width: 30px !important;
+        padding:  6px !important;
+    }
+    .site-header__action-btn svg,
+    .site-header__cart-btn svg,
+    .site-header__cart-icon-wrap svg,
+    .site-header__mobile-search-btn svg {
+        width:  15px !important;
+        height: 15px !important;
+    }
+
+    .site-header__actions {
+        gap: 0 !important;
+    }
+}
+ 
+
+/* ═══════════════════════════════════════════════════════════
+   MINI-CART DRAWER — À coller à la FIN de header.css
+   ─────────────────────────────────────────────────────────
+   Responsive sidebar sur tous les appareils :
+     ≥1200px  : 420px
+     768-1200px : 380px
+═══════════════════════════════════════════════════════════ */
+
+/* ── Drawer ───────────────────────────────────────────── */
+.mini-cart {
+    position:       fixed;
+    top:            0;
+    right:          0;
+    width:          420px;       /* Desktop */
+    max-width:      100vw;
+    height:         100dvh;      /* 100% hauteur viewport dynamique */
+    background:     #FFFFFF;
+    z-index:        99999;
+    transform:      translateX(100%);   /* Caché à droite */
+    transition:     transform 0.3s ease;
+    display:        flex;
+    flex-direction: column;
+    box-shadow:     -4px 0 32px rgba(0,0,0,0.12);
+    overflow:       hidden;
+}
+.mini-cart--open {
+    transform: translateX(0);   /* Visible */
+}
+
+/* ── En-tête ─────────────────────────────────────────── */
+.mini-cart__header {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding:         20px 24px;
+    border-bottom:   1px solid #EEEBE7;
+    flex:            none;
+}
+.mini-cart__title {
+    font-family: 'Chillax', sans-serif;
+    font-weight: 600;
+    font-size:   18px;
+    color:       #161A17;
+    margin:      0!important;
+}
+
+/* ── Bouton ✕ — caractère seul, aucun style, couleur fixe ── */
+.mini-cart__close,
+.mini-cart__close:hover,
+.mini-cart__close:focus,
+.mini-cart__close:active,
+.mini-cart__close:focus-visible {
+    background:    none !important;
+    border:        none !important;
+    box-shadow:    none !important;
+    border-radius: 0 !important;
+    padding:       0 !important;
+    margin:        0 !important;
+    width:         auto !important;
+    height:        auto !important;
+    font-size:     22px !important;
+    line-height:   1 !important;
+    cursor:        pointer !important;
+    color:         #161A17 !important;  /* Fixe — aucun changement au hover */
+    display:       flex !important;
+    align-items:   center !important;
+    transition:    none !important;
+    outline:       none !important;
+}
+
+/* ── Notifications ───────────────────────────────────── */
+.mini-cart__notice {
+    padding:       12px 24px;
+    font-family:   'Chillax', sans-serif;
+    font-size:     14px;
+    font-weight:   500;
+    flex:          none;
+    display:       flex;
+    align-items:   center;
+    gap:           8px;
+}
+.mini-cart__notice[hidden] {
+    display: none;
+}
+
+/* ✓ Article ajouté — fond vert */
+.mini-cart__notice--success {
+    background:    #E8F5E9;
+    color:         #2E7D32;
+    border-bottom: 1px solid #C8E6C9;
+}
+
+/* ✕ Article retiré — fond rouge clair */
+.mini-cart__notice--removed {
+    background:    #FFF3F3;
+    color:         #B71C1C;
+    border-bottom: 1px solid #FFCDD2;
+}
+
+/* ── Corps scrollable ────────────────────────────────── */
+.mini-cart__body {
+    flex:           1;
+    overflow-y:     auto;
+    overflow-x:     hidden;
+    padding:        16px 24px 0;
+    display:        flex;
+    flex-direction: column;
+    -webkit-overflow-scrolling: touch; /* Scroll fluide iOS */
+}
+.mini-cart__body .widget_shopping_cart_content {
+    flex:           1;
+    display:        flex;
+    flex-direction: column;
+}
+
+/* ── Footer natif WooCommerce ────────────────────────── */
+
+/* Ligne Subtotal */
+.mini-cart__body .woocommerce-mini-cart__total {
+    display:         flex !important;
+    justify-content: space-between !important;
+    padding:         16px 0 12px !important;
+    margin:          auto 0 0 !important;
+    border-top:      1px solid #EEEBE7 !important;
+    font-family:     'Chillax', sans-serif !important;
+    font-size:       16px !important;
+    font-weight:     600 !important;
+    color:           #161A17 !important;
+}
+.mini-cart__body .woocommerce-mini-cart__total strong {
+    font-weight: 600 !important;
+}
+
+/* Conteneur boutons */
+.mini-cart__body .woocommerce-mini-cart__buttons {
+    display:        flex !important;
+    flex-direction: column !important;
+    align-items:    stretch !important;
+    gap:            10px !important;
+    padding:        0 0 20px !important;
+    margin:         0 !important;
+}
+.mini-cart__body .woocommerce-mini-cart__buttons::before,
+.mini-cart__body .woocommerce-mini-cart__buttons::after {
+    display: none !important;
+}
+
+/* Règle commune — font + margin + largeur pleine */
+.mini-cart__body .woocommerce-mini-cart__buttons a,
+.mini-cart__body .woocommerce-mini-cart__buttons .button {
+    font-family:   'Chillax', sans-serif !important;
+    margin-bottom: 0 !important;
+    box-sizing:    border-box !important;
+    width:         100% !important;
+}
+
+/* Checkout — noir plein */
+.mini-cart__body .woocommerce-mini-cart__buttons .checkout {
+    padding:         14px !important;
+    background:      #161A17 !important;
+    color:           #FFFFFF !important;
+    text-align:      center !important;
+    text-decoration: none !important;
+    font-weight:     600 !important;
+    font-size:       15px !important;
+    border-radius:   6px !important;
+    border:          none !important;
+}
+.mini-cart__body .woocommerce-mini-cart__buttons .checkout:hover {
+    background: #2A2F2C !important;
+}
+
+/* View Cart — souligné */
+.mini-cart__body .woocommerce-mini-cart__buttons a:not(.checkout) {
+    padding:         8px !important;
+    text-align:      center !important;
+    text-decoration: underline !important;
+    font-size:       14px !important;
+    color:           #5C665E !important;
+    background:      none !important;
+    border:          none !important;
+}
+.mini-cart__body .woocommerce-mini-cart__buttons a:not(.checkout):hover {
+    color: #A87A63 !important;
+}
+
+/* ── Overlay sombre ──────────────────────────────────── */
+.mini-cart__overlay {
+    position:       fixed;
+    inset:          0;
+    background:     rgba(0,0,0,0.45);
+    z-index:        99998;
+    opacity:        0;
+    pointer-events: none;
+    transition:     opacity 0.3s ease;
+}
+.mini-cart__overlay--visible {
+    opacity:        1;
+    pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Sidebar sur tous les appareils
+═══════════════════════════════════════════════════════════ */
+
+/* Tablette ≤ 1200px */
+@media (max-width: 1200px) {
+    .mini-cart {
+        width: 380px;
+    }
+}
+
+/* Tablette ≤ 900px */
+@media (max-width: 900px) {
+    .mini-cart {
+        width: 340px;
+    }
+    .mini-cart__header {
+        padding: 16px 20px;
+    }
+    .mini-cart__body {
+        padding: 12px 20px 0;
+    }
+    .mini-cart__notice {
+        padding: 10px 20px;
+    }
+}
+
+/* Mobile ≤ 600px — sidebar plein écran */
+@media (max-width: 600px) {
+    .mini-cart {
+        width:     75%;       /* Pleine largeur */
+        max-width: 100vw;
+        /* Toujours sidebar : glisse depuis la droite */
+        transform: translateX(100%);
+    }
+    .mini-cart--open {
+        transform: translateX(0);
+    }
+    .mini-cart__header {
+        padding: 14px 16px;
+    }
+    .mini-cart__body {
+        padding: 12px 16px 0;
+    }
+    .mini-cart__notice {
+        padding: 10px 16px;
+    }
+    .mini-cart__body .woocommerce-mini-cart__buttons {
+        padding-bottom: 24px !important;
+    }
+    .mini-cart__body .woocommerce-mini-cart__buttons .checkout {
+        padding: 16px !important; /* Bouton plus haut sur mobile */
+        font-size: 16px !important;
+    }
+}
+
+/* Très petit mobile ≤ 380px */
+@media (max-width: 380px) {
+    .mini-cart__title {
+        font-size: 16px;
+    }
+    .mini-cart__body .woocommerce-mini-cart__total {
+        font-size: 15px !important;
+    }
+}

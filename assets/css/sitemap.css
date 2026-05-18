@@ -1,0 +1,177 @@
+/* Targets the container only on the Contact Custom Template */
+    .page-template-custom-pagespage-sitemap-php .site-content > .container,
+    .page-template-custom-pagespage-sitemap-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-sitemap-php .site-content {
+        padding: 0 !important;
+        margin: 20px !important;
+    }
+
+
+     /* Container styling */
+     .hero-card {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: #fafafa; 
+         padding: 25px 30px;
+         border-radius: 10px;
+         font-family: Chillax;
+         font-weight: 400;
+         max-width: 1200px;
+         margin: 10px 25px;
+     }
+
+    /* Text section styling */
+    .hero-text {
+        flex: 1;
+        max-width: 600px;
+    }
+
+
+      .hero-title {
+          font-size: 36px;
+          color: #A87A63;
+          margin: 0 0 12px 0;
+          font-weight: 500;
+      }
+
+      .hero-description {
+          font-size: 14px;
+          line-height: 1.6;
+          color: #6a5c51;
+        font-family: Chillax;   
+        margin: 0;
+    }
+
+     /* Images section styling */
+     .hero-images {
+         display: flex;
+         gap: 10px;
+     }
+
+      .img-wrap {
+          width: 120px;
+          height: 80px;
+          overflow: hidden;
+      }
+
+    .img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+    }
+
+
+    .sitemap-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 40px;
+        background-color: #fff;
+    }
+
+    .sitemap-col {
+        font-family: Chillax;
+        border: 1px solid #e0dcd6;
+        border-radius: 12px;
+        padding: 25px;
+        background-color: #ffffff;
+    }
+
+    /* Titles */
+    .col-title {
+        font-family: Chillax;
+        font-weight: 500;
+        font-size: 20px;
+        color: #1a1a1ae0;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .sub-group-title {
+        font-size: 16px;
+        color: #1a1a1ae0;
+        margin: 20px 0 10px 0;
+        font-weight: 400;
+    }
+
+    /* List Styling */
+    .sitemap-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sitemap-col ul li {
+        margin-bottom: 8px;
+        font-weight: 400;
+    }
+
+    .sitemap-col ul li a {
+        text-decoration: none;
+        color: #6a5c51;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        transition: color 0.2s;
+    }
+
+    /* Adding the ">" arrow from the image */
+    .sitemap-col ul li a::before {
+        content: '›';
+        font-weight: 300;
+        margin-right: 8px;
+        font-size: 18px;
+        color: #b5a99e;
+    }
+
+    .sitemap-col ul li a:hover {
+        color: #A87A63;
+    }
+
+    /* The small highlighted box in column 4 */
+    .promo-box {
+        background-color: #fafafa;
+        padding: 15px;
+        max-width: 560px;
+        margin-left: 40px;
+        margin-right: 40px;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #6a5c51;
+        line-height: 1.5;
+    }
+
+
+     @media (max-width: 992px) {
+         .hero-card {
+             flex-direction: column;
+             text-align: center;
+             padding: 25px;
+         }
+
+         .hero-images {
+             margin-top: 15px;
+             justify-content: center;
+         }
+
+         .sitemap-grid {
+             grid-template-columns: repeat(2, 1fr);
+        }
+     }
+
+     @media (max-width: 600px) {
+          .sitemap-grid {
+              grid-template-columns: 1fr;
+          }
+      }

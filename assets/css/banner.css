@@ -1,0 +1,43 @@
+/**
+ * LOCATION : motta-child/assets/css/banner.css
+ */
+
+
+/* ── Section ─────────────────────────────────────────── */
+.tinza-banner {
+    margin-top:    48px;   /* Espace au-dessus */
+    margin-bottom: 64px;   /* Espace en dessous */
+}
+
+/* ── Wrapper centré ──────────────────────────────────── */
+.tinza-banner__wrap {
+    width:      100%;
+    max-width:  1432px;    /* Largeur max Figma */
+    margin:     0 auto;    /* Centrage horizontal */
+    padding:    0 54px;    /* Marges latérales desktop */
+    box-sizing: border-box;
+}
+
+/* ── Image ───────────────────────────────────────────── */
+.tinza-banner__img {
+    display:       block;          /* Supprime l'espace inline sous l'image */
+    width:         100%;           /* Pleine largeur du wrapper */
+    height:        auto;           /* Hauteur proportionnelle */
+    border-radius: 12px;           /* Arrondi identique aux autres sections */
+    object-fit:    cover;          /* Recadrage si la taille est différente */
+}
+
+
+/* ── Tablet ≤ 1024px ─────────────────────────────────── */
+@media (max-width: 1024px) {
+    .tinza-banner__wrap { padding: 0 24px; }
+}
+
+/* ── Mobile ≤ 768px ──────────────────────────────────── */
+@media (max-width: 768px) {
+    .tinza-banner {
+        margin-top:    32px;
+        margin-bottom: 48px;
+    }
+    .tinza-banner__wrap { padding: 0 16px; }
+}

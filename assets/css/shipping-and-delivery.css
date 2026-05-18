@@ -1,0 +1,224 @@
+/* Targets the container only on the Shipping and Delivery Custom Template */
+    .page-template-custom-pagespage-shipping-and-delivery .site-content > .container,
+    .page-template-custom-pagespage-shipping-and-delivery .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 1. Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-shipping-and-delivery .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body.page-template-custom-pagespage-shipping-and-delivery {
+        font-family: Chillax;
+        font-weight: 400;
+        color: #1a1a1ae0;
+    }
+
+
+    /* HERO SECTION */
+    
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 400px;
+        overflow: hidden;
+        animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content {
+        padding: 56px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .hero-eyebrow {
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #A87A63;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-family: Chillax;
+        font-size: clamp(36px, 4vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .hero-body {
+        font-family: Chillax;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.75;
+        color: #3a3a3a;
+        max-width: 38ch;
+        margin: 0;
+    }
+
+    .hero-image {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+    }
+
+    .hero-image img {
+        width: 80%;
+        height: 90%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+    }
+
+   
+
+    /* CONTENT SECTION */
+    .content-section {
+        padding: 45px 0;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: 0.5px solid rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .card {
+        padding: 40px 36px;
+        border-right: 0.5px solid rgba(0,0,0,0.1);
+        border-bottom: 0.5px solid rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: background 0.2s ease;
+    }
+
+    .card:hover {
+        background: #faf9f7;
+    }
+
+    .card:nth-child(2),
+    .card:nth-child(4) { border-right: none; }
+
+    .card:nth-child(3),
+    .card:nth-child(4) { border-bottom: none; }
+
+    .card-number {
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 400;
+        color: #aaa;
+        letter-spacing: 0.12em;
+    }
+
+    .card h3 {
+        font-family: Chillax;
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 1.2;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .card-divider {
+        width: 32px;
+        height: 0.5px;
+        background: #c9a97e;
+        opacity: 0.7;
+    }
+
+    .card p {
+        font-family: Chillax;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.75;
+        color: #666;
+        margin: 0;
+    }
+
+    .card p + p {
+        margin-top: 0.5rem;
+    }
+
+    .card-note {
+        font-style: italic;
+        font-weight: 400;
+        color: #1a1a1a;
+    }
+
+    
+    /* NEED HELP */
+    .help-section {
+        font-family: Chillax;
+        margin-top: 10px;
+        padding-top: 40px;
+        text-align: center;
+    }
+
+    .help-section h3 {
+        color: #A87A63;
+        font-weight: 500;
+    }
+
+    .help-section p {
+        margin-top: 10px;
+        color: #6a5c51;
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            grid-template-columns: 1fr;
+        }
+        .hero-content {
+            border-right: none;
+            border-bottom: 0.5px solid rgba(0,0,0,0.1);
+            padding: 2.5rem 1.75rem;
+        }
+        .hero-image {
+            max-height: 300px;
+        }
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+        .card {
+            border-right: none !important;
+            border-bottom: 0.5px solid rgba(0,0,0,0.1) !important;
+        }
+        .card:last-child {
+            border-bottom: none !important;
+        }
+    }
+
+    
+
+    

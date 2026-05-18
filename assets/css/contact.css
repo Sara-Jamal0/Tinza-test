@@ -1,0 +1,367 @@
+
+    /* Targets the container only on the Contact Custom Template */
+    .page-template-custom-pagespage-contact-php .site-content > .container,
+    .page-template-custom-pagespage-contact-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 1. Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-contact-php .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* ── Hero Banner ── */
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 400px;
+        overflow: hidden;
+        padding-top: 50px;
+        margin: 0 25px;
+        animation: fadeUp 0.7s ease both;
+
+    }
+
+
+    .hero-content {
+        padding: 56px 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #A87A63;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-family: Chillax;
+        font-size: clamp(36px, 4vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .hero-title span {
+        font-style: normal;
+        color: #A87A63;
+    }
+
+    .hero-body {
+        font-family: Chillax;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.75;
+        color: #666;
+        max-width: 38ch;
+        margin: 0;
+    }
+
+    .hero-image {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+      }
+
+    .hero-image img {
+        width: 80%;
+        height: 90%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+    }
+
+ 
+    /* ── Contact Section ── */
+    .form-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 4rem 1.5rem;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1100px;
+      align-items: start;
+    }
+
+    /* ── Info Column ── */
+    .info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-col h2 {
+      font-family: Chillax;
+      font-size: 34px;
+      font-weight: 400;
+      color: #1a1a1a;
+      line-height: 1.15;
+      margin: 1rem 0 0.25rem;
+    }
+
+    .info-col > div > p {
+      font-family: Chillax;
+      font-size: 14px;
+      font-weight: 400;
+      color: #888;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .help-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .help-list li {
+      font-family: Chillax;
+      font-size: 13px;
+      font-weight: 400;
+      color: #555;
+      padding: 10px 14px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .faq-note {
+      font-family: Chillax;
+      font-size: 13px;
+      font-weight: 400;
+      color: #888;
+      line-height: 1.7;
+      padding: 12px 14px;
+      border-left: 1.5px solid #8b5e3c;
+      background: #fafafa;
+      border-radius: 0 8px 8px 0;
+      margin: 0;
+    }
+
+    .faq-note a {
+      color: #8b5e3c;
+      border-bottom: 1px solid #8b5e3c;
+      transition: color .3s, border-color .3s;
+    }
+
+    /* ── Reach Block ── */
+    .reach-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .reach-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fafafa;
+      border: 0.5px solid rgba(139, 94, 60, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reach-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: #8b5e3c;
+    }
+
+    .reach-block h4 {
+      font-family: Chillax;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14rem;
+      text-transform: uppercase;
+      color: #555;
+      margin: 0 0 3px;
+    }
+
+    .reach-block p {
+      font-family: Chillax;
+      font-size: 13px;
+      font-weight: 400;
+      color: #888;
+      margin: 0;
+    }
+
+    /* ── Form Card (unchanged) ── */
+    .form-card {
+      width: 100%;
+      max-width: 700px;
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card h2 {
+      font-size: 34px;
+      font-weight: 400;
+      color: #1a1a1a;
+      font-family: Chillax;
+      line-height: 1.15;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14rem;
+      color: #555;
+      margin-bottom: 6px;
+      font-family: Chillax;
+      text-transform: uppercase;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+      font-family: Chillax;
+      font-size: 14px;
+      font-weight: 400;
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #aaa;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #ccc;
+      font-weight: 400;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #999;
+      color: #333;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.7;
+    }
+
+    .btn-submit {
+      display: block;
+      margin: 14px auto 0;
+      background: transparent;
+      border: 0.5px solid #8b5e3c;
+      color: #8b5e3c;
+      font-size: 0.75rem;
+      font-family: Chillax;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, color 0.2s;
+      padding: 0px 10px;
+    }
+
+    .btn-submit:hover {
+      background: #8b5e3c;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .hero-content {
+            border-right: none;
+            border-bottom: 0.5px solid rgba(0,0,0,0.1);
+            padding: 2.5rem 1.75rem;
+        }
+
+        .hero-image {
+            max-height: 300px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .form-card {
+          padding: 2rem 1.5rem;
+        }
+        .contact-wrap {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .info-col {
+          display: contents;
+        }
+
+        .reach-block {
+          width: 100%;
+        }
+
+        .form-card {
+          padding: 2rem 1.5rem;
+        }
+    }

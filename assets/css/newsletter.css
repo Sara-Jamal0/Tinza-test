@@ -1,0 +1,350 @@
+/* =============================================================================
+   Tinza Child Theme — Newsletter Section
+   -----------------------------------------------------------------------------
+   File    : motta-child/assets/css/newsletter.css
+   Enqueue : functions.php → wp_enqueue_style('tinza-newsletter') — priority 99
+   Plugin  : MC4WP — Mailchimp for WordPress (form id=192)
+   -----------------------------------------------------------------------------
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. SECTION WRAPPER
+   ============================================================================= */
+
+.tinza-newsletter {
+    margin-top: 60px; /* Pull up to overlap with previous section (image 1) */
+    margin-bottom: 60px; /* Pull up to overlap with next section (image 3) */
+    background:     #FAF8F7;
+    width:          100%;
+    /* Space above and below — separates from adjacent sections */
+    padding-top:    60px;
+    padding-bottom: 60px;
+}
+
+.tinza-newsletter__inner {
+    box-sizing:      border-box;
+    max-width:       1440px;
+    margin:          0 auto;
+    /* Figma: padding 60px 120px 60px 60px */
+    padding:         0 120px 0 60px;
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    gap:             80px;
+    min-height:      284px;
+}
+
+
+/* =============================================================================
+   2. LEFT PANEL — white card with X envelope lines (CSS only)
+   ============================================================================= */
+
+.tinza-newsletter__deco {
+    flex:          none;
+    width:         590px;
+    align-self:    stretch;
+    min-height:    284px;
+    background:    #FFFFFF;
+    border-radius: 8px;
+    position:      relative;
+    overflow:      hidden;
+}
+
+/* Two diagonal lines forming an X (envelope design) */
+.tinza-newsletter__line {
+    position:   absolute;
+    width:       120%;
+    height:      1px;
+    left:        -10%;
+    top:         50%;
+    background:  rgba(22, 26, 23, 0.1);
+    transform-origin: center center;
+}
+
+/* Line top-left → bottom-right */
+.tinza-newsletter__line--1 {
+    transform: matrix(0.9, -0.43, 0.39, 0.92, 0, 0);
+}
+
+/* Line top-right → bottom-left */
+.tinza-newsletter__line--2 {
+    transform: matrix(-0.9, -0.43, -0.39, 0.92, 0, 0);
+}
+
+
+/* =============================================================================
+   3. RIGHT PANEL — title + form
+   ============================================================================= */
+
+.tinza-newsletter__content {
+    flex:           1;
+    display:        flex;
+    flex-direction: column;
+    gap:            20px;
+    min-width:      0;
+}
+
+/* Section heading */
+.tinza-newsletter__title {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    400;
+    font-size:      32px;
+    line-height:    45px;
+    letter-spacing: -0.01em;
+    text-transform: capitalize;
+    color:          #161A17;
+    margin:         0;
+}
+
+/* Bold line — "30% Off Your First Order" */
+.tinza-newsletter__title strong {
+    font-weight: 700;
+    display:     block;
+}
+
+/* Fallback notice when MC4WP not active */
+.tinza-newsletter__notice {
+    font-family: 'Chillax', sans-serif;
+    font-size:   14px;
+    line-height: 20px;
+    color:       #5C665E;
+    margin:      0;
+}
+
+
+/* =============================================================================
+   4. MC4WP FORM OVERRIDES
+   -----------------------------------------------------------------------------
+   MC4WP default markup:
+     <form class="mc4wp-form mc4wp-form-192">
+       <div class="mc4wp-form-fields">
+         <p><input type="email" name="EMAIL" ...></p>
+         <p><input type="submit" value="Claim Coupon" ...></p>
+       </div>
+       <div class="mc4wp-response">...</div>
+     </form>
+   ============================================================================= */
+
+/* Form root — reset MC4WP defaults */
+.tinza-newsletter .mc4wp-form {
+    width:   100% !important;
+    margin:  0 !important;
+    padding: 0 !important;
+}
+
+/* Fields wrapper — flex column, gap 20px between input and button */
+.tinza-newsletter .mc4wp-form-fields {
+    display:        flex !important;
+    flex-direction: column !important;
+    gap:            20px !important;
+    width:          100% !important;
+    margin:         0 !important;
+    padding:        0 !important;
+}
+
+/* Remove default <p> wrappers MC4WP adds around each field */
+.tinza-newsletter .mc4wp-form-fields p {
+    margin:  0 !important;
+    padding: 0 !important;
+    width:   100% !important;
+}
+
+/* ----- Email input — 100% width × 60px ----- */
+.tinza-newsletter .mc4wp-form input[type="email"] {
+    box-sizing:    border-box !important;
+    display:       block !important;
+    width:         100% !important;
+    height:        60px !important;
+    padding:       8px 20px !important;
+    background:    #FFFFFF !important;
+    border:        1px solid rgba(22, 26, 23, 0.2) !important;
+    border-radius: 8px !important;
+    font-family:   'Chillax', sans-serif !important;
+    font-weight:   400 !important;
+    font-size:     16px !important;
+    line-height:   22px !important;
+    color:         #161A17 !important;
+    outline:       none !important;
+    box-shadow:    none !important;
+    appearance:    none !important;
+    -webkit-appearance: none !important;
+    transition:    border-color 0.2s !important;
+    margin:        0 !important;
+}
+
+.tinza-newsletter .mc4wp-form input[type="email"]::placeholder {
+    color:       #5C665E !important;
+    font-family: 'Chillax', sans-serif !important;
+    font-size:   16px !important;
+}
+
+.tinza-newsletter .mc4wp-form input[type="email"]:focus {
+    border-color: #A87A63 !important;
+}
+
+/* ----- Submit button — 100% × 64px, black ----- */
+.tinza-newsletter .mc4wp-form input[type="submit"] {
+    box-sizing:     border-box !important;
+    display:        block !important;
+    width:          100% !important;
+    height:         64px !important;
+    padding:        8px 20px !important;
+    background:     #161A17 !important;
+    border:         1px solid #161A17 !important;
+    border-radius:  8px !important;
+    font-family:    'Chillax', sans-serif !important;
+    font-weight:    500 !important;
+    font-size:      16px !important;
+    line-height:    22px !important;
+    color:          #FFFFFF !important;
+    cursor:         pointer !important;
+    text-align:     center !important;
+    letter-spacing: 0.005em !important;
+    appearance:     none !important;
+    -webkit-appearance: none !important;
+    box-shadow:     none !important;
+    transition:     background 0.2s, border-color 0.2s !important;
+    margin:         0 !important;
+}
+
+.tinza-newsletter .mc4wp-form input[type="submit"]:hover {
+    background:   #2a2a2a !important;
+    border-color: #2a2a2a !important;
+}
+
+.tinza-newsletter .mc4wp-form input[type="submit"]:disabled,
+.tinza-newsletter .mc4wp-form input[type="submit"].is-loading {
+    opacity: 0.7 !important;
+    cursor:  not-allowed !important;
+}
+
+/* ----- MC4WP response messages ----- */
+.tinza-newsletter .mc4wp-response {
+    margin-top: 8px !important;
+}
+
+.tinza-newsletter .mc4wp-response p {
+    font-family:    'Chillax', sans-serif !important;
+    font-size:      14px !important;
+    line-height:    20px !important;
+    margin:         0 !important;
+    padding:        8px 12px !important;
+    border-radius:  6px !important;
+}
+
+/* Success */
+.tinza-newsletter .mc4wp-form .mc4wp-success p {
+    color:      #065F15 !important;
+    background: #E5F5E8 !important;
+}
+
+/* Error */
+.tinza-newsletter .mc4wp-form .mc4wp-error p,
+.tinza-newsletter .mc4wp-form .mc4wp-alert p {
+    color:      #E31837 !important;
+    background: #FFF0F0 !important;
+}
+
+/* Hide MC4WP labels — we use placeholder text instead */
+.tinza-newsletter .mc4wp-form label {
+    display: none !important;
+}
+
+
+/* =============================================================================
+   5. SPINNER — used by newsletter.js AJAX fallback
+   ============================================================================= */
+
+.tz-nl-spinner {
+    display:         inline-block;
+    width:           16px;
+    height:          16px;
+    border:          2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #FFFFFF;
+    border-radius:   50%;
+    animation:       tinza-spin 0.7s linear infinite;
+    vertical-align:  middle;
+    margin-left:     8px;
+}
+
+@keyframes tinza-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Message area for AJAX fallback */
+.tz-nl-msg {
+    font-family:    'Chillax', sans-serif;
+    font-size:      14px;
+    line-height:    20px;
+    padding:        8px 12px;
+    border-radius:  6px;
+    margin-top:     8px;
+    display:        none;
+}
+.tz-nl-msg[hidden] { display: none !important; }
+.tz-nl-msg.is-success {
+    display:    block;
+    color:      #065F15;
+    background: #E5F5E8;
+}
+.tz-nl-msg.is-error {
+    display:    block;
+    color:      #E31837;
+    background: #FFF0F0;
+}
+
+
+/* =============================================================================
+   6. RESPONSIVE — Tablet 1024px
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+    .tinza-newsletter__inner {
+        padding: 0 40px;
+        gap:     48px;
+    }
+
+    .tinza-newsletter__deco {
+        width:     360px;
+        min-width: 360px;
+    }
+}
+
+
+/* =============================================================================
+   7. RESPONSIVE — Mobile 768px
+   -----------------------------------------------------------------------------
+   Mobile (image 2): left white card hidden, form takes full width
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .tinza-newsletter {
+        padding-top:    40px;
+        padding-bottom: 40px;
+    }
+
+    .tinza-newsletter__inner {
+        flex-direction: column;
+        padding:        0 24px;
+        gap:            24px;
+        align-items:    stretch;
+        min-height:     auto;
+    }
+
+    /* Hide left decorative card on mobile */
+    .tinza-newsletter__deco {
+        display: none !important;
+    }
+
+    .tinza-newsletter__content {
+        width: 100%;
+    }
+
+    .tinza-newsletter__title {
+        font-size:   24px;
+        line-height: 34px;
+    }
+
+    /* Full width maintained automatically via width:100% */
+}

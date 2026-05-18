@@ -1,0 +1,341 @@
+/* =============================================================================
+   Tinza Child Theme — Footer
+   Desktop  : inchangé (5 colonnes, layout existant)
+   Mobile   : accordéon toggleClass('open') — même logique que FAQ
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. FOOTER WRAPPER — inchangé
+   ============================================================================= */
+.site-footer {
+    background:     #FFFFFF;
+    color:          #161A17;
+    border-top:     1px solid rgba(22, 26, 23, 0.1);
+    width:          100%;
+    display:        flex;
+    flex-direction: column;
+}
+
+
+/* =============================================================================
+   2. TOP ROW — inchangé
+   ============================================================================= */
+.site-footer__top {
+    box-sizing:      border-box;
+    max-width:       1440px;
+    width:           100%;
+    margin:          0 auto;
+    padding:         63px 54px 32px;
+    display:         flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    align-items:     flex-start;
+    gap:             60px;
+}
+
+
+/* =============================================================================
+   3. COLUMN — inchangé
+   ============================================================================= */
+.site-footer__col {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            12px;
+    flex:           none;
+}
+
+.site-footer__col-title {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    600;
+    font-size:      24px;
+    line-height:    34px;
+    letter-spacing: -0.01em;
+    color:          #161A17;
+    margin:         0;
+    padding:        0;
+    display:        block;
+}
+
+.site-footer__menu {
+    display:        flex;
+    flex-direction: column;
+    gap:            12px;
+    margin:         0;
+    padding:        0;
+    list-style:     none;
+}
+
+.site-footer__menu li {
+    margin:  0;
+    padding: 0;
+}
+
+.site-footer__menu a {
+    font-family:     'Chillax', sans-serif;
+    font-weight:     400;
+    font-size:       16px;
+    line-height:     22px;
+    letter-spacing:  0.005em;
+    color:           #161A17;
+    text-decoration: none;
+    display:         block;
+    transition:      color var(--t-fast, 0.2s);
+}
+
+.site-footer__menu a:hover {
+    color: var(--color-primary, #A87A63);
+}
+
+
+/* =============================================================================
+   4. BRAND COLUMN — inchangé
+   ============================================================================= */
+.site-footer__brand { gap: 12px; }
+
+.site-footer__socials {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    gap:            16px;
+}
+
+.site-footer__social-link {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           24px;
+    height:          24px;
+    text-decoration: none;
+    flex:            none;
+    transition:      opacity var(--t-fast, 0.2s);
+}
+
+.site-footer__social-link:hover { opacity: 0.75; }
+
+.site-footer__social-link svg {
+    width:         24px;
+    height:        24px;
+    display:       block;
+    border-radius: 6px;
+}
+
+.site-footer__spacer {
+    display:    block;
+    width:      100%;
+    height:     22px;
+    flex:       none;
+    visibility: hidden;
+}
+
+
+/* =============================================================================
+   5. PAYMENT ICONS — inchangé
+   ============================================================================= */
+.site-footer__payments {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    gap:            8px;
+}
+
+.site-footer__payment-icon {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    width:           35px;
+    height:          24px;
+    flex:            none;
+    line-height:     0;
+}
+
+.site-footer__payment-icon svg {
+    width:   35px;
+    height:  24px;
+    display: block;
+}
+
+
+/* =============================================================================
+   6. COPYRIGHT BAR — inchangé
+   ============================================================================= */
+.site-footer__bottom {
+    box-sizing:  border-box;
+    max-width:   1440px;
+    width:       100%;
+    margin:      0 auto;
+    padding:     24px 54px 48px;
+    border-top:  1px solid rgba(22, 26, 23, 0.08);
+}
+
+.site-footer__copy {
+    font-family:    'Chillax', sans-serif;
+    font-weight:    500;
+    font-size:      20px;
+    line-height:    28px;
+    letter-spacing: -0.01em;
+    text-align:     center;
+    color:          #161A17;
+    margin:         0;
+}
+
+
+/* =============================================================================
+   7. BOUTON ACCORDÉON — caché sur desktop, visible sur mobile
+   ============================================================================= */
+
+/* Desktop : bouton invisible, titre affiché normalement */
+.site-footer__col-btn {
+    all:            unset;
+    display:        block;
+    width:          100%;
+    cursor:         default;
+    pointer-events: none;
+}
+
+/* Chevron caché sur desktop */
+.site-footer__chevron { display: none; }
+
+
+/* =============================================================================
+   8. TABLET — inchangé
+   ============================================================================= */
+@media (max-width: 1024px) {
+    .site-footer__top {
+        padding: 48px 32px 24px;
+        gap:     32px;
+    }
+    .site-footer__bottom { padding: 24px 32px 40px; }
+}
+
+
+/* =============================================================================
+   9. MOBILE ≤ 768px — accordéon uniquement
+   ============================================================================= */
+@media (max-width: 768px) {
+
+    /* Remettre le top en colonne */
+    .site-footer__top {
+        padding:        0;
+        flex-direction: column;
+        gap:            0;
+        flex-wrap:      nowrap;
+    }
+
+    /* Chaque col prend toute la largeur */
+    .site-footer__col {
+        width:   100%;
+        gap:     0;
+        padding: 0;
+    }
+
+    /* Séparateurs */
+    .site-footer__col + .site-footer__col {
+        border-top: 1px solid #EBEBEB;
+    }
+
+    /* Brand (Follow Us) : pas d'accordéon, toujours visible */
+    .site-footer__brand {
+    padding:         24px 20px;
+    gap:             16px;
+    border-top:      1px solid #EBEBEB;
+    align-items:     center;
+    width:           100%;
+}
+
+.site-footer__brand .site-footer__col-btn  { display: none; }
+.site-footer__brand .site-footer__col-title { display: none; }
+.site-footer__brand .site-footer__spacer   { display: none; }
+
+.site-footer__socials {
+    flex-wrap:       wrap;
+    justify-content: center;
+    gap:             10px;
+}
+
+.site-footer__socials::before {
+    content:     'Follow Us:';
+    font-family: 'Chillax', sans-serif;
+    font-weight: 600;
+    font-size:   15px;
+    color:       #161A17;
+    white-space: nowrap;
+    display:     flex;
+    align-items: center;
+}
+
+.site-footer__payments {
+    justify-content: center;
+    flex-wrap:       wrap;
+    margin-top:      12px; 
+}
+
+    /* Bouton accordéon — actif sur mobile */
+    .site-footer__col-btn {
+        all:             unset !important;
+        box-sizing:      border-box !important;
+        display:         flex !important;
+        align-items:     center !important;
+        justify-content: space-between !important;
+        width:           100% !important;
+        padding:         16px 20px !important;
+        cursor:          pointer !important;
+        pointer-events:  auto !important;
+    }
+
+    /* Titre dans le bouton */
+    .site-footer__col-btn .site-footer__col-title {
+        font-size:   17px;
+        line-height: 24px;
+        margin:      0;
+        pointer-events: none;
+    }
+
+    /* Chevron — visible sur mobile */
+    .site-footer__chevron {
+        display:         flex !important;
+        align-items:     center;
+        justify-content: center;
+        flex-shrink:     0;
+        width:           20px;
+        height:          20px;
+        transform:       rotate(0deg);
+        transition:      transform 0.25s ease;
+        pointer-events:  none;
+    }
+
+    /* Ouvert → chevron ∧ */
+    .site-footer__col.open .site-footer__chevron {
+        transform: rotate(-180deg);
+    }
+
+    /* Menu — fermé par défaut */
+    .site-footer__menu {
+        overflow:   hidden;
+        max-height: 0;
+        padding:    0 20px;
+        gap:        0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    /* Menu ouvert */
+    .site-footer__col.open .site-footer__menu {
+        max-height: 400px;
+        padding:    0 20px 16px 32px;
+        gap:        12px;
+    }
+
+    /* Spacers inutiles sur mobile */
+    .site-footer__spacer { display: none; }
+
+    /* Copyright */
+    .site-footer__bottom {
+        padding: 20px 20px 32px;
+    }
+
+    .site-footer__copy {
+        font-size:   13px;
+        line-height: 20px;
+    }
+}

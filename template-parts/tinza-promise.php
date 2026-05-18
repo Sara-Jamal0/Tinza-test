@@ -1,0 +1,124 @@
+<?php
+/**
+ * Section: The Tinza Promise
+ * =============================================================================
+ * File : motta-child/template-parts/tinza-promise.php
+ *
+ * Icons: SVG from Figma (icons-01 to icons-06)
+ *        Stroke color : #A07660 — 2.75px, linecap round, linejoin round
+ * =============================================================================
+ */
+?>
+
+<section class="tinza-section tinza-promise" id="tinza-promise" aria-label="The Tinza Promise">
+    <div class="tinza-promise__inner">
+
+        <!-- ── Header ─────────────────────────────────────────────────── -->
+        <div class="tinza-promise__header">
+            <h2 class="tinza-promise__title">The Tinza Promise</h2>
+            <p class="tinza-promise__subtitle">
+                We are committed to bringing you satisfaction and peace of mind with every purchase.
+            </p>
+        </div>
+
+        <!-- ── Icons grid — 6 col desktop / 2 col mobile ─────────────── -->
+        <div class="tinza-promise__grid">
+
+            <!-- 1 · Authenticity Guarantee — icons-03: starburst badge + checkmark -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M66.3775 36.1731C66.3775 39.1988 61.0473 41.3458 60.1603 44.0731C59.2733 46.8004 62.2575 51.7659 60.5499 54.1201C58.8422 56.4744 53.2467 55.1232 50.8676 56.8557C48.4885 58.5882 48.1155 64.2998 45.2804 65.2199C42.4454 66.1401 38.8725 61.73 35.8468 61.73C32.8211 61.73 29.1405 66.1069 26.4132 65.2199C23.686 64.3329 23.1803 58.5717 20.826 56.8557C18.4718 55.1397 12.8763 56.4992 11.1438 54.1201C9.41123 51.741 12.4535 46.8999 11.5334 44.0731C10.6132 41.2463 5.31616 39.1988 5.31616 36.1731C5.31616 33.1474 10.6464 31.0004 11.5334 28.2731C12.4204 25.5458 9.4361 20.5803 11.1438 18.2261C12.8514 15.8718 18.4469 17.223 20.826 15.4905C23.2052 13.758 23.5782 8.04643 26.4132 7.12628C29.2483 6.20613 32.8211 10.6162 35.8468 10.6162C38.8725 10.6162 42.5448 6.23929 45.2804 7.12628C48.016 8.01327 48.5134 13.7746 50.8676 15.4905C53.2219 17.2065 58.8174 15.847 60.5499 18.2261C62.2824 20.6052 59.2401 25.4463 60.1603 28.2731C61.0804 31.0999 66.3775 33.1474 66.3775 36.1731Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24.7554 35.2529L32.7631 43.2607L46.9301 29.0938" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">Authenticity Guarantee</p>
+            </div>
+
+            <!-- 2 · Money-Back Guarantee — icons-04: circular arrows + coin -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M8.84326 26.6962C12.6886 15.3606 23.4154 7.19995 36.0533 7.19995C51.92 7.19995 64.7814 20.0613 64.7814 35.9281" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M70.2991 29.3394L64.7739 35.928L58.6399 30.7804" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M63.6487 43.9269C60.1809 55.902 49.1382 64.6561 36.0533 64.6561C20.1866 64.6561 7.3252 51.7947 7.3252 35.928" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.80005 42.5089L7.32528 35.928L13.4593 41.0756" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M49.1536 25.2014H22.9453C20.8173 25.2014 19.0923 26.9265 19.0923 29.0544V42.7943C19.0923 44.9223 20.8173 46.6473 22.9453 46.6473H49.1536C51.2815 46.6473 53.0066 44.9223 53.0066 42.7943V29.0544C53.0066 26.9265 51.2815 25.2014 49.1536 25.2014Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.0535 32.6333C37.8731 32.6333 39.3484 34.1085 39.3484 35.9282C39.3484 37.7479 37.8731 39.2231 36.0535 39.2231C34.2338 39.2231 32.7586 37.7479 32.7585 35.9282C32.7585 34.1085 34.2338 32.6333 36.0535 32.6333Z" stroke="#A07660" stroke-width="2.75"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">Money-Back Guarantee</p>
+            </div>
+
+            <!-- 3 · 24-Hour Cancellation — icons-02: calendar + X -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M5.3999 21.5459H66.3029V60.7679C66.3029 63.2519 64.2869 65.2679 61.8029 65.2679H9.8999C7.4159 65.2679 5.3999 63.2519 5.3999 60.7679V21.5459Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.8999 11.052H61.8029C64.2869 11.052 66.3029 13.068 66.3029 15.552V21.555H5.3999V15.552C5.3999 13.068 7.4159 11.052 9.8999 11.052Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M42.651 36.6118L29.052 50.2108" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M42.651 50.2108L29.052 36.6118" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.0508 7.19995V15.498" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M35.8467 7.19995V15.498" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50.6516 7.19995V15.498" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">24-Hour Cancellation Window</p>
+            </div>
+
+            <!-- 4 · Vetted Artisans — icons-06: artisan tools + person -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M61.8029 6.30005H9.8999C7.41462 6.30005 5.3999 8.31477 5.3999 10.8V61.254C5.3999 63.7393 7.41462 65.754 9.8999 65.754H61.8029C64.2882 65.754 66.3029 63.7393 66.3029 61.254V10.8C66.3029 8.31477 64.2882 6.30005 61.8029 6.30005Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.2809 51.363C34.2809 49.581 38.7989 46.863 38.7989 37.863C38.7989 30.717 29.5919 30.204 29.5919 20.574H21.5639C21.5639 30.213 12.3569 30.726 12.3569 37.863C12.3569 46.269 16.8749 49.581 16.8749 51.363C16.8749 52.164 16.1999 53.154 15.4619 54C14.8229 54.738 15.3269 55.881 16.2989 55.881H34.8479C35.8199 55.881 36.3329 54.738 35.6849 54C34.9469 53.154 34.2719 52.155 34.2719 51.363H34.2809Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30.8342 16.155H20.3312C19.8341 16.155 19.4312 16.558 19.4312 17.055V19.665C19.4312 20.1621 19.8341 20.565 20.3312 20.565H30.8342C31.3312 20.565 31.7342 20.1621 31.7342 19.665V17.055C31.7342 16.558 31.3312 16.155 30.8342 16.155Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M25.6416 28.6309C26.3318 28.6848 26.7896 29.1235 27.0273 29.4268C27.2959 29.7695 27.4869 30.1848 27.6289 30.5801C27.7624 30.9518 27.8759 31.3774 27.9727 31.8408C28.4574 31.6821 28.9141 31.5613 29.3271 31.4844C29.7485 31.4059 30.2032 31.3579 30.6279 31.4053C30.979 31.4444 31.6221 31.5863 32.042 32.1621L32.123 32.2832L32.1963 32.416C32.5271 33.078 32.3272 33.7299 32.1748 34.0684C31.9966 34.4641 31.7158 34.8284 31.4316 35.1396C31.1771 35.4185 30.87 35.7067 30.5234 36C30.87 36.2933 31.1771 36.5815 31.4316 36.8604C31.7158 37.1716 31.9966 37.5359 32.1748 37.9316C32.3374 38.2927 32.5542 39.0106 32.123 39.7168C31.71 40.3933 31.0047 40.5518 30.6289 40.5938C30.2043 40.6411 29.7507 40.594 29.3301 40.5156C28.9165 40.4385 28.4591 40.3156 27.9727 40.1562C27.8759 40.6191 27.7622 41.0443 27.6289 41.416C27.4871 41.8114 27.2963 42.2273 27.0283 42.5703C26.7761 42.8932 26.2722 43.375 25.5 43.375C24.7303 43.375 24.2263 42.8968 23.9727 42.5732C23.7041 42.2305 23.5131 41.8152 23.3711 41.4199C23.2375 41.0479 23.1232 40.6221 23.0264 40.1582C22.5418 40.3169 22.0857 40.4388 21.6729 40.5156C21.2515 40.5941 20.7968 40.6421 20.3721 40.5947C19.9976 40.553 19.2907 40.3944 18.877 39.7168C18.4458 39.0106 18.6626 38.2927 18.8252 37.9316C19.0034 37.5359 19.2842 37.1716 19.5684 36.8604C19.8228 36.5817 20.1293 36.2931 20.4756 36C20.1293 35.7069 19.8228 35.4183 19.5684 35.1396C19.2842 34.8284 19.0034 34.4641 18.8252 34.0684C18.6626 33.7073 18.4458 32.9894 18.877 32.2832L18.958 32.1621C19.3772 31.5873 20.0189 31.4456 20.3711 31.4062C20.7957 31.3589 21.2493 31.406 21.6699 31.4844C22.0832 31.5614 22.5404 31.6836 23.0264 31.8428C23.1231 31.3802 23.2378 30.9555 23.3711 30.584C23.5129 30.1886 23.7037 29.7727 23.9717 29.4297C24.2239 29.1068 24.7278 28.625 25.5 28.625L25.6416 28.6309Z" stroke="#A07660" stroke-width="2.75"/>
+                        <path d="M37.71 44.469C33.759 46.683 25.578 46.881 25.578 46.881C25.578 46.881 17.397 46.683 13.446 44.469" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.5961 50.436C30.4381 51.588 25.5781 51.786 25.5781 51.786C25.5781 51.786 20.7361 51.588 16.5781 50.436" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M29.7361 22.491H33.3991C36.5941 22.491 39.1051 25.236 38.8261 28.422L38.2321 35.019" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.4291 22.491H17.7661C14.5711 22.491 12.0601 25.236 12.3391 28.422L12.9331 35.019" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M48.8699 51.0301L45.6569 43.0831C45.3149 42.2371 45.1889 41.3281 45.2879 40.4191L46.3499 30.7261C46.4759 29.5471 47.4929 28.6651 48.6809 28.7101C49.9319 28.7551 50.9039 29.7991 50.8679 31.0501L50.5889 39.0331" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M48.969 28.638L43.245 19.017C42.579 17.901 42.957 16.461 44.082 15.813C45.081 15.237 46.359 15.48 47.07 16.389L56.772 28.71C57.798 30.015 58.185 31.716 57.816 33.336L55.719 42.534C55.467 43.623 55.557 44.757 55.971 45.792L57.222 48.942" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M59.2364 48.431L47.0456 51.4705C46.5633 51.5908 46.2698 52.0792 46.3901 52.5615L47.2109 55.8537C47.3312 56.336 47.8196 56.6295 48.3019 56.5092L60.4927 53.4697C60.975 53.3495 61.2685 52.861 61.1483 52.3787L60.3274 49.0865C60.2072 48.6042 59.7187 48.3107 59.2364 48.431Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">Vetted Artisans &amp; Professional Sellers</p>
+            </div>
+
+            <!-- 5 · Price Match Guarantee — icons-05: price tag + checkmark -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M44.4329 26.6764C43.0109 21.0334 44.4329 16.0924 48.2579 11.3674C53.2619 5.21137 59.8139 5.28337 62.8199 8.29837C65.8349 11.3134 65.9069 17.8654 59.7419 22.8514C57.7349 24.4804 55.6919 25.6684 53.5769 26.3884" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.788 17.3762C34.2455 17.3667 33.7224 17.578 33.3387 17.9617L30.641 20.6594C29.972 21.3284 29.8788 22.3684 30.2948 23.2181C32.726 28.1839 31.882 34.3576 27.756 38.4753C23.6391 42.5923 17.4595 43.4435 12.4997 41.0153C11.6494 40.599 10.6086 40.6918 9.93919 41.3612L7.71426 43.5861C6.93321 44.3672 6.93321 45.6335 7.71426 46.4145L24.7128 63.4131C25.4939 64.1942 26.7602 64.1942 27.5413 63.4131L53.1661 37.7883C53.5495 37.4049 53.7608 36.8821 53.7515 36.3399L53.4661 19.635C53.4476 18.5575 52.5789 17.6883 51.5014 17.6694L34.788 17.3762ZM41.715 29.4033C40.437 28.1253 40.437 26.0553 41.715 24.7773C42.993 23.4993 45.063 23.4993 46.341 24.7773C47.619 26.0553 47.619 28.1253 46.341 29.4033C45.063 30.6813 42.993 30.6813 41.715 29.4033Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.351 37.2243C22.8544 37.2243 26.505 33.5736 26.505 29.0703C26.505 24.5669 22.8544 20.9163 18.351 20.9163C13.8477 20.9163 10.197 24.5669 10.197 29.0703C10.197 33.5736 13.8477 37.2243 18.351 37.2243Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.165 28.998L17.532 31.455L21.528 26.676" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">Price Match Guarantee</p>
+            </div>
+
+            <!-- 6 · Secure Worldwide Delivery — icons-01: globe + package -->
+            <div class="tinza-promise__item">
+                <div class="tinza-promise__icon">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M62.0189 31.8691C62.4509 33.7861 62.6759 35.7841 62.6759 37.8271C62.6759 52.7131 50.6069 64.7821 35.7209 64.7821C20.8349 64.7821 8.7749 52.7131 8.7749 37.8271C8.7749 37.2061 8.7929 36.5851 8.8379 35.9731" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M31.5361 11.1961C32.9041 10.9801 34.2991 10.8721 35.7301 10.8721C44.5321 10.8721 52.3441 15.0931 57.2671 21.6181" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M45.9998 50C44.1188 59.198 40.4727 64.791 35.7207 64.791C29.1867 64.791 23.8857 52.722 23.8857 37.836C23.8857 36.927 23.9037 36.027 23.9397 35.145" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M35.73 10.8721C41.625 10.8721 46.512 20.6731 47.412 33.4981" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M31.5361 28.98H51.5002" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M53.5 46.9351H61.101" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10.584 46.9351H35.5" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M29.736 8.1001H6.3C5.30589 8.1001 4.5 8.90599 4.5 9.9001V33.3361C4.5 34.3302 5.30589 35.1361 6.3 35.1361H29.736C30.7301 35.1361 31.536 34.3302 31.536 33.3361V9.9001C31.536 8.90599 30.7301 8.1001 29.736 8.1001Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23.1569 18.8821L18.0179 15.6601L12.8789 18.8821V8.1001H23.1569V18.8821Z" stroke="#A07660" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M57.6846 10.627C60.4155 10.628 62.939 11.8606 64.6318 14.0361V14.0371C66.3949 16.3073 66.9526 19.2819 66.1221 22.0078C64.8064 26.3074 61.192 34.711 51.6309 43.3213L50.7051 44.1543L51.4434 45.1582L52.1455 46.1113L53.3809 47.793L51.332 48.1953L37.0322 50.9941L37.0312 50.9951L34.7402 51.4443L35.5293 49.2549L35.5303 49.2539L40.417 35.6553V35.6533L41.2422 33.3496L42.7148 35.2988L42.7168 35.3008L43.3369 36.1201L44.2471 37.3193L45.3594 36.3047C53.059 29.2817 57.3039 22.7911 59.2188 19.3809C59.6979 18.5367 59.5889 17.4141 58.8691 16.6943C58.3825 16.2078 57.6956 16.0215 57.1318 16.0215C56.6954 16.0215 56.1717 16.136 55.7432 16.4502L55.7295 16.46L55.7158 16.4707L54.7725 17.1973C53.2435 15.7556 51.6691 14.5632 49.9004 13.5078L52.3232 12.2119L54.0264 11.4277L54.0254 11.4268C55.187 10.8973 56.4209 10.6277 57.6846 10.627Z" stroke="#A07660" stroke-width="2.75"/>
+                    </svg>
+                </div>
+                <p class="tinza-promise__label">Secure Worldwide Delivery</p>
+            </div>
+
+        </div><!-- /.tinza-promise__grid -->
+
+    </div><!-- /.tinza-promise__inner -->
+</section>

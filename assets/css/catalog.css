@@ -1,0 +1,20 @@
+/*
+ * Fix : Motta #main (ID spec 1,0,0) override
+ * .sidebar-content .site-main { display:flex } (spec 0,2,0)
+ * Résultat : sidebar tombe sous les produits
+ * Solution : surpasser avec body + div + ID + class (spec 1,2,1)
+ */
+body.sidebar-content div#main.site-main {
+    display:        flex !important;
+    flex-direction: row !important;
+    align-items:    flex-start !important;
+}
+body.sidebar-content div#main.site-main #primary {
+    flex:  1 1 0 !important;
+    order: 2 !important;
+}
+body.sidebar-content div#main.site-main #mobile-filter-sidebar-panel {
+    flex-shrink: 0 !important;
+    width:       280px !important;
+    order:       1 !important;
+}

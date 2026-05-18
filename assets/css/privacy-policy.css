@@ -1,0 +1,367 @@
+ /* Targets the container only on the Contact Custom Template */
+    .page-template-custom-pagespage-privacy-policy-php .site-content > .container,
+    .page-template-custom-pagespage-privacy-policy-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 1. Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-privacy-policy-php .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Force parents to allow sticking */
+    .site-content, 
+    .site-content > .container, 
+    .site-content > .motta-container,
+    #page, 
+    #content {
+        overflow: visible !important;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    [id] {
+        scroll-margin-top: 100px; /* Adjust this value to match your header height */
+    }
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Layout ────────────────────────────────────── */
+    .layout {
+        display: grid;
+        grid-template-columns: 240px 1fr 240px;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px 15px 20px;
+        align-items: stretch;
+    }
+
+    /* ── Left sidebar ──────────────────────────────── */
+    .sidebar {
+        background: #FAFAFA; /* Warm white background */
+        padding: 30px 24px;
+        border-radius: 8px;
+        /* border: 1px solid #e4d8d0; */
+        position: sticky ;
+        top: 28px;
+        height: fit-content;
+    }
+
+    .sidebar__heading {
+        font-family: Chillax;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #7a6259;
+        margin-bottom: 10px;
+    }
+
+    .sidebar__sub {
+        font-family: Chillax;
+        font-size: 11.5px;
+        color: #9b7b6a;
+        margin-bottom: 14px;
+    }
+
+    .sidebar__nav {
+        font-family: Chillax;
+        font-size: 15px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 28px;
+    }
+
+    .sidebar__nav a {
+        text-decoration: none;
+        font-size: 13.5px;
+        color: #6b4c3b;
+        transition: color 0.2s;
+    }
+
+    .sidebar__nav a:hover {
+        color: #b85c2a; 
+    }
+
+    .sidebar__meta {
+        font-family: Chillax;
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid #e4d8d0;
+    }
+
+    .sidebar__meta-label {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #7a6259;
+        margin-bottom: 4px;
+    }
+
+    .sidebar__meta-date {
+        font-size: 13.5px;
+        color: #5c3d2e;
+    }
+
+    .sidebar__meta-note {
+        font-size: 12px;
+        color: #9b7b6a;
+        font-style: italic;
+        margin-top: 4px;
+    }
+
+    /* ── Main content ──────────────────────────────── */
+    .main {
+        padding: 30px 40px; /* Increased horizontal padding */
+        background-color: #FAFAFA;
+        /* border: 1px solid #e4d8d0; */
+        border-radius: 8px;
+        min-height: 800px;
+    }
+
+    .page-title {
+        font-family: Chillax;
+        font-size: 42px;
+        font-weight: 400;
+        color: #5c3d2e;
+        margin-bottom: 24px;
+        line-height: 1.15;
+    }
+
+    .intro {
+        font-family: Chillax;
+        font-size: 14.5px;
+        color: #7a6259;
+        line-height: 1.75;
+        margin-bottom: 40px;
+        max-width: 560px;
+    }
+
+    /* Section divider */
+    .section {
+        font-family: Chillax;
+        border-top: 1px solid #e4d8d0;
+        padding-top: 32px;
+        margin-top: 0;
+        margin-bottom: 36px;
+    }
+    .section + .section { margin-top: 0; }
+
+    .section__title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #A87A63;
+      margin-bottom: 10px;
+    }
+
+    .section__lead {
+      font-size: 14px;
+      color: #7a6259;
+      margin-bottom: 18px;
+    }
+
+
+    /* Two-column info grid */
+    .info-col__heading {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9b7b6a;
+      margin-bottom: 10px;
+    }
+
+    .info-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .info-col ul li {
+      font-size: 13.5px;
+      color: #3a2a20;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .info-col ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #b85c2a;
+      opacity: 0.6;
+    }
+
+    /* Section 2 – list */
+    .plain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .plain-list li {
+      font-size: 13.5px;
+      color: #3a2a20;
+      padding-left: 12px;
+      position: relative;
+    }
+    .plain-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #b85c2a;
+      opacity: 0.6;
+    }
+
+    .section__note {
+      font-size: 13px;
+      color: #3a3a3a;
+      margin-top: 8px;
+    }
+
+    /* ── Right sidebar ─────────────────────────────── */
+    .aside {
+        background: #FAFAFA; /* Slightly darker shade for contrast */
+        font-family: Chillax;
+        padding: 30px 24px;
+        border-radius: 8px;
+        /* border: 1px solid #e4d8d0; */
+        position: sticky;
+        top: 28px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .aside__section-label {
+        margin-bottom: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #A87A63;
+    }
+
+    /* Action buttons */
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .download-btn {
+        display: inline-block;
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 400;
+        color: #FAF8F7;
+        background-color: #A87A63;
+        padding: 10px 10px;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background .3s;
+    }
+
+    .download-btn:hover { 
+        background: #7A3B1E; 
+    }
+    .print-btn {
+        display: inline-block;
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 400;
+        color: #3a3a3a;
+        background-color: #e2d4cd;
+        padding: 10px 10px;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background .3s;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        font-family: Chillax;
+        font-size: 13px;
+        font-weight: 400;
+        color: #FAF8F7;
+        background-color: #A87A63;
+        padding: 10px 10px;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background .3s;
+    }
+
+    .contact-btn:hover { 
+        background: #7A3B1E; 
+    }
+
+    /* About card */
+    .about-card__text {
+        font-size: 13px;
+        color: #3a3a3a;
+        line-height: 1.65;
+        margin-bottom: 14px;
+    }
+
+    .about-card__img {
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        height: 140px;
+        background: #e4d8d0;
+        display: block;
+        background: linear-gradient(135deg, #c9a47e 0%, #8b5e3c 100%);
+    }
+
+    /* Helpful links */
+    .helpful-links {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .helpful-links a {
+      font-size: 13px;
+      color: #3a3a3a;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .helpful-links a:hover { color: #8f3e15; text-decoration: underline; }
+
+    @media (max-width: 992px) {
+        .layout {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+        .sidebar, .main, .aside { 
+            position: static; 
+            border: 1px solid #e4d8d0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 30px 20px;
+        }
+    }

@@ -1,0 +1,285 @@
+/* ============================================================
+   slider.css  —  UPDATED VERSION
+   ────────────────────────────────────────────────────────────
+   Changes from previous version :
+   - Added copper pagination dots below slider (outside swiper)
+   - Dots match button color #A87A63
+   - Active dot = filled copper, inactive = transparent with border
+   - Dots clickable — navigate to corresponding slide
+   ============================================================ */
+
+
+/* ════════════════════════════════════════════════════════════
+   1. SECTION WRAPPER
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider {
+    max-width:   1320px;
+    margin:      var(--space-6) auto var(--space-8);
+    padding:     0 var(--space-6);
+    box-sizing:  border-box;
+    font-family: var(--font-primary);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   2. SWIPER CONTAINER
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider__swiper {
+    position:      relative;
+    border-radius: 12px;
+    overflow:      hidden;
+    height:        560px;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   3. SLIDE — Two-column flex layout
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider__slide {
+    display:        flex;
+    flex-direction: row;
+    width:          100%;
+    min-height:     540px;
+    border-radius:  12px;
+    overflow:       hidden;
+    background:     #E1E2DC;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   4. TEXT BLOCK (left on desktop)
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider__text {
+    flex:            0 0 42%;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-items:     center;
+    text-align:      center;
+    padding:         var(--space-10) var(--space-10);
+    background:      #E1E2DC;
+    box-sizing:      border-box;
+}
+
+body.tinza-child .tinza-slider__title {
+    font-family:    var(--font-primary);
+    font-weight:    400;
+    font-size:      40px;
+    line-height:    1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color:          var(--color-primary);
+    margin:         0;
+}
+
+body.tinza-child .tinza-slider__divider {
+    display:    block;
+    width:      102px;
+    height:     1px;
+    background: var(--color-primary);
+    margin:     var(--space-4) auto;
+}
+
+body.tinza-child .tinza-slider__sub {
+    font-family:    var(--font-primary);
+    font-weight:    400;
+    font-size:      15px;
+    line-height:    1.5;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color:          var(--color-text);
+    margin:         0 0 var(--space-6);
+}
+
+body.tinza-child .tinza-slider__btn {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         14px 32px;
+    background:      var(--color-primary);
+    color:           var(--color-white);
+    font-family:     var(--font-primary);
+    font-weight:     500;
+    font-size:       14px;
+    line-height:     1;
+    letter-spacing:  0.1em;
+    text-transform:  uppercase;
+    border-radius:   8px;
+    border:          none;
+    transition:      opacity var(--t-fast), transform var(--t-fast);
+}
+body.tinza-child .tinza-slider__btn:hover {
+    opacity:   0.92;
+    color:     var(--color-white);
+    transform: translateY(-1px);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   5. IMAGE BLOCK (right on desktop)
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider__image {
+    flex:       1;
+    position:   relative;
+    overflow:   hidden;
+    background: var(--color-border);
+}
+body.tinza-child .tinza-slider__image img {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    display:    block;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   6. PAGINATION DOTS — below the swiper, copper color
+   ─────────────────────────────────────────────────────────────
+   .tinza-slider__dots    : wrapper row centered below slider
+   .tinza-slider__dot     : individual dot button
+   .tinza-slider__dot.is-active : filled copper
+   ════════════════════════════════════════════════════════════ */
+body.tinza-child .tinza-slider__dots {
+    display:         flex !important;
+    flex-direction:  row !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    gap:             10px !important;
+    margin-top:      20px !important;
+    padding:         0 !important;
+    list-style:      none !important;
+    width:           100% !important;
+}
+
+body.tinza-child .tinza-slider__dot {
+    display:       block !important;
+    min-width:     10px !important;
+    min-height:    10px !important;
+    max-width:     10px !important;
+    max-height:    10px !important;
+    border-radius: 50% !important;
+    background:    transparent !important;
+    border:        2px solid #A87A63 !important;
+    cursor:        pointer !important;
+    padding:       0 !important;
+    margin:        0 !important;
+    transition:    background 0.25s ease, transform 0.25s ease !important;
+    flex-shrink:   0 !important;
+}
+
+body.tinza-child .tinza-slider__dot:hover {
+    background: rgba(168, 122, 99, 0.3) !important;
+    transform:  scale(1.2) !important;
+}
+
+body.tinza-child .tinza-slider__dot.is-active {
+    background: #A87A63 !important;  /* filled copper — same as button */
+    transform:  scale(1.15) !important;
+}
+
+/* Hide default Swiper pagination — we use our custom dots */
+body.tinza-child .tinza-slider .swiper-pagination {
+    display: none !important;
+}
+
+/* Hide navigation arrows — autoplay only */
+body.tinza-child .tinza-slider .swiper-button-prev,
+body.tinza-child .tinza-slider .swiper-button-next {
+    display: none !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   7. RESPONSIVE — TABLET  (≤ 1024px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    body.tinza-child .tinza-slider {
+        margin:  var(--space-5) auto var(--space-6);
+        padding: 0 var(--space-5);
+    }
+    body.tinza-child .tinza-slider__slide   { min-height: 447px; }
+    body.tinza-child .tinza-slider__text {
+        flex:    0 0 45%;
+        padding: var(--space-8) var(--space-6);
+    }
+    body.tinza-child .tinza-slider__title   { font-size: 32px; }
+    body.tinza-child .tinza-slider__dots    { margin-top: 16px !important; }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   8. RESPONSIVE — MOBILE  (≤ 768px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    body.tinza-child .tinza-slider {
+        margin:  var(--space-4) auto var(--space-5);
+        padding: 0 var(--space-4);
+    }
+
+    body.tinza-child .tinza-slider__slide {
+        flex-direction: column-reverse;
+        min-height:     auto;
+        background:     transparent;
+    }
+
+    body.tinza-child .tinza-slider__image {
+        flex:          none;
+        width:         100%;
+        height:        447px;
+        border-radius: 12px 12px 0 0;
+    }
+    body.tinza-child .tinza-slider__image img {
+        border-radius: 12px 12px 0 0;
+    }
+
+    body.tinza-child .tinza-slider__text {
+        flex:          none;
+        width:         100%;
+        min-height:    180px;
+        padding:       var(--space-5) var(--space-4);
+        background:    #E1E2DC;
+        border-radius: 0 0 12px 12px;
+    }
+
+    body.tinza-child .tinza-slider__title {
+        font-size:      22px;
+        letter-spacing: 0.03em;
+    }
+    body.tinza-child .tinza-slider__divider {
+        width:  146px;
+        margin: var(--space-3) auto;
+    }
+    body.tinza-child .tinza-slider__sub {
+        font-size:     12px;
+        margin-bottom: var(--space-4);
+    }
+    body.tinza-child .tinza-slider__btn {
+        width:          100%;
+        max-width:      373px;
+        height:         50px;
+        padding:        14px 24px;
+        font-size:      16px;
+        font-weight:    500;
+        letter-spacing: 0;
+        text-transform: capitalize;
+        border-radius:  8px;
+    }
+
+    body.tinza-child .tinza-slider__dots {
+        margin-top: 14px !important;
+        gap:        8px !important;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   9. SMALL MOBILE  (≤ 420px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 420px) {
+    body.tinza-child .tinza-slider__image { height: 280px; }
+    body.tinza-child .tinza-slider__title { font-size: 20px; }
+    body.tinza-child .tinza-slider__btn   { font-size: 15px; }
+}
+
+

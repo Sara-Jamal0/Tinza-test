@@ -1,0 +1,94 @@
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY — Safe
+   Chargé seulement sur home (is_front_page)
+   Scopé sur NOS composants uniquement
+   Jamais h1/h2/a/p globalement
+═══════════════════════════════════════════════════════ */
+
+/* ── Titres de sections ─────────────────────────────── */
+.tz-section-head__title {
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color:       var(--color-text);
+    margin:      0;
+}
+
+/* ── Noms de produits ───────────────────────────────── */
+.tinza-card__name,
+.tz-pcard__title {
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+}
+
+/* ── Onglets navigation ─────────────────────────────── */
+.tinza-tabs__btn {
+    font-family:    var(--font-primary);
+    font-size:      14px;
+    font-weight:    var(--font-weight-regular);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color:          var(--color-text-secondary);
+    transition:     color var(--t-fast);
+}
+.tinza-tabs__btn.is-active,
+.tinza-tabs__btn:hover {
+    font-weight: var(--font-weight-semibold);
+    color:       var(--color-text);
+}
+
+/* ── Vendeur ────────────────────────────────────────── */
+.tinza-card__seller-name,
+.tz-pcard__seller-name {
+    font-family:    var(--font-primary);
+    font-size:      11px;
+    font-weight:    var(--font-weight-regular);
+    color:          var(--color-text-secondary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* ── Prix ───────────────────────────────────────────── */
+.tinza-card__price,
+.tz-pcard__price {
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-bold);
+    color:       var(--color-text);
+}
+.tinza-card__price del,
+.tz-pcard__price-old {
+    font-family:     var(--font-primary);
+    font-size:       14px;
+    font-weight:     var(--font-weight-regular);
+    color:           var(--color-text-secondary);
+    text-decoration: line-through;
+    margin-left:     var(--space-2);
+}
+.tinza-card__price ins {
+    color:           var(--color-discount);
+    text-decoration: none;
+}
+
+/* ── Free Shipping ──────────────────────────────────── */
+.tinza-card__badge,
+.tz-pcard__ship {
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color:       var(--color-success);
+    display:     block;
+}
+
+/* ── No products ────────────────────────────────────── */
+.tinza-no-products {
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-small);
+    color:       var(--color-text-secondary);
+    text-align:  center;
+    padding:     40px 0;
+    grid-column: 1 / -1;
+}

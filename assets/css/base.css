@@ -1,0 +1,85 @@
+/* ═══════════════════════════════════════════════════════
+   BASE — Safe
+   Chargé seulement sur home (is_front_page)
+   Reset uniquement sur NOS composants tinza-/tz-
+   Jamais sur button/ul/a/input globalement
+═══════════════════════════════════════════════════════ */
+
+/* box-sizing — seul reset global vraiment safe */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Font smoothing sur body — cosmétique, sans impact layout */
+body {
+    -webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Images dans NOS composants ─────────────────────── */
+.tinza-card__img img,
+.tz-pcard__img img,
+.tinza-bs__img {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+}
+
+/* ── Listes dans NOS grilles ────────────────────────── */
+.tinza-products,
+.tinza-tabs__nav,
+.tz-sale__grid {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+}
+
+/* ── Margins titres dans NOS cartes ─────────────────── */
+.tinza-card__name,
+.tz-pcard__title {
+    margin: 0;
+}
+
+/* ── Liens dans NOS cartes ──────────────────────────── */
+.tinza-card__name a,
+.tz-pcard__title  a {
+    color:           inherit;
+    text-decoration: none;
+}
+.tinza-card__name a:hover,
+.tz-pcard__title  a:hover {
+    color: var(--color-primary);
+}
+
+/* ── Boutons dans NOS composants seulement ──────────── */
+.tinza-tabs__btn,
+.tinza-card__wish,
+.tz-pcard__wish {
+    cursor:     pointer;
+    border:     none;
+    background: none;
+    font:       inherit;
+    padding:    0;
+}
+
+/* ── Focus dans NOS composants ──────────────────────── */
+.tinza-tabs__btn:focus-visible,
+.tinza-card__wish:focus-visible,
+.tz-pcard__wish:focus-visible {
+    outline:        2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ── Reduced motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .tinza-tabs *,
+    .tz-sale   *,
+    .tinza-bs  * {
+        animation-duration:  0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
