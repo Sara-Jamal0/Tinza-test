@@ -36,7 +36,7 @@
                 </p>
             </div>
             <div class="hero-image">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/shipping hero.png" alt="Shipping and Delivery">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/shipping hero.webp" alt="Shipping and Delivery">
             </div>
         </section>
 
@@ -98,3 +98,5 @@
     </div>
 
 </body>
+
+<?php get_footer(); ?>

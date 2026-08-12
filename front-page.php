@@ -20,7 +20,7 @@ get_header();
         'tinza-promise',
         'banner',
         'faq',
-        'newsletter',
+        /*'newsletter',*/
     ];
 
     foreach ( $sections as $section ) {

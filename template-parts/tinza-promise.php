@@ -1,12 +1,6 @@
 <?php
 /**
  * Section: The Tinza Promise
- * =============================================================================
- * File : motta-child/template-parts/tinza-promise.php
- *
- * Icons: SVG from Figma (icons-01 to icons-06)
- *        Stroke color : #A07660 — 2.75px, linecap round, linejoin round
- * =============================================================================
  */
 ?>
 

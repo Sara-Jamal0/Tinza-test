@@ -1,0 +1,569 @@
+    /* Targets the container only on the Contact Custom Template */
+    .page-template-custom-pagespage-industry-news-php .site-content > .container,
+    .page-template-custom-pagespage-industry-news-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 1. Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-industry-news-php .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    body {
+        font-family: Chillax !important;
+        line-height: 1.6;
+        font-weight: 300;        
+        background-color: #ffffff;
+    }
+
+    /* ==========================================================================
+    1. Header Section Styles (Fluid Layout)
+    ========================================================================== */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 24px;
+    }
+
+    .header .content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .header .title h1 {
+        font-size: clamp(28px, 4vw, 38px); /* Responsive typography scaling */
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        font-weight: 400;
+        line-height: 1.25;
+    }
+
+    .header .sub p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #6B5D52;
+    }
+
+    .header .image {
+        max-height: 450px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header .image img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* ==========================================================================
+    2. Long-form Editorial Layout Structure
+    ========================================================================== */
+    .care-guide-container {
+        max-width: 1000px; /* Optimal line length for long-form reading comfort */
+        margin: 0 auto;
+        padding: 40px 24px;
+        color: #1a1a1a;
+    }
+
+    .lede {
+        font-size: 16px;
+        color: #1a1a1a;
+        line-height: 1.8;
+    }
+
+    .lede p { 
+        margin: 0 0 22px; 
+    }
+
+    /* Luxury dropcap styling */
+    .lede::first-letter {
+        font-size: 67px;
+        line-height: 0.78;
+        float: left;
+        padding: 4px 12px 0 0;
+        color: #A87A63;
+        font-weight: 300;
+    }
+
+    .guide-section {
+        margin-bottom: 50px;
+    }
+
+    .guide-section h2 {
+        font-weight: 400;
+        font-size: 20px;
+        color: #1a1a1a;
+        border-bottom: 1px solid #E8E0D2;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        letter-spacing: 0.03em;
+    }
+
+    .guide-section h3 {
+        font-size: 16px;
+        color: #6B5D52;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-weight: 400;
+    }
+
+    .guide-section p {
+        margin-bottom: 15px; 
+        color: #1a1a1a;
+    }
+
+    .section-lead {
+        font-size: 15px;
+        font-weight: 400;
+        color: #6B5D52 !important;
+        margin-bottom: 20px;
+    }
+
+    /* ==========================================================================
+    3. Custom Modules & Global Component Pattern Rules
+    ========================================================================== */
+    /* Scannable, elegant dotted item pattern */
+    .damage-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 30px;
+    }
+
+    .damage-list li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 14px;
+        color: #6B5D52;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .damage-list li span {
+        color: #1a1a1a;
+        font-weight: 400;
+    }
+
+    .damage-list li::before {
+        content: "•";
+        color: #A87A63;
+        font-size: 25px;
+        position: absolute;
+        left: 5px;
+        top: -6px;
+    }
+
+    /* Informational, Warning, & Note Alert Boxes */
+    .alert-box {
+        padding: 18px 24px;
+        border-radius: 8px;
+        margin: 25px 0;
+        font-size: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background-color: #FAF8F7;
+        line-height: 1.6;
+        color: #1a1a1a;
+    }
+
+    .alert-box.warning {
+        background-color: #FDFBFA;
+    }
+
+
+    .alert-box.warning span {
+        font-weight: 500;
+        color: #1a1a1a;
+    }
+
+    /* Premium Matrix & Comparison Tables */
+    .finishes-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 35px 0;
+        font-size: 14px;
+        letter-spacing: 0.01em;
+    }
+
+    .finishes-table thead tr {
+        border-bottom: 2px solid #E8E0D2;
+    }
+
+    .finishes-table th {
+        padding: 16px 12px;
+        font-weight: 500;
+        color: #A87A63 !important;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        text-align: left;
+    }
+
+    .finishes-table td {
+        padding: 18px 12px;
+        color: #6B5D52;
+        line-height: 1.6;
+        border-bottom: 1px solid #E8E0D2;
+        vertical-align: top;
+    }
+
+    .finishes-table td:first-child {
+        font-weight: 400;
+        color: #1a1a1a;
+        white-space: nowrap;
+    }
+
+    /* Side-by-Side Content Split Panels */
+    .dos-donts-container {
+        display: flex;
+        gap: 30px;
+        margin-top: 25px;
+    }
+
+    .dos-box, .donts-box {
+        flex: 1;
+        padding: 30px;
+        border-radius: 8px;
+        background-color: #FAF8F7;
+    }
+
+    .dos-box h3, .donts-box h3 {
+        color: #A87A63;
+        margin-top: 0 !important;
+        margin-bottom: 18px !important;
+        font-size: 14px !important;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .dos-box span, .donts-box span {
+        color: #1a1a1a;
+        font-weight: 500;
+    }
+
+    .dos-box ul, .donts-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dos-box ul li, .donts-box ul li {
+        margin-bottom: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #1a1a1a;
+    }
+
+    /* ==========================================================================
+    4. Procedural Step Sequences (Craftsmanship & Installation Pages)
+    ========================================================================== */
+    .sequence-container {
+        margin: 40px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .step-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        border-bottom: 1px solid #E8E0D2;
+        padding-bottom: 40px;
+    }
+
+    .step-card:last-child {
+        border-bottom: none;
+    }
+
+    .step-number {
+        font-family: Chillax;
+        font-size: 32px;
+        font-weight: 300;
+        color: #A87A63;
+        line-height: 1;
+        min-width: 50px;
+        letter-spacing: 0.05em;
+    }
+
+    .step-content {
+        flex: 1;
+    }
+
+    .step-content h3 {
+        font-family: Chillax;
+        font-size: 20px;
+        color: #A87A63;
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
+
+    .step-content p {
+        margin-bottom: 16px;
+        color: #4a4a4a;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .step-content p strong {
+        color: #1a1a1a;
+        font-weight: 400;
+    }
+
+    /* Footer Conclusion Outro Blocks */
+    .guide-footer {
+        text-align: center;
+        padding: 0px 30px 0px;
+        margin-top: 40px;
+    }
+
+    .guide-footer h2 {
+        font-size: 28px;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        font-weight: 400;
+    }
+
+    .guide-footer p {
+        max-width: 650px;
+        margin: 0 auto;
+        font-size: 15px;
+        color: #6B5D52;
+        line-height: 1.7;
+    }
+
+    /* ==========================================================================
+    5. Related Stories Grid Component
+    ========================================================================== */
+    .related-stories {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 60px 24px 90px;
+    }
+
+    .related-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 44px;
+        padding-bottom: 26px;
+        border-bottom: 1px solid #E8E0D2;
+    }
+
+    .related-header h2 {
+        font-weight: 400;
+        font-size: clamp(24px, 4vw, 32px);
+        margin: 0;
+        color: #6B5D52;
+    }
+
+    .related-link {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #6B5D52;
+        text-decoration: underline;
+        text-decoration-color: #978C7E;
+        text-underline-offset: 4px;
+        white-space: nowrap;
+        transition: color .2s ease, text-decoration-color .2s ease;
+    }
+
+    .related-link:hover {
+        color: #A87A63;
+        text-decoration-color: #A87A63;
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .card {
+        background: #FAF8F7;
+        border-radius: 14px;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .card-body {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .eyebrow {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 20px;
+        background: #F0E6D0;
+        color: #B07D3A;
+        margin-bottom: 14px;
+        align-self: flex-start;
+        text-decoration: none;
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+    }
+
+    .card-excerpt {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #6B5D52;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .read-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #A87A63;
+        text-decoration: none;
+        margin-top: auto;
+    }
+
+    .read-link span {
+        transition: transform 0.2s ease;
+        margin-left: 4px;
+    }
+
+    .read-link:hover span { 
+        transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+    6. Responsive Adaptability Breakpoints (Mobile & Tablet)
+    ========================================================================== */
+    @media (max-width: 991px) {
+        .related-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 40px 24px 20px;
+            gap: 30px;
+        }
+
+        .header .content {
+            max-width: 100%;
+        }
+        
+        .header .image img {
+            max-width: 100%;
+        }
+
+        .care-guide-container {
+            padding: 20px 24px 40px;
+        }
+
+        /* Table Mobile Support - Enables natural touch swipe scrolling on smaller displays */
+        .finishes-table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .finishes-table th, 
+        .finishes-table td {
+            min-width: 150px;
+            padding: 14px 10px;
+        }
+
+        .dos-donts-container {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dos-box, .donts-box {
+            padding: 24px;
+        }
+
+        /* Craftsmanship & Installation Steps Mobile Adaptability */
+        .step-card {
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 30px;
+        }
+        
+        .step-number {
+            font-size: 24px;
+            border-bottom: 2px solid #A87A63;
+            padding-bottom: 4px;
+            display: inline-block;
+            min-width: auto;
+        }
+        
+        .step-content h3 {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        /* Related Stories Grid Mobile View */
+        .related-stories { 
+            padding: 40px 24px 60px; 
+        }
+
+        .related-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+            
+        .related-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        
+        .card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .guide-footer {
+            padding: 40px 20px 20px;
+        }
+    }

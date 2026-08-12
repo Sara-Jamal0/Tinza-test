@@ -15,7 +15,7 @@
     /* Force parents to allow sticking */
     .site-content, 
     .site-content > .container, 
-    .site-content > .motta-container,
+    .site-content > .motta-container, 
     #page, 
     #content {
         overflow: visible !important;

@@ -14,7 +14,6 @@
 
 /* Hero */
 .hero {
-    min-height: 100vh;
     padding: 60px 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;

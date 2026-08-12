@@ -3,16 +3,6 @@
  * ─────────────────────────────────────────────────────────────
  * LOCATION : motta-child/assets/js/slider.js
  * ─────────────────────────────────────────────────────────────
- * Swiper init + custom copper dots below slider.
- *
- * Dots behaviour :
- *   - Generated dynamically (1 dot per slide)
- *   - Active dot = filled copper #A87A63 (matches button color)
- *   - Synced with Swiper autoplay — dot updates on every slide change
- *   - Clickable — clicking a dot navigates to its corresponding slide
- *
- * Swiper must be loaded by Motta parent theme (already included).
- * ─────────────────────────────────────────────────────────────
  */
 
 ( function () {

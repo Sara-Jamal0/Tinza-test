@@ -1,129 +1,149 @@
-/* ============================================================
-   shop-by-finish.css
-   ============================================================ */
+/* ════════════════════════════════════════════════════════════
+   Tinza Child Theme — shop-by-finish.css
+   ════════════════════════════════════════════════════════════ */
 
+
+/* ════════════════════════════════════════════════════════════
+   1. SECTION WRAPPER
+   ════════════════════════════════════════════════════════════ */
 .tinza-finish {
-    max-width:  1440px !important;
-    margin:     0 auto !important;
-    padding:    0 62px !important;
-    box-sizing: border-box !important;
+    width:       100% !important;
+    max-width:   1440px !important;
+    margin:      0 auto !important;
+    padding:     0 62px !important;
+    box-sizing:  border-box !important;
     font-family: 'Chillax', sans-serif;
-    
 }
 
-/* TITLE */
+
+/* ════════════════════════════════════════════════════════════
+   2. TITLE
+   ════════════════════════════════════════════════════════════ */
 .tinza-finish__title {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 34px;
+    font-weight:    600;
+    font-size:      20px;
+    line-height:    34px;
     letter-spacing: -0.01em;
-    color: #161A17;
-    margin: 0 0 32px !important;
-    padding-bottom: 0 !important; /* ← increased from 32px to 48px */
+    color:          #161A17;
+    margin:         0 0 32px !important;
+    padding-bottom: 0 !important;
 }
 
-/* GRID DESKTOP */
+
+/* ════════════════════════════════════════════════════════════
+   3. GRID
+   ════════════════════════════════════════════════════════════ */
 .tinza-finish__grid {
-    display: flex;
-    gap: 60px;
-    width: 100%;
+    display:    flex;
+    gap:        60px;
+    width:      100%;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin:     0;
+    padding:    0;
 }
 
-/* ITEM */
 .tinza-finish__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-    min-width: 0;
-    color: #161A17;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    gap:             16px;
+    flex:            1;
+    min-width:       0;
+    color:           #161A17;
     text-decoration: none;
 }
 
-/* CIRCLE */
+
+/* ════════════════════════════════════════════════════════════
+   4. CIRCLE
+   ════════════════════════════════════════════════════════════ */
+
+/* width is a share of the item so circles scale with the grid */
 .tinza-finish__circle {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    width:         70%;
+    aspect-ratio:  1 / 1;
     border-radius: 999px;
-    overflow: hidden;
-    background: #E5E0DA;
-    transition: transform 250ms ease, box-shadow 250ms ease;
+    overflow:      hidden;
+    background:    #E5E0DA;
+    transition:    transform 250ms ease, box-shadow 250ms ease;
 }
 
 .tinza-finish__item:hover .tinza-finish__circle {
-    transform: scale(1.05);
-    box-shadow: 0 12px 36px rgba(22,26,23,0.12);
+    transform:  scale(1.05);
+    box-shadow: 0 12px 36px rgba(22, 26, 23, 0.12);
 }
 
 .tinza-finish__circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
     border-radius: 999px;
 }
 
-/* TEXT */
+
+/* ════════════════════════════════════════════════════════════
+   5. NAME
+   ════════════════════════════════════════════════════════════ */
 .tinza-finish__name {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.4;
+    font-weight:    500;
+    font-size:      16px;
+    line-height:    1.4;
     letter-spacing: -0.01em;
     text-transform: capitalize;
-    color: #161A17;
-    text-align: center;
+    color:          #161A17;
+    text-align:     center;
 }
 
-/* ============================================================
-   TABLET
-   ============================================================ */
 
+/* ════════════════════════════════════════════════════════════
+   6. TABLET <= 1024px
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-    .tinza-finish { padding: 24px; }
-    .tinza-finish__grid { gap: 32px; }
 
-    .tinza-finish__name {
-        font-size: 16px;
+    .tinza-finish {
+        padding: 24px !important;
+    }
+
+    .tinza-finish__grid {
+        gap: 32px;
     }
 }
 
-/* ============================================================
-   MOBILE (FIGMA STYLE LIST)
-   ============================================================ */
 
+/* ════════════════════════════════════════════════════════════
+   7. MOBILE <= 768px
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
     .tinza-finish {
-        padding: 20px;
+        padding: 20px !important;
     }
 
     .tinza-finish__title {
-        margin-bottom: 16px; /* tighter on mobile */
+        margin-bottom: 16px !important;
     }
 
     .tinza-finish__grid {
         flex-direction: column;
-        gap: 12px;
+        gap:            12px;
     }
 
     .tinza-finish__item {
         flex-direction: row;
-        align-items: center;
-        gap: 20px;
-        padding: 8px 16px 8px 8px;
-        background: #FAF8F7;
-        border-radius: 16px;
+        align-items:    center;
+        gap:            20px;
+        padding:        8px 16px 8px 8px;
+        background:     #FAF8F7;
+        border-radius:  16px;
     }
 
+    /* aspect-ratio must be cleared: width and height are fixed here */
     .tinza-finish__circle {
-        width: 60px;
-        height: 60px;
-        flex-shrink: 0;
+        width:         60px;
+        height:        60px;
+        flex-shrink:   0;
         border-radius: 12px;
-        aspect-ratio: unset;
+        aspect-ratio:  unset;
     }
 
     .tinza-finish__circle img {
@@ -131,25 +151,24 @@
     }
 
     .tinza-finish__name {
-        flex: 1;
+        flex:       1;
         text-align: left;
-        font-size: 16px;
+        font-size:  16px;
         font-weight: 400;
     }
 
-    /* Arrow */
+    /* CSS-drawn chevron */
     .tinza-finish__item::after {
-        content: '';
-        width: 10px;
-        height: 10px;
-        border-top: 2px solid #161A17;
+        content:      '';
+        width:        10px;
+        height:       10px;
+        border-top:   2px solid #161A17;
         border-right: 2px solid #161A17;
-        transform: rotate(45deg);
+        transform:    rotate(45deg);
     }
 
-    /* disable hover mobile */
     .tinza-finish__item:hover .tinza-finish__circle {
-        transform: none;
+        transform:  none;
         box-shadow: none;
     }
 }

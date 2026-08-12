@@ -1,9 +1,6 @@
 /**
  * Footer Accordion
  * File : motta-child/assets/js/footer.js
- *
- * Accordéon mobile uniquement (≤ 768px)
- * Même logique que faq.js — toggleClass 'open'
  */
 
 (function () {

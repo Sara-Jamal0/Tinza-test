@@ -1,17 +1,14 @@
 <?php
 /**
  * Section: Shop by Finish
- *
- * Chaque finition redirige vers la recherche WooCommerce
- * pour afficher tous les produits dont le titre contient le label.
  */
 
 $finishes = [
-    [ 'label' => 'Unlacquered Brass', 'image' => 'Unlacqueredbrass.jpg', 'slug' => 'unlacquered-brass' ],
-    [ 'label' => 'Aged Copper',       'image' => 'Aged Copper.jpeg',     'slug' => 'aged-copper'       ],
-    [ 'label' => 'Oxidized Copper',   'image' => 'Oxidized Copper.jpg',  'slug' => 'oxidized-copper'   ],
-    [ 'label' => 'Antique Brass',     'image' => 'Antique Brass.jpg',    'slug' => 'antique-brass'     ],
-    [ 'label' => 'Chrome',            'image' => 'Chrome .jpg',          'slug' => 'chrome'            ],
+    [ 'label' => 'Unlacquered Brass', 'image' => 'UnlacqueredBrass.webp', 'slug' => 'unlacquered-brass' ],
+    [ 'label' => 'Aged Copper',       'image' => 'Aged Copper.webp',     'slug' => 'aged-copper'       ],
+    [ 'label' => 'Oxidized Copper',   'image' => 'Oxidized Copper.webp',  'slug' => 'oxidized-copper'   ],
+    [ 'label' => 'Antique Brass',     'image' => 'Antique brass.webp',    'slug' => 'antique-brass'     ],
+    [ 'label' => 'Chrome',            'image' => 'chrome .webp',          'slug' => 'chrome'            ],
 ];
 
 $img_base = get_stylesheet_directory_uri() . '/assets/images/';

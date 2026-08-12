@@ -1,0 +1,523 @@
+    /* Targets the container only on the Contact Custom Template */
+    .page-template-custom-pagespage-material-education-php .site-content > .container,
+    .page-template-custom-pagespage-material-education-php .site-content > .motta-container {
+        max-width: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 1. Remove Motta's default site-content spacing */
+    .page-template-custom-pagespage-material-education-php .site-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    body {
+        font-family: Chillax !important;
+        line-height: 1.6;
+        font-weight: 300;        
+    }
+    body {
+        font-family: Chillax !important;
+        line-height: 1.6;
+        font-weight: 300;        
+    }
+
+    /* ==========================================================================
+    1. Header Section Styles
+    ========================================================================== */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 24px;
+    }
+
+    .header .content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .header .title h1 {
+        font-size: clamp(28px, 4vw, 38px);
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        font-weight: 400;
+        line-height: 1.25;
+    }
+
+    .header .sub p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #6B5D52;
+    }
+
+    .header .image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header .image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* ==========================================================================
+    2. Editorial Content Container
+    ========================================================================== */
+    .care-guide-container {
+        max-width: 1000px; /* Optimal line length for long-form reading comfort */
+        margin: 0 auto;
+        padding: 40px 24px;
+        color: #1a1a1a;
+    }
+
+    .lede {
+        font-size: 16px;
+        color: #1a1a1a;
+        line-height: 1.8;
+    }
+
+    .lede p { 
+        margin: 0 0 22px; 
+    }
+
+    .lede::first-letter{
+      font-size: 67px;
+      line-height: 0.78;
+      float: left;
+      padding: 4px 10px 0 0;
+      color: #A87A63;
+    }
+
+    .guide-section {
+        margin-bottom: 50px;
+    }
+
+    .guide-section h2 {
+        font-weight: 400;
+        font-size: 18px;
+        color: #1a1a1a;
+        border-bottom: 1px solid #E8E0D2;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        letter-spacing: 0.03em;
+    }
+
+    .guide-section h3 {
+        font-size: 16px;
+        color: #6B5D52;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-weight: 400;
+    }
+
+    .guide-section p {
+        margin-bottom: 15px; 
+        color: #1a1a1a;
+    }
+
+    /* ==========================================================================
+    3. Custom Components (Lists, Alerts, Footers)
+    ========================================================================== */
+    /* Scannable, elegant dotted item pattern */
+    .damage-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 30px;
+    }
+
+    .damage-list li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 14px;
+        color: #6B5D52;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .damage-list li span {
+        color: #1a1a1a;
+        font-weight: 400;
+    }
+
+    .damage-list li::before {
+        content: "•";
+        color: #A87A63;
+        font-size: 25px;
+        position: absolute;
+        left: 5px;
+        top: -6px;
+    }
+
+    /* Informational Alert Boxes */
+    .alert-box {
+        padding: 18px 24px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-size: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background-color: #FAF8F7;
+        line-height: 1.6;
+        color: #1a1a1a;
+    }
+
+    .alert-box span {
+        color: #1a1a1a;
+        font-weight: 400;
+    }
+
+    /* Finishes & Metal Comparison Table Layout */
+    .finishes-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 35px 0;
+        font-size: 14px;
+        letter-spacing: 0.01em;
+    }
+
+    .finishes-table thead tr {
+        border-bottom: 2px solid #E8E0D2;
+    }
+
+    .finishes-table th {
+        padding: 16px 12px;
+        font-weight: 500;
+        color: #A87A63 !important;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        text-align: left;
+    }
+
+    .finishes-table td {
+        padding: 18px 12px;
+        color: #6B5D52;
+        line-height: 1.6;
+        border-bottom: 1px solid #E8E0D2;
+        vertical-align: top;
+    }
+
+    .finishes-table td:first-child {
+        font-weight: 400;
+        color: #1a1a1a;
+        white-space: nowrap;
+    }
+
+    /* Footer Conclusion Block */
+    .guide-footer {
+        text-align: center;
+        padding: 0px 30px 0px;
+        margin-top: 40px;
+    }
+
+    .guide-footer h2 {
+        font-size: 28px;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        font-weight: 400;
+    }
+
+    .guide-footer p {
+        max-width: 650px;
+        margin: 0 auto;
+        font-size: 15px;
+        color: #6B5D52;
+        line-height: 1.7;
+    }
+
+        /* ==========================================================================
+    4. Procedural Step Sequences (Craftsmanship Page Specific)
+    ========================================================================== */
+    .sequence-container {
+        margin: 40px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .step-card {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        border-bottom: 1px solid #E8E0D2;
+        padding-bottom: 40px;
+    }
+
+    .step-card:last-child {
+        border-bottom: none;
+    }
+
+    .step-number {
+        font-family: Chillax;
+        font-size: 32px;
+        font-weight: 300;
+        color: #A87A63;
+        line-height: 1;
+        min-width: 50px;
+        letter-spacing: 0.05em;
+        margin-bottom: 30px;
+    }
+
+    .step-content {
+        flex: 1;
+    }
+
+    .step-content h3 {
+        font-family: Chillax;
+        font-size: 20px;
+        color: #A87A63;
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
+
+    .step-content p {
+        margin-bottom: 16px;
+        color: #4a4a4a;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+    
+    /* ---------------------------------------------
+      Related Stories
+    --------------------------------------------- */
+    .related-stories{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px 70px;
+    }
+  
+    .related-header{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 44px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid #E8E0D2;
+    }
+  
+    .related-header h2{
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 38px);
+      margin: 0;
+      color: #6B5D52;
+    }
+  
+    .related-link{
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6B5D52;
+      text-decoration: underline;
+      text-decoration-color: #978C7E;
+      text-underline-offset: 4px;
+      white-space: nowrap;
+      transition: color .2s ease, text-decoration-color .2s ease;
+    }
+
+    .related-link:hover{
+      color: #8A6230;
+      text-decoration-color: #A87A63;
+    }
+
+    .card {
+          background: #FAF8F7;
+          border-radius: 14px;
+          overflow: hidden;
+          max-width: 350px;
+          margin: 0 20px;
+      }
+
+      .card-image {
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+      }
+
+      .card-body {
+          padding: 20px 22px 24px;
+      }
+
+      /* ── Card text ────────────────────────────── */
+      .card-title {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.3;
+          color: #1a1a1a;
+          margin-bottom: 8px;
+      }
+
+      .card-excerpt {
+          font-size: 13px;
+          line-height: 1.6;
+          color: #6B5D52;
+          flex: 1;
+          margin-bottom: 16px;
+      }
+
+      /* ── Card footer ──────────────────────────── */
+      .card-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 12px;
+          border-top: 1px solid rgba(176, 125, 58, 0.18);
+      }
+
+      .byline {
+          font-size: 11px;
+          color: #A08C7E;
+      }
+
+      .read-link {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 12px;
+          font-weight: 500;
+          color: #A87A63;
+          text-decoration: none;
+          transition: letter-spacing 0.15s;
+      }
+
+      .read-link:hover { 
+          letter-spacing: 0.02em; 
+      }
+  
+      .related-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 20px;
+        background: #F0E6D0;
+        color: #B07D3A;
+        margin-bottom: 12px;
+        align-self: flex-start;
+    }
+
+    /* ==========================================================================
+    5. Responsive Media Queries
+    ========================================================================== */
+    @media (max-width: 991px) {
+        .related-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 40px 24px 20px;
+            gap: 30px;
+        }
+
+        .header .content {
+            max-width: 100%;
+        }
+        
+        .header .image img {
+            max-width: 100%;
+        }
+
+        .care-guide-container {
+            padding: 20px 24px 40px;
+        }
+
+        .table-container {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Table Mobile + Tablet Support - Enables natural touch swipe scrolling on smaller displays */
+        .finishes-table {
+            width: auto;
+            min-width: 600px;
+            border-collapse: collapse;
+            table-layout: auto !important;
+        }
+        
+        .finishes-table th,
+        .finishes-table td {
+            white-space: nowrap;
+            min-width: 150px;
+            padding: 14px 10px;
+        }
+
+        .dos-donts-container {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dos-box, .donts-box {
+            padding: 24px;
+        }
+
+        /* Procedural Steps Responsive Stack */
+        .step-card {
+            display: 30px;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 30px;
+        }
+
+        .step-number {
+            font-size: 24px;
+            border-bottom: 2px solid #A87A63;
+            padding-bottom: 4px;
+            display: inline-block;
+            min-width: auto;
+        }
+
+        .related-stories { 
+            padding: 40px 24px 60px; 
+        }
+
+        .related-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+            
+        .related-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        
+        .card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .alert-box {
+            flex-direction: column;
+            gap: 8px;
+            padding: 16px;
+        }
+    }

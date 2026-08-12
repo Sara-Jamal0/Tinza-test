@@ -1,13 +1,13 @@
 /* Targets the container only on the Shipping and Delivery Custom Template */
-    .page-template-custom-pagespage-shipping-and-delivery .site-content > .container,
-    .page-template-custom-pagespage-shipping-and-delivery .site-content > .motta-container {
+    .page-template-custom-pagespage-shipping-and-delivery-php .site-content > .container,
+    .page-template-custom-pagespage-shipping-and-delivery-php .site-content > .motta-container {
         max-width: none !important;
         padding: 0 !important;
         width: 100% !important;
     }
 
     /* 1. Remove Motta's default site-content spacing */
-    .page-template-custom-pagespage-shipping-and-delivery .site-content {
+    .page-template-custom-pagespage-shipping-and-delivery-php .site-content {
         padding: 0 !important;
         margin: 0 !important;
     }
@@ -19,7 +19,7 @@
         box-sizing: border-box;
     }
 
-    body.page-template-custom-pagespage-shipping-and-delivery {
+    body.page-template-custom-pagespage-shipping-and-delivery-php {
         font-family: Chillax;
         font-weight: 400;
         color: #1a1a1ae0;
@@ -34,6 +34,8 @@
         min-height: 400px;
         overflow: hidden;
         animation: fadeUp 0.7s ease both;
+        padding-top: 50px;
+        margin: 0 25px;
     }
 
     @keyframes fadeUp {
@@ -42,7 +44,7 @@
     }
 
     .hero-content {
-        padding: 56px 60px;
+        padding: 56px 90px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -180,7 +182,7 @@
     .help-section {
         font-family: Chillax;
         margin-top: 10px;
-        padding-top: 40px;
+        padding: 20px;
         text-align: center;
     }
 

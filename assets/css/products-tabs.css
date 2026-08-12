@@ -1,25 +1,6 @@
-/* ============================================================
-   products-tabs.css
-   ────────────────────────────────────────────────────────────
-   LOCATION : motta-child/assets/css/products-tabs.css
-   ────────────────────────────────────────────────────────────
-   Featured Products Tabs section (4 tabs)
-   Tabs : POPULAR PRODUCTS · NEW ARRIVALS · WE THINK YOU'LL LOVE
-          · MOST VIEWED PRODUCTS
-
-   DESKTOP (Image 1) :
-   - Horizontal row, centered
-   - Active tab : bold weight + bottom border #161A17
-   - Inactive  : regular weight, no border
-   - Spacing   : 40px between tabs
-   - Font      : Chillax 16px uppercase
-
-   MOBILE (Image 2) :
-   - Horizontal scroll if overflow
-   - Active tab : black pill background + white text
-   - Inactive  : light grey border, dark text
-   - Pill style with full border-radius
-   ============================================================ */
+/* ════════════════════════════════════════════════════════════
+   Tinza Child Theme — products-tabs.css
+   ════════════════════════════════════════════════════════════ */
 
 
 /* ════════════════════════════════════════════════════════════
@@ -29,7 +10,7 @@ body.tinza-child .tinza-tabs {
     width:       100%;
     max-width:   var(--container-max);
     margin:      0 auto;
-    padding:     var(--space-2) var(--header-pad-x);  /* 8px 60px */
+    padding:     var(--space-2) var(--header-pad-x);
     box-sizing:  border-box;
     font-family: var(--font-primary);
 }
@@ -43,7 +24,7 @@ body.tinza-child .tinza-tabs__nav {
     flex-direction:  row;
     justify-content: center;
     align-items:     center;
-    gap:             var(--space-8);             /* 40px between tabs */
+    gap:             var(--space-8);
     padding:         var(--space-2) 0;
     list-style:      none;
     margin:          0;
@@ -56,57 +37,52 @@ body.tinza-child .tinza-tabs__item {
 
 
 /* ════════════════════════════════════════════════════════════
-   3. TAB BUTTON  (DESKTOP)
-   - Default      : regular weight, no border
-   - Active       : semibold + bottom underline
-   - Hover        : slight color shift
+   3. TAB BUTTON — DESKTOP
    ════════════════════════════════════════════════════════════ */
+
+/* transparent border-bottom reserves the space of the active underline */
 body.tinza-child .tinza-tabs__btn {
     display:         inline-flex;
     align-items:     center;
     justify-content: center;
-    padding:         0 0 var(--space-1);          /* 0 0 4px */
+    padding:         0 0 var(--space-1);
     background:      transparent;
     border:          none;
-    border-bottom:   1px solid transparent;       /* placeholder for active */
+    border-bottom:   1px solid transparent;
     font-family:     var(--font-primary);
-    font-weight:     var(--font-weight-regular);  /* 400 default */
-    font-size:       var(--font-size-body);       /* 16px */
+    font-weight:     var(--font-weight-regular);
+    font-size:       14px;
     line-height:     1.4;
     letter-spacing:  0.005em;
     text-transform:  uppercase;
-    color:           var(--color-text);           /* #161A17 */
+    color:           var(--color-text);
     cursor:          pointer;
     white-space:     nowrap;
     transition:      color var(--t-fast),
-                     border-color var(--t-fast),
-                     font-weight var(--t-fast);
+                     border-color var(--t-fast);
 }
 
-/* Hover state (inactive only) */
 body.tinza-child .tinza-tabs__btn:hover {
     color: var(--color-primary);
 }
 
-/* ── Active tab — desktop ──
-   Semibold + underline (visible like "POPULAR PRODUCTS" in screenshot) */
 body.tinza-child .tinza-tabs__btn.is-active {
-    font-weight:   var(--font-weight-semibold);   /* 600 */
+    font-weight:   var(--font-weight-semibold);
     border-bottom: 1px solid var(--color-text);
     color:         var(--color-text);
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   4. TABS CONTENT  (panels — hidden when not active)
+   4. TABS CONTENT
    ════════════════════════════════════════════════════════════ */
 body.tinza-child .tinza-tabs__panels {
-    margin-top: var(--space-6);                   /* spacing under tabs nav */
+    margin-top: var(--space-6);
 }
 
 body.tinza-child .tinza-tabs__panel {
-    display:    none;
-    animation:  tinza-fade .35s ease;
+    display:   none;
+    animation: tinza-fade .35s ease;
 }
 body.tinza-child .tinza-tabs__panel.is-active {
     display: block;
@@ -119,7 +95,7 @@ body.tinza-child .tinza-tabs__panel.is-active {
 
 
 /* ════════════════════════════════════════════════════════════
-   5. RESPONSIVE — TABLET  (≤ 1024px)
+   5. TABLET <= 1024px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
 
@@ -128,18 +104,17 @@ body.tinza-child .tinza-tabs__panel.is-active {
     }
 
     body.tinza-child .tinza-tabs__nav {
-        gap: var(--space-6);                      /* 32px */
+        gap: var(--space-6);
     }
 
     body.tinza-child .tinza-tabs__btn {
-        font-size: var(--font-size-small);        /* 14px */
+        font-size: var(--font-size-small);
     }
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   6. RESPONSIVE — MOBILE  (≤ 768px)
-   Pill style with horizontal scroll
+   6. MOBILE <= 768px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
@@ -147,9 +122,8 @@ body.tinza-child .tinza-tabs__panel.is-active {
         padding: var(--space-2) 0;
     }
 
-    /* ── Nav becomes horizontal scrollable ── */
     body.tinza-child .tinza-tabs__nav {
-        gap:                        var(--space-2);   /* 8px */
+        gap:                        var(--space-2);
         justify-content:            flex-start;
         padding:                    var(--space-2) var(--space-4);
         overflow-x:                 auto;
@@ -164,17 +138,15 @@ body.tinza-child .tinza-tabs__panel.is-active {
         flex-shrink:       0;
     }
 
-    /* ── Pill buttons ── */
     body.tinza-child .tinza-tabs__btn {
-        padding:        10px var(--space-4);          /* 10px 16px */
-        background:     var(--color-white);
-        border:         1px solid var(--color-border);
-        border-bottom:  1px solid var(--color-border);
-        border-radius:  999px;                         /* pill */
-        font-size:      13px;
-        font-weight:    var(--font-weight-medium);    /* 500 */
-        color:          var(--color-text);
-        line-height:    1.2;
+        padding:       10px var(--space-4);
+        background:    var(--color-white);
+        border:        1px solid var(--color-border);
+        border-radius: 999px;
+        font-size:     13px;
+        font-weight:   var(--font-weight-medium);
+        color:         var(--color-text);
+        line-height:   1.2;
     }
 
     body.tinza-child .tinza-tabs__btn:hover {
@@ -182,12 +154,11 @@ body.tinza-child .tinza-tabs__panel.is-active {
         color:      var(--color-text);
     }
 
-    /* ── Active pill — black background, white text ── */
     body.tinza-child .tinza-tabs__btn.is-active {
-        background:    var(--color-text);              /* black #161A17 */
-        border-color:  var(--color-text);
-        color:         var(--color-white);
-        font-weight:   var(--font-weight-semibold);
+        background:   var(--color-text);
+        border-color: var(--color-text);
+        color:        var(--color-white);
+        font-weight:  var(--font-weight-semibold);
     }
 
     body.tinza-child .tinza-tabs__panels {
@@ -197,7 +168,7 @@ body.tinza-child .tinza-tabs__panel.is-active {
 
 
 /* ════════════════════════════════════════════════════════════
-   7. SMALL MOBILE  (≤ 420px)
+   7. SMALL MOBILE <= 420px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 420px) {
     body.tinza-child .tinza-tabs__btn {

@@ -1,41 +1,11 @@
 <?php
 /**
- * ────────────────────────────────────────────────────────────
- * LOCATION: motta-child/template-parts/slider.php
- * ────────────────────────────────────────────────────────────
- * Hero Slider template part
- *
- * Layout (paired with slider.css) :
- *   - DESKTOP : [Text block left]  +  [Image right]
- *   - MOBILE  : [Image top] + [Text + button bottom]
- *
- * Swiper config :
- *   - Autoplay  : 5s, no pause on hover
- *   - Loop      : infinite
- *   - No arrows : navigation hidden
- *   - No dots   : pagination hidden
- *
- * Each slide configurable via :
- *   - title    : main heading
- *   - subtitle : uppercase line below divider
- *   - btn_text : button label
- *   - btn_link : button URL
- *   - img_url  : hero image URL
- *   - img_alt  : image alt text
- *
- * Usage :
- *   get_template_part( 'template-parts/slider' );
- * ────────────────────────────────────────────────────────────
+ * Section: Hero Slider
  */
-
 defined( 'ABSPATH' ) || exit;
 
 
-/* ────────────────────────────────────────────────────────────
-   LOAD SLIDES
-   Priority 1 : tinza_slide CPT (admin WP)
-   Priority 2 : Static fallback array
-   ──────────────────────────────────────────────────────────── */
+
 $slides = [];
 
 if ( post_type_exists( 'tinza_slide' ) ) {
@@ -76,8 +46,8 @@ if ( empty( $slides ) ) {
             'title'    => 'Elevate your bathroom',
             'subtitle' => 'With copper elegance',
             'btn_text' => 'Get Inspired',
-            'btn_link' => wc_get_page_permalink( 'shop' ),
-            'img_url'  => TINZA_URI . '/assets/images/hero-bathroom.png',
+            'btn_link' => add_query_arg( [ 'post_type' => 'product', 's' => 'Aged Copper' ], home_url( '/' ) ),
+            'img_url'  => TINZA_URI . '/assets/images/hero-bathroom.webp',
             'img_alt'  => 'Handcrafted copper bathroom with freestanding tub',
         ],
 
@@ -86,8 +56,8 @@ if ( empty( $slides ) ) {
             'title'    => 'Unlacquered Brass',
             'subtitle' => 'Beauty that ages gracefully',
             'btn_text' => 'Get Inspired',
-            'btn_link' => wc_get_page_permalink( 'shop' ),
-            'img_url'  => TINZA_URI . '/assets/images/hero-unlacquered-brass.jpeg',
+            'btn_link' => add_query_arg( [ 'post_type' => 'product', 's' => 'Unlacquered Brass' ], home_url( '/' ) ),
+            'img_url'  => TINZA_URI . '/assets/images/hero-unlacquered-brass.webp',
             'img_alt'  => 'Unlacquered brass kitchen faucet and farmhouse sink',
         ],
 
@@ -97,7 +67,7 @@ if ( empty( $slides ) ) {
             'subtitle' => 'With copper warmth',
             'btn_text' => 'Get Inspired',
             'btn_link' => get_term_link( 'lighting', 'product_cat' ),
-            'img_url'  => TINZA_URI . '/assets/images/hero-lighting.png',
+            'img_url'  => TINZA_URI . '/assets/images/hero-lighting.webp',
             'img_alt'  => 'Copper pendant lights above a dining table',
         ],
 
@@ -105,11 +75,7 @@ if ( empty( $slides ) ) {
 }
 ?>
 
-<!-- ════════════════════════════════════════════════════════
-     HERO SLIDER — Autoplay, no arrows, no dots
-     CSS : assets/css/slider.css
-     JS  : Swiper init via wp_add_inline_script in functions.php
-     ════════════════════════════════════════════════════════ -->
+
 <section class="tinza-slider" aria-label="<?php esc_attr_e( 'Featured collection', 'tinza-child' ); ?>">
 
     <div class="swiper tinza-slider__swiper">
@@ -156,9 +122,10 @@ if ( empty( $slides ) ) {
 
         </div><!-- /.swiper-wrapper -->
 
-        <!-- No arrows — no pagination — autoplay only -->
 
     </div><!-- /.tinza-slider__swiper -->
 
 </section>
+
+
 

@@ -1,12 +1,6 @@
-/* ============================================================
-   slider.css  —  UPDATED VERSION
-   ────────────────────────────────────────────────────────────
-   Changes from previous version :
-   - Added copper pagination dots below slider (outside swiper)
-   - Dots match button color #A87A63
-   - Active dot = filled copper, inactive = transparent with border
-   - Dots clickable — navigate to corresponding slide
-   ============================================================ */
+/* ════════════════════════════════════════════════════════════
+   Tinza Child Theme — slider.css
+   ════════════════════════════════════════════════════════════ */
 
 
 /* ════════════════════════════════════════════════════════════
@@ -33,7 +27,7 @@ body.tinza-child .tinza-slider__swiper {
 
 
 /* ════════════════════════════════════════════════════════════
-   3. SLIDE — Two-column flex layout
+   3. SLIDE
    ════════════════════════════════════════════════════════════ */
 body.tinza-child .tinza-slider__slide {
     display:        flex;
@@ -47,7 +41,7 @@ body.tinza-child .tinza-slider__slide {
 
 
 /* ════════════════════════════════════════════════════════════
-   4. TEXT BLOCK (left on desktop)
+   4. TEXT BLOCK
    ════════════════════════════════════════════════════════════ */
 body.tinza-child .tinza-slider__text {
     flex:            0 0 42%;
@@ -56,7 +50,7 @@ body.tinza-child .tinza-slider__text {
     justify-content: center;
     align-items:     center;
     text-align:      center;
-    padding:         var(--space-10) var(--space-10);
+    padding:         var(--space-10);
     background:      #E1E2DC;
     box-sizing:      border-box;
 }
@@ -64,7 +58,7 @@ body.tinza-child .tinza-slider__text {
 body.tinza-child .tinza-slider__title {
     font-family:    var(--font-primary);
     font-weight:    400;
-    font-size:      40px;
+    font-size:      26px;
     line-height:    1.2;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -116,7 +110,7 @@ body.tinza-child .tinza-slider__btn:hover {
 
 
 /* ════════════════════════════════════════════════════════════
-   5. IMAGE BLOCK (right on desktop)
+   5. IMAGE BLOCK
    ════════════════════════════════════════════════════════════ */
 body.tinza-child .tinza-slider__image {
     flex:       1;
@@ -133,11 +127,7 @@ body.tinza-child .tinza-slider__image img {
 
 
 /* ════════════════════════════════════════════════════════════
-   6. PAGINATION DOTS — below the swiper, copper color
-   ─────────────────────────────────────────────────────────────
-   .tinza-slider__dots    : wrapper row centered below slider
-   .tinza-slider__dot     : individual dot button
-   .tinza-slider__dot.is-active : filled copper
+   6. PAGINATION DOTS
    ════════════════════════════════════════════════════════════ */
 body.tinza-child .tinza-slider__dots {
     display:         flex !important;
@@ -163,7 +153,7 @@ body.tinza-child .tinza-slider__dot {
     cursor:        pointer !important;
     padding:       0 !important;
     margin:        0 !important;
-    transition:    background 0.25s ease, transform 0.25s ease !important;
+    transition:    background .25s ease, transform .25s ease !important;
     flex-shrink:   0 !important;
 }
 
@@ -173,16 +163,12 @@ body.tinza-child .tinza-slider__dot:hover {
 }
 
 body.tinza-child .tinza-slider__dot.is-active {
-    background: #A87A63 !important;  /* filled copper — same as button */
+    background: #A87A63 !important;
     transform:  scale(1.15) !important;
 }
 
-/* Hide default Swiper pagination — we use our custom dots */
-body.tinza-child .tinza-slider .swiper-pagination {
-    display: none !important;
-}
-
-/* Hide navigation arrows — autoplay only */
+/* native Swiper controls replaced by the custom dots above */
+body.tinza-child .tinza-slider .swiper-pagination,
 body.tinza-child .tinza-slider .swiper-button-prev,
 body.tinza-child .tinza-slider .swiper-button-next {
     display: none !important;
@@ -190,31 +176,40 @@ body.tinza-child .tinza-slider .swiper-button-next {
 
 
 /* ════════════════════════════════════════════════════════════
-   7. RESPONSIVE — TABLET  (≤ 1024px)
+   7. TABLET <= 1024px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+
     body.tinza-child .tinza-slider {
         margin:  var(--space-5) auto var(--space-6);
         padding: 0 var(--space-5);
     }
-    body.tinza-child .tinza-slider__slide   { min-height: 447px; }
+
+    body.tinza-child .tinza-slider__slide { min-height: 447px; }
+
     body.tinza-child .tinza-slider__text {
         flex:    0 0 45%;
         padding: var(--space-8) var(--space-6);
     }
-    body.tinza-child .tinza-slider__title   { font-size: 32px; }
-    body.tinza-child .tinza-slider__dots    { margin-top: 16px !important; }
+
+    body.tinza-child .tinza-slider__dots { margin-top: 16px !important; }
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   8. RESPONSIVE — MOBILE  (≤ 768px)
+   8. MOBILE <= 768px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
     body.tinza-child .tinza-slider {
         margin:  var(--space-4) auto var(--space-5);
         padding: 0 var(--space-4);
+    }
+
+    /* desktop height is 560px fixed; stacked mobile content is taller
+       and would be clipped by the container overflow */
+    body.tinza-child .tinza-slider__swiper {
+        height: auto;
     }
 
     body.tinza-child .tinza-slider__slide {
@@ -246,14 +241,17 @@ body.tinza-child .tinza-slider .swiper-button-next {
         font-size:      22px;
         letter-spacing: 0.03em;
     }
+
     body.tinza-child .tinza-slider__divider {
         width:  146px;
         margin: var(--space-3) auto;
     }
+
     body.tinza-child .tinza-slider__sub {
         font-size:     12px;
         margin-bottom: var(--space-4);
     }
+
     body.tinza-child .tinza-slider__btn {
         width:          100%;
         max-width:      373px;
@@ -274,12 +272,10 @@ body.tinza-child .tinza-slider .swiper-button-next {
 
 
 /* ════════════════════════════════════════════════════════════
-   9. SMALL MOBILE  (≤ 420px)
+   9. SMALL MOBILE <= 420px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 420px) {
-    body.tinza-child .tinza-slider__image { height: 280px; }
+    body.tinza-child .tinza-slider__image { height: 380px; }
     body.tinza-child .tinza-slider__title { font-size: 20px; }
     body.tinza-child .tinza-slider__btn   { font-size: 15px; }
 }
-
-

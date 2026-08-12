@@ -17,7 +17,7 @@
     function hideResults(el) { el.setAttribute('hidden',''); el.innerHTML = ''; }
     function showResults(el) { el.removeAttribute('hidden'); }
 
-
+   
     /* ══════════════════════════════════════════════════════
        1. MEGA-MENU
     ══════════════════════════════════════════════════════ */
@@ -37,7 +37,7 @@
             }
         });
     }
-
+    
 
     /* ══════════════════════════════════════════════════════
        2. MOBILE NAV
@@ -129,7 +129,7 @@
         container.innerHTML = '';
         showResults(container);
         if (!items || items.length === 0) {
-            container.innerHTML = '<p class="search-result-empty">Aucun résultat pour "' + esc(kw) + '"</p>';
+            container.innerHTML = '<p class="search-result-empty">No results for "' + esc(kw) + '"</p>';
             return;
         }
         items.forEach(function (p) {
@@ -137,7 +137,12 @@
             a.className = 'search-result-item';
             a.href = p.url || '#';
             a.setAttribute('role','option');
+             /* Image — affichée si disponible */
+            var imgHtml = p.image
+            ? '<img class="search-result-item__img" src="' + p.image + '" alt="' + esc( p.name ) + '" loading="lazy" width="44" height="44">'
+            : '';
             a.innerHTML =
+                imgHtml +
                 '<div class="search-result-item__info">' +
                     '<span class="search-result-item__name">'  + esc(p.name  || '') + '</span>' +
                     '<span class="search-result-item__price">' + (p.price || '') + '</span>' +
@@ -147,7 +152,7 @@
         var all = document.createElement('a');
         all.className   = 'search-result-item search-result-item--all';
         all.href        = '/?s=' + encodeURIComponent(kw) + '&post_type=product';
-        all.textContent = 'Voir tous les résultats pour "' + kw + '"';
+        all.textContent = 'View all results for "' + kw + '"';
         container.appendChild(all);
     }
 
@@ -195,12 +200,6 @@
 
      /* ══════════════════════════════════════════════════════
        5. MINI-CART DRAWER
-       ──────────────────────────────────────────────────────
-       Ouverture : clic sur #cart-open-btn (capture phase)
-       Notifications :
-         added_to_cart   → ✓ Successfully Added To Your Cart
-         removed_from_cart → ✕ Item Removed From Your Cart
-       Responsive : sidebar sur tous les appareils (CSS)
     ══════════════════════════════════════════════════════ */
     function initMiniCart() {
         var drawer   = document.getElementById('mini-cart');
@@ -247,11 +246,6 @@
             });
         }
  
-        /*
-         * Capture phase (true) : s'exécute AVANT WooCommerce/Motta.
-         * e.preventDefault()         → annule la navigation vers /cart/
-         * e.stopImmediatePropagation() → stoppe tous les autres handlers
-         */
         document.addEventListener('click', function (e) {
             var cartLink = e.target.closest
                 ? e.target.closest('#cart-open-btn')
@@ -279,23 +273,11 @@
         /* ── jQuery WooCommerce events ── */
         if (typeof jQuery !== 'undefined') {
  
-            /*
-             * added_to_cart :
-             * Déclenché par WooCommerce après ajout AJAX.
-             * → Ouvre le drawer + affiche le message vert 3s.
-             */
             jQuery(document.body).on('added_to_cart', function () {
                 openCart();
                 showNotice(msgAdded);
             });
  
-            /*
-             * removed_from_cart :
-             * Déclenché par WooCommerce après suppression AJAX.
-             * → Affiche le message rouge 3s (drawer déjà ouvert).
-             * Si le drawer était fermé, on l'ouvre pour montrer
-             * le panier mis à jour.
-             */
             jQuery(document.body).on('removed_from_cart', function () {
                 if (!drawer.classList.contains('mini-cart--open')) {
                     openCart();
@@ -318,6 +300,48 @@
     }
  
  
+    /* ══════════════════════════════════════════════════════
+       7. WISHLIST COUNTER
+    ══════════════════════════════════════════════════════ */
+    function initWishlistCounter() {
+        var el = document.getElementById( 'wishlist-counter' );
+        if ( ! el ) return;
+
+        var count;
+        try {
+            var ls = JSON.parse( localStorage.getItem( 'tinza_wishlist' ) || '{}' );
+            count = Object.keys( ls ).length;
+        } catch ( e ) { count = 0; }
+
+        render( count );
+
+        function render( n ) {
+            count = Math.max( 0, n );
+            el.textContent = count;
+            el.setAttribute( 'data-count', count );
+            el.classList.toggle( 'header__wishlist-count--empty', count === 0 );
+        }
+
+        /* Relatif — feedback immédiat add/remove */
+        window.tinzaSetWishlistCount = function ( delta ) {
+            render( count + delta );
+        };
+
+        /* Absolu — correction après sync serveur */
+        window.tinzaSetWishlistCountAbsolute = function ( n ) {
+            render( n );
+        };
+
+        /* Multi-onglets */
+        window.addEventListener( 'storage', function ( e ) {
+            if ( e.key !== 'tinza_wishlist' ) return;
+            try {
+                render( Object.keys( JSON.parse( e.newValue || '{}' ) ).length );
+            } catch ( err ) {}
+        } );
+    }
+
+
     /* BOOT */
     function boot() {
         initCategories();
@@ -327,6 +351,7 @@
         initLiveSearch('mobile-search-input',  'mobile-search-results', 'mobile-search-submit');
         initMiniCart();
         initScroll();
+        initWishlistCounter();
     }
  
     document.readyState === 'loading'
@@ -334,4 +359,27 @@
         : boot();
  
 }());
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

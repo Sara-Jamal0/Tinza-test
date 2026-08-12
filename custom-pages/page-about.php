@@ -30,10 +30,10 @@
       </div>
         <div class="hero-right">
           <div class="img-card img-main">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pic 1.jpeg" alt="Copper pendant lamps" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pic 1.webp" alt="Copper pendant lamps" />
           </div>
           <div class="img-card img-side">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pic 2.png" alt="Artisan at work" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pic 2.webp" alt="Artisan at work" />
           </div>
       </div>
     </section>
@@ -55,7 +55,7 @@
 
     <section class="split-section">
       <div class="split-image-col">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Our vision.jpeg" alt="Description of image" />
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Our vision.webp" alt="Description of image" />
       </div>
       <div class="split-text-col">
         <p class="split-tag">Our Vision</p>
@@ -85,3 +85,5 @@
     </div>
   
 </body>
+
+<?php get_footer(); ?>

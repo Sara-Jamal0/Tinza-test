@@ -205,10 +205,10 @@
                 <h2 class="section__title">12. Contact Information</h2>
                 <p class="section__lead">For questions regarding this Privacy Policy, please contact:</p>
                 <ul class="plain-list">
-                    <li>Company Name:</li>
-                    <li>Address:</li>
-                    <li>Email:</li>
-                    <li>VAT Number:</li>
+                    <li>Company Name: TINZA - FZCO</li>
+                    <li>Address: DSO-IFZA IFZA Properties Dubai Silicon Oasis</li>
+                    <li>Email: support@tinza.com</li>
+                    <li>VAT Number: 61579</li>
                 </ul>
             </section>
 
@@ -237,23 +237,12 @@
                 </div>
             </div>
         
-            <!-- About -->
-            <div class="about-card">
-                <p class="aside__section-label">About Tinza</p>
-                <p class="about-card__text">
-                    Tinza connects artisans and buyers to celebrate handcrafted brass and copper home décor.
-                    We curate responsibly and support custom commissions and seller onboarding.
-                </p>
-                <!-- Replace src with a real image -->
-                <img class="about-card__img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Our vision.jpeg" alt="Artisans at work" />
-            </div>
-        
             <!-- Helpful links -->
             <div>
                 <p class="aside__section-label">Helpful Links</p>
                     <nav class="helpful-links">
-                        <a href="#">Terms of Use / Terms &amp; Conditions</a>
-                        <a href="#">Legal Notice</a>
+                        <a href="<?php echo get_permalink(get_page_by_path('terms-of-use')); ?>">Terms of Use / Terms &amp; Conditions</a>
+                        <a href="<?php echo get_permalink(get_page_by_path('legal')); ?>">Legal Notice</a>
                         <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>">Contact Us</a>
                     </nav>
             </div>
@@ -286,3 +275,5 @@
     </body>
 
 </html>
+
+<?php get_footer(); ?>

@@ -1,20 +1,17 @@
-/* =============================================================================
-   Tinza Child Theme — Tinza Promise
-   -----------------------------------------------------------------------------
-   File    : motta-child/assets/css/finish-promise.css
-   Enqueue : wp_enqueue_style('tinza-finish-promise') in functions.php (priority 99)
-   -----------------------------------------------------------------------------
-   ============================================================================= */
+/* ════════════════════════════════════════════════════════════
+   Tinza Child Theme — tinza-promise.css
+   ════════════════════════════════════════════════════════════ */
 
 
-/* =============================================================================
-   THE TINZA PROMISE 
-   ============================================================================= */
-
+/* ════════════════════════════════════════════════════════════
+   1. SECTION WRAPPER
+   ════════════════════════════════════════════════════════════ */
 .tinza-promise {
-    background: #FAF8F7 !important;
-    padding:    0 !important;
-    width:      100% !important;
+    background:    #FAF8F7 !important;
+    width:         100% !important;
+    padding:       0 !important;
+    margin-top:    80px !important;
+    margin-bottom: 20px !important;
 }
 
 .tinza-promise__inner {
@@ -27,6 +24,10 @@
     gap:            60px !important;
 }
 
+
+/* ════════════════════════════════════════════════════════════
+   2. HEADER
+   ════════════════════════════════════════════════════════════ */
 .tinza-promise__header {
     display:        flex !important;
     flex-direction: column !important;
@@ -35,11 +36,10 @@
     width:          100% !important;
 }
 
-/* Title — Figma: Chillax Medium 52px / lh 73px / ls -0.03em */
 .tinza-promise__title {
     font-family:    'Chillax', sans-serif !important;
     font-weight:    500 !important;
-    font-size:      52px !important;
+    font-size:      26px !important;
     line-height:    73px !important;
     letter-spacing: -0.03em !important;
     color:          #161A17 !important;
@@ -47,11 +47,10 @@
     padding:        0 !important;
 }
 
-/* Subtitle — Figma: Chillax Regular 24px / lh 34px / max-width 700px */
 .tinza-promise__subtitle {
     font-family:    'Chillax', sans-serif !important;
     font-weight:    400 !important;
-    font-size:      24px !important;
+    font-size:      16px !important;
     line-height:    34px !important;
     letter-spacing: 0.005em !important;
     color:          #161A17 !important;
@@ -60,7 +59,10 @@
     padding:        0 !important;
 }
 
-/* Icons grid — Figma: 6 items in 1 row (desktop) */
+
+/* ════════════════════════════════════════════════════════════
+   3. GRID
+   ════════════════════════════════════════════════════════════ */
 .tinza-promise__grid {
     display:               grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
@@ -68,7 +70,6 @@
     width:                 100% !important;
 }
 
-/* Each item */
 .tinza-promise__item {
     display:         flex !important;
     flex-direction:  column !important;
@@ -78,7 +79,6 @@
     text-align:      center !important;
 }
 
-/* Icon wrapper — Figma: 72×72px */
 .tinza-promise__icon {
     width:           72px !important;
     height:          72px !important;
@@ -94,11 +94,10 @@
     display: block !important;
 }
 
-/* Label — Figma: Chillax Medium 18px / lh 140% / ls 0.01em */
 .tinza-promise__label {
     font-family:    'Chillax', sans-serif !important;
     font-weight:    500 !important;
-    font-size:      18px !important;
+    font-size:      16px !important;
     line-height:    1.4 !important;
     letter-spacing: 0.01em !important;
     text-align:     center !important;
@@ -109,23 +108,31 @@
 }
 
 
-/* =============================================================================
-   2. THE TINZA PROMISE — TABLET (1024px) — 3 columns
-   ============================================================================= */
-
+/* ════════════════════════════════════════════════════════════
+   4. TABLET <= 1024px
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+
+    .tinza-promise {
+        margin-top:    60px !important;
+        margin-bottom: 60px !important;
+    }
+
     .tinza-promise__inner {
         padding: 48px 32px !important;
         gap:     40px !important;
     }
+
     .tinza-promise__title {
-        font-size:   36px !important;
+        font-size:   24px !important;
         line-height: 50px !important;
     }
+
     .tinza-promise__subtitle {
         font-size:   18px !important;
         line-height: 26px !important;
     }
+
     .tinza-promise__grid {
         grid-template-columns: repeat(3, 1fr) !important;
         gap:                   32px 24px !important;
@@ -133,36 +140,43 @@
 }
 
 
-/* =============================================================================
-   3. THE TINZA PROMISE — MOBILE (768px) — 2×3 grid
-   ============================================================================= */
-
+/* ════════════════════════════════════════════════════════════
+   5. MOBILE <= 768px
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+    .tinza-promise {
+        margin-top:    40px !important;
+        margin-bottom: 40px !important;
+    }
+
     .tinza-promise__inner {
         padding: 40px 24px !important;
         gap:     32px !important;
     }
+
     .tinza-promise__title {
         font-size:   28px !important;
         line-height: 38px !important;
     }
+
     .tinza-promise__subtitle {
         font-size:   16px !important;
         line-height: 24px !important;
         max-width:   100% !important;
     }
+
     .tinza-promise__grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap:                   32px 16px !important;
     }
-    .tinza-promise__icon {
-        width:  56px !important;
-        height: 56px !important;
-    }
+
+    .tinza-promise__icon,
     .tinza-promise__icon svg {
         width:  56px !important;
         height: 56px !important;
     }
+
     .tinza-promise__label {
         font-size: 14px !important;
         max-width: none !important;
@@ -170,11 +184,16 @@
 }
 
 
-/* =============================================================================
-   4. SMALL MOBILE (480px)
-   ============================================================================= */
-
+/* ════════════════════════════════════════════════════════════
+   6. SMALL MOBILE <= 480px
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
+
+    .tinza-promise {
+        margin-top:    32px !important;
+        margin-bottom: 32px !important;
+    }
+
     .tinza-promise__inner {
         padding: 32px 16px !important;
     }

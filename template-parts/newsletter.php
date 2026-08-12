@@ -5,9 +5,6 @@
  * File    : motta-child/template-parts/sections/newsletter.php
  * Plugin  : MC4WP — Mailchimp for WordPress (already installed)
  * Form ID : 192  — found at MC4WP → Forms → Edit → URL param id=192
- * Design  : Left = white card with X envelope lines (CSS only, no image)
- *           Right = title + MC4WP form (email input + Claim Coupon button)
- *           Input and button have same full width, gap 20px between them
  * =============================================================================
  */
 ?>

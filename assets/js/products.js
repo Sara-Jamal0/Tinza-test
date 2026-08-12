@@ -1,27 +1,23 @@
 /**
- * Tinza Child Theme — Product Carousel
+ * Tinza Child Theme — products.js
  * =============================================================================
  * File    : motta-child/assets/js/products.js
- * Purpose : Mobile drag carousel with dots navigation for product sections.
- *           On desktop: no JS needed — CSS grid handles layout.
- *           On mobile : generates dot buttons, syncs active dot on scroll,
- *                       supports touch drag and mouse drag.
- * Requires: Vanilla JS only — no jQuery, no Swiper
  * =============================================================================
  */
 
+
+/* ═══════════════════════════════════════════════════════════
+   1. CAROUSEL MOBILE
+   ─────────────────────────────────────────────────────────
+   Inchangé — drag + dots sur mobile uniquement.
+═══════════════════════════════════════════════════════════ */
 ( function () {
     'use strict';
 
-    // Only run on mobile
     function isMobile() {
         return window.innerWidth <= 768;
     }
 
-    /**
-     * Init a single carousel instance
-     * @param {HTMLElement} carousel - .tinza-carousel element
-     */
     function initCarousel( carousel ) {
         var track = carousel.querySelector( '.tinza-carousel__track' );
         var dotsContainer = carousel.querySelector( '.tinza-carousel__dots' );
@@ -29,15 +25,11 @@
 
         if ( ! track || ! dotsContainer || cards.length === 0 ) return;
 
-        // Clear existing dots
         dotsContainer.innerHTML = '';
 
-        // Number of visible "pages" based on cards
-        // Each page shows ~1 full card — dots = number of cards
         var totalDots = cards.length;
         var dots = [];
 
-        // Create dot buttons
         for ( var i = 0; i < totalDots; i++ ) {
             var dot = document.createElement( 'button' );
             dot.className = 'tinza-carousel__dot' + ( i === 0 ? ' is-active' : '' );
@@ -46,13 +38,12 @@
             dot.setAttribute( 'aria-label', 'Go to slide ' + ( i + 1 ) );
             dot.setAttribute( 'aria-selected', i === 0 ? 'true' : 'false' );
 
-            // Click dot → scroll to card
             ( function ( index ) {
                 dot.addEventListener( 'click', function () {
                     var card = cards[ index ];
                     if ( card ) {
                         track.scrollTo( {
-                            left:     card.offsetLeft - 24, // 24px = left padding
+                            left:     card.offsetLeft - 24,
                             behavior: 'smooth',
                         } );
                     }
@@ -63,12 +54,8 @@
             dots.push( dot );
         }
 
-        /**
-         * Update active dot based on scroll position
-         */
         function updateActiveDot() {
             var scrollLeft  = track.scrollLeft;
-            var trackWidth  = track.offsetWidth;
             var closestIdx  = 0;
             var closestDist = Infinity;
 
@@ -88,17 +75,12 @@
             } );
         }
 
-        // Listen to scroll — throttled
         var scrollTimer;
         track.addEventListener( 'scroll', function () {
             clearTimeout( scrollTimer );
             scrollTimer = setTimeout( updateActiveDot, 50 );
         }, { passive: true } );
 
-
-        /* -------------------------------------------------------------------
-         * Mouse drag support (desktop browser on mobile emulation or wide touch)
-         * ------------------------------------------------------------------- */
         var isDragging  = false;
         var startX      = 0;
         var startScroll = 0;
@@ -110,66 +92,232 @@
             track.style.cursor = 'grabbing';
             e.preventDefault();
         } );
-
         track.addEventListener( 'mouseleave', function () {
             isDragging = false;
             track.style.cursor = 'grab';
         } );
-
         track.addEventListener( 'mouseup', function () {
             isDragging = false;
             track.style.cursor = 'grab';
         } );
-
         track.addEventListener( 'mousemove', function ( e ) {
             if ( ! isDragging ) return;
             e.preventDefault();
             var x    = e.pageX - track.offsetLeft;
-            var walk = ( x - startX ) * 1.5; // scroll speed multiplier
+            var walk = ( x - startX ) * 1.5;
             track.scrollLeft = startScroll - walk;
         } );
     }
 
-    /**
-     * Init all carousels on the page
-     */
     function initAllCarousels() {
         if ( ! isMobile() ) return;
-
         var carousels = document.querySelectorAll( '.tinza-carousel' );
         carousels.forEach( function ( carousel ) {
             initCarousel( carousel );
         } );
     }
 
-    /**
-     * Re-init on resize (debounced)
-     * Handles orientation change: portrait ↔ landscape
-     */
     var resizeTimer;
     window.addEventListener( 'resize', function () {
         clearTimeout( resizeTimer );
         resizeTimer = setTimeout( function () {
-            // Re-init if switched to mobile, destroy dots if switched to desktop
             var carousels = document.querySelectorAll( '.tinza-carousel' );
             carousels.forEach( function ( carousel ) {
                 var dotsContainer = carousel.querySelector( '.tinza-carousel__dots' );
                 if ( ! isMobile() ) {
-                    // Desktop — clear dots
                     if ( dotsContainer ) dotsContainer.innerHTML = '';
                 } else {
-                    // Mobile — re-init
                     initCarousel( carousel );
                 }
             } );
         }, 200 );
     } );
 
-    // Init on DOM ready
     if ( document.readyState === 'loading' ) {
         document.addEventListener( 'DOMContentLoaded', initAllCarousels );
     } else {
         initAllCarousels();
     }
+
+} )();
+
+
+/* ═══════════════════════════════════════════════════════════
+   2. WISHLIST — WCBoost + localStorage
+═══════════════════════════════════════════════════════════ */
+( function () {
+    'use strict';
+
+    var STORAGE_KEY = 'tinza_wishlist';
+
+    /* ── localStorage helpers ───────────────────────────── */
+    function getWishlist() {
+        try { return JSON.parse( localStorage.getItem( STORAGE_KEY ) || '{}' ); }
+        catch ( e ) { return {}; }
+    }
+    function setWishlist( data ) {
+        try { localStorage.setItem( STORAGE_KEY, JSON.stringify( data ) ); }
+        catch ( e ) {}
+    }
+    function deleteItem( id ) {
+        var d = getWishlist();
+        delete d[ String( id ) ];
+        setWishlist( d );
+    }
+    function getRemoveUrl( id ) {
+        return getWishlist()[ String( id ) ] || null;
+    }
+
+    function markWishlistedButtons() {
+        document.querySelectorAll( '.js-wish' ).forEach( function ( btn ) {
+            btn.classList.remove( 'is-wished' );
+            btn.setAttribute( 'aria-pressed', 'false' );
+        } );
+        Object.keys( getWishlist() ).forEach( function ( id ) {
+            document.querySelectorAll( '.js-wish[data-product-id="' + id + '"]' )
+                .forEach( function ( btn ) {
+                    btn.classList.add( 'is-wished' );
+                    btn.setAttribute( 'aria-pressed', 'true' );
+                } );
+        } );
+    }
+
+    function unmarkButton( id ) {
+        document.querySelectorAll( '.js-wish[data-product-id="' + id + '"]' )
+            .forEach( function ( btn ) {
+                btn.classList.remove( 'is-wished', 'is-loading' );
+                btn.setAttribute( 'aria-pressed', 'false' );
+            } );
+    }
+
+    function extractWishlistMap( doc ) {
+        var map = {};
+        doc.querySelectorAll( 'a.remove[data-product_id]' ).forEach( function ( a ) {
+            var pid = a.getAttribute( 'data-product_id' );
+            var url = a.getAttribute( 'href' ) || '';
+            if ( pid ) map[ String( pid ) ] = url;
+        } );
+        return map;
+    }
+
+    function applyWishlistMap( map ) {
+        setWishlist( map );
+        markWishlistedButtons();
+        if ( typeof window.tinzaSetWishlistCountAbsolute === 'function' ) {
+            window.tinzaSetWishlistCountAbsolute( Object.keys( map ).length );
+        }
+    }
+    function syncFromWishlistPage() {
+        return fetch( '/wishlist/', { credentials: 'same-origin' } )
+            .then( function ( res ) {
+                if ( ! res.ok ) throw new Error( 'HTTP ' + res.status );
+                return res.text();
+            } )
+            .then( function ( html ) {
+                var doc = new DOMParser().parseFromString( html, 'text/html' );
+                var map = extractWishlistMap( doc );
+                applyWishlistMap( map );
+                return map;
+            } )
+            .catch( function ( err ) {
+                console.warn( '[Tinza Wishlist] Sync /wishlist/ failed:', err );
+            } );
+    }
+
+    function watchWishlistPage() {
+        var container = document.querySelector(
+            'ul.wishlist_table, .wcboost-wishlist-widget__products, [class*="wishlist_table"]'
+        );
+        if ( ! container ) return;
+
+        var observer = new MutationObserver( function () {
+            applyWishlistMap( extractWishlistMap( document ) );
+        } );
+
+        observer.observe( container, { childList: true, subtree: true } );
+    }
+
+    /* ── AJOUTER à la wishlist ─────────────────────────────
+       Après succès, on re-sync depuis /wishlist/ pour obtenir
+       le remove_url exact (cohérent avec syncFromWishlistPage) */
+    function addToWishlist( btn, productId ) {
+        btn.classList.add( 'is-loading' );
+
+        var body = new URLSearchParams();
+        body.append( 'product_id', productId );
+        body.append( 'quantity', '1' );
+        if ( window.mottaData && window.mottaData.nonce ) {
+            body.append( 'nonce', window.mottaData.nonce );
+        }
+
+        fetch( '/?wc-ajax=add_to_wishlist', {
+            method: 'POST', credentials: 'same-origin', body: body,
+        } )
+        .then( function ( r ) { if ( ! r.ok ) throw new Error( r.status ); return r.json(); } )
+        .then( function ( json ) {
+            if ( json.success === true ) {
+                return syncFromWishlistPage();
+            }
+            throw new Error( 'success:false' );
+        } )
+        .then( function () {
+            btn.classList.remove( 'is-loading' );
+        } )
+        .catch( function ( err ) {
+            btn.classList.remove( 'is-loading' );
+            console.error( '[Tinza Wishlist] Add error:', err );
+        } );
+    }
+
+    /* ── RETIRER de la wishlist ────────────────────────────
+       Re-sync après succès pour rester cohérent avec le serveur */
+    function removeFromWishlist( btn, productId ) {
+        btn.classList.add( 'is-loading' );
+        var removeUrl = getRemoveUrl( productId );
+
+        if ( ! removeUrl ) {
+            deleteItem( productId );
+            unmarkButton( productId );
+            btn.classList.remove( 'is-loading' );
+            if ( typeof window.tinzaSetWishlistCount === 'function' ) {
+                window.tinzaSetWishlistCount( -1 );
+            }
+            return;
+        }
+
+        fetch( window.location.origin + '/' + removeUrl, { credentials: 'same-origin' } )
+            .then( function () { return syncFromWishlistPage(); } )
+            .catch( function ( err ) {
+                /* Fallback : nettoyer localement même si re-sync échoue */
+                deleteItem( productId );
+                unmarkButton( productId );
+                console.error( '[Tinza Wishlist] Remove error:', err );
+            } )
+            .then( function () {
+                btn.classList.remove( 'is-loading' );
+            } );
+    }
+
+    /* ── Init ────────────────────────────────────────────── */
+    function initWishlist() {
+        markWishlistedButtons();
+        syncFromWishlistPage();
+        watchWishlistPage();
+
+        document.addEventListener( 'click', function ( e ) {
+            var btn = e.target.closest( '.js-wish' );
+            if ( ! btn ) return;
+            e.preventDefault(); e.stopPropagation();
+            var id = btn.getAttribute( 'data-product-id' );
+            if ( ! id || btn.classList.contains( 'is-loading' ) ) return;
+            btn.classList.contains( 'is-wished' )
+                ? removeFromWishlist( btn, id )
+                : addToWishlist( btn, id );
+        }, true );
+    }
+
+    document.readyState === 'loading'
+        ? document.addEventListener( 'DOMContentLoaded', initWishlist )
+        : initWishlist();
 
 } )();

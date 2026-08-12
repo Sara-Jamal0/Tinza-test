@@ -59,8 +59,6 @@
 
         /* =====================================================================
          * 2. STANDALONE AJAX FALLBACK (.js-newsletter-form)
-         *    Used only if MC4WP is not installed / active.
-         *    Reads ajaxUrl, nonce and i18n strings from window.tinzaNL
          * ===================================================================== */
 
         $( document ).on( 'submit', '.js-newsletter-form', function ( e ) {

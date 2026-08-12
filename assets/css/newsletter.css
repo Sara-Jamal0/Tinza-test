@@ -1,10 +1,5 @@
 /* =============================================================================
    Tinza Child Theme — Newsletter Section
-   -----------------------------------------------------------------------------
-   File    : motta-child/assets/css/newsletter.css
-   Enqueue : functions.php → wp_enqueue_style('tinza-newsletter') — priority 99
-   Plugin  : MC4WP — Mailchimp for WordPress (form id=192)
-   -----------------------------------------------------------------------------
    ============================================================================= */
 
 
@@ -13,11 +8,10 @@
    ============================================================================= */
 
 .tinza-newsletter {
-    margin-top: 60px; /* Pull up to overlap with previous section (image 1) */
-    margin-bottom: 60px; /* Pull up to overlap with next section (image 3) */
+    margin-top: 60px; 
+    margin-bottom: 60px; 
     background:     #FAF8F7;
     width:          100%;
-    /* Space above and below — separates from adjacent sections */
     padding-top:    60px;
     padding-bottom: 60px;
 }
@@ -26,7 +20,6 @@
     box-sizing:      border-box;
     max-width:       1440px;
     margin:          0 auto;
-    /* Figma: padding 60px 120px 60px 60px */
     padding:         0 120px 0 60px;
     display:         flex;
     flex-direction:  row;
@@ -183,7 +176,7 @@
     border-color: #A87A63 !important;
 }
 
-/* ----- Submit button — 100% × 64px, black ----- */
+/* ----- Submit button ----- */
 .tinza-newsletter .mc4wp-form input[type="submit"] {
     box-sizing:     border-box !important;
     display:        block !important;
@@ -314,8 +307,6 @@
 
 /* =============================================================================
    7. RESPONSIVE — Mobile 768px
-   -----------------------------------------------------------------------------
-   Mobile (image 2): left white card hidden, form takes full width
    ============================================================================= */
 
 @media (max-width: 768px) {

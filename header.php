@@ -1,46 +1,29 @@
 <?php
 /**
  * Tinza Child — header.php
- 
  */
 defined( 'ABSPATH' ) || exit;
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); /* Ajoute lang="fr" ou lang="en" selon WP */ ?>>
+<html <?php language_attributes();  ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); /* UTF-8 */ ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <?php wp_head(); /* Injecte CSS, meta SEO, etc. enregistrés par WP/plugins */ ?>
+    <?php wp_head();  ?>
 </head>
-<body <?php body_class(); /* Ajoute les classes CSS body : tinza-child, homepage, etc. */ ?>>
-<?php wp_body_open(); /* Hook pour plugins (ex: Google Tag Manager) */ ?>
+<body <?php body_class();  ?>>
+<?php wp_body_open(); ?>
 
-<!-- Wrapper global de la page — requis par certains thèmes Motta -->
 <div id="page" class="site">
 
-<!-- Lien d'accessibilité — permet de sauter la nav au clavier -->
-<a class="skip-link screen-reader-text" href="#main">
-    <?php esc_html_e( 'Aller au contenu', 'motta-child' ); ?>
-</a>
 
-
-<!-- ═══════════════════════════════════════════════════════════
-     HEADER PRINCIPAL
-     sticky top:0 — défini dans header.css (.site-header)
-     role="banner" = landmark ARIA pour la navigation assistée
-     ═══════════════════════════════════════════════════════════ -->
 <header class="site-header" id="site-header" role="banner">
     <div class="site-header__inner">
 
 
-        <!-- ════════════════ LEFT ════════════════
-             Contient : Hamburger (mobile) + Logo + Categories (desktop)
-             ════════════════════════════════════ -->
         <div class="site-header__left">
 
-            <!-- HAMBURGER — visible uniquement sur mobile (≤768px)
-                 aria-expanded="false" = état initial fermé
-                 aria-controls="mobile-nav" = id du drawer qu'il contrôle -->
+            
             <button class="site-header__hamburger"
                     id="mobile-menu-toggle"
                     aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'motta-child' ); ?>"
@@ -59,24 +42,17 @@ defined( 'ABSPATH' ) || exit;
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
                class="site-header__logo"
                aria-label="<?php esc_attr_e( 'Tinza — Accueil', 'motta-child' ); ?>">
-                <!-- Texte stylé en CSS (font Chillax, 40px, letter-spacing -0.06em) -->
                 <span class="site-header__logo-text">tinza</span>
             </a>
 
-            <!-- CATEGORIES WRAPPER — contient le bouton + le mega-menu
-                 position:relative dans CSS pour ancrer le mega-menu en absolu -->
             <div class="site-header__categories-wrapper">
 
-                <!-- Bouton CATEGORIES — desktop uniquement
-                     aria-expanded géré par header.js (initCategories)
-                     aria-controls="mega-menu" = id du menu qu'il contrôle -->
                 <button class="site-header__categories"
                         id="categories-btn"
                         aria-expanded="false"
                         aria-controls="mega-menu"
                         aria-label="<?php esc_attr_e( 'Catégories', 'motta-child' ); ?>"
                         type="button">
-                    <!-- Carré 42×42 qui contient l'icône hamburger -->
                     <span class="site-header__categories-square">
                         <svg class="site-header__categories-icon"
                              width="14" height="14" viewBox="0 0 14 14"
@@ -89,10 +65,6 @@ defined( 'ABSPATH' ) || exit;
                     <!-- Label texte uppercase -->
                     <span class="site-header__categories-label">CATEGORIES</span>
                 </button>
-
-                <!-- MEGA-MENU — liste des catégories
-                     hidden = caché par défaut, retiré par JS au clic
-                     position:absolute par rapport à .categories-wrapper -->
                <nav class="mega-menu" id="mega-menu" hidden
      aria-label="<?php esc_attr_e( 'Catégories', 'motta-child' ); ?>">
     <?php
@@ -119,22 +91,9 @@ defined( 'ABSPATH' ) || exit;
 
         </div><!-- /.site-header__left -->
 
-
-        <!-- ════════════════ SEARCH DESKTOP ════════════════
-             Technique double-wrapper pour dropdown visible :
-             .search-outer  = position:relative, PAS d'overflow
-                              → le dropdown peut dépasser
-             .site-header__search = overflow:hidden
-                              → arrondi et style Figma intact
-             .search-results-dropdown = position:absolute sur .outer
-                              → même largeur (left:0 right:0)
-             ════════════════════════════════════════════════ -->
         <div class="site-header__search-outer">
 
-            <!-- Barre visuelle (border-radius + overflow:hidden) -->
             <div class="site-header__search">
-
-                <!-- Input texte — id requis par header.js (initLiveSearch) -->
                 <input type="search"
                        id="header-search-input"
                        class="site-header__search-input"
@@ -153,9 +112,7 @@ defined( 'ABSPATH' ) || exit;
 
             </div><!-- /.site-header__search -->
 
-            <!-- Dropdown résultats — rempli et affiché par header.js
-                 hidden = invisible par défaut
-                 role="listbox" = sémantique ARIA autocomplete -->
+        
             <div class="search-results-dropdown"
                  id="header-search-results"
                  role="listbox"
@@ -163,10 +120,6 @@ defined( 'ABSPATH' ) || exit;
 
         </div><!-- /.site-header__search-outer -->
 
-
-        <!-- ════════════════ RIGHT ACTIONS ════════════════
-             Contient : Search mobile + User + Heart + Cart
-             ════════════════════════════════════════════════ -->
         <div class="site-header__actions">
 
             <!-- BOUTON SEARCH MOBILE — visible uniquement ≤768px
@@ -183,28 +136,55 @@ defined( 'ABSPATH' ) || exit;
                 <span class="site-header__mobile-search-label">Search</span>
             </a>
 
-            <!-- COMPTE UTILISATEUR — lien vers dashboard WooCommerce
-                 Caché sur mobile (CSS : display:none ≤768px) -->
-            <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>"
-               class="site-header__action-btn site-header__action-btn--user"
-               aria-label="<?php esc_attr_e( 'Mon compte', 'motta-child' ); ?>">
-                <?php get_template_part( 'template-parts/icons/user' ); ?>
-            </a>
-
-            <!-- WISHLIST — lien vers la page wishlist -->
+            <!-- COMPTE UTILISATEUR — lien vers dashboard WooCommerce -->
+            <!-- COMPTE UTILISATEUR 
+               Connecté   → icône user existante
+               Non connecté → bouton "Sign In" -->
+            <?php if ( is_user_logged_in() ) : ?>
+                <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>"
+                    class="site-header__action-btn site-header__action-btn--user"
+                    aria-label="<?php esc_attr_e( 'Mon compte', 'motta-child' ); ?>">
+                    <?php get_template_part( 'template-parts/icons/user' ); ?>
+                </a>
+            <?php else : ?>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"
+                    class="site-header__action-btn site-header__action-btn--signin"
+                    aria-label="<?php esc_attr_e( 'Se connecter', 'motta-child' ); ?>">
+                    Sign In
+                </a>
+            <?php endif; ?>
+            <?php /* WISHLIST DESACTIVEE — plugin WCBoost Wishlist desactive
+            <!-- WISHLIST — icône + compteur toutes les pages -->
+            <?php
+            $wishlist_count = 0;
+            if ( is_user_logged_in() && class_exists( 'WCBoost\Wishlist\Plugin' ) ) {
+                try {
+                    $plugin   = WCBoost\Wishlist\Plugin::instance();
+                    $wishlist = null;
+                    if ( isset( $plugin->wishlist ) &&
+                         method_exists( $plugin->wishlist, 'get_wishlist' ) ) {
+                         $wishlist = $plugin->wishlist->get_wishlist();
+                   }
+                    if ( $wishlist && method_exists( $wishlist, 'get_items' ) ) {
+                         $wishlist_count = count( $wishlist->get_items() );
+                   }
+                } catch ( Exception $e ) {}
+            }
+            $wl_empty = $wishlist_count === 0 ? ' header__wishlist-count--empty' : '';
+            ?>
             <a href="<?php echo esc_url( home_url( '/wishlist/' ) ); ?>"
-               class="site-header__action-btn"
+               class="site-header__action-btn site-header__action-btn--wishlist"
                aria-label="<?php esc_attr_e( 'Wishlist', 'motta-child' ); ?>">
-                <?php get_template_part( 'template-parts/icons/heart' ); ?>
+                <span class="site-header__wishlist-wrap">
+                    <?php get_template_part( 'template-parts/icons/heart' ); ?>
+                    <span class="header__wishlist-count<?php echo esc_attr( $wl_empty ); ?>"
+                          id="wishlist-counter"
+                          data-count="<?php echo esc_attr( $wishlist_count ); ?>">
+                          <?php echo esc_html( $wishlist_count ); ?>
+                    </span>
+                </span>
             </a>
-
-            <!-- ════ CART WooCommerce NATIF ════
-                 Lien direct vers la page panier WooCommerce.
-                 Le compteur (.header__cart-count) est mis à jour
-                 automatiquement par woocommerce_add_to_cart_fragments
-                 défini dans functions.php → tinza_cart_fragments().
-                 Aucun drawer custom — WooCommerce gère son propre UI.
-                 ═══════════════════════════════════════════════════ -->
+               */ ?>
             <?php
             /* Récupérer le nombre d'articles dans le panier */
             $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
@@ -227,9 +207,6 @@ defined( 'ABSPATH' ) || exit;
                 <!-- Wrapper icône + badge compteur -->
                 <span class="site-header__cart-icon-wrap">
                     <?php get_template_part( 'template-parts/icons/cart' ); ?>
-
-                    <!-- Badge compteur — géré par JS fragment WooCommerce
-                         data-count est lu par le CSS pour masquer si 0 -->
                     <span class="header__cart-count<?php echo esc_attr( $empty_cls ); ?>"
                           data-count="<?php echo esc_attr( $cart_count ); ?>">
                         <?php echo esc_html( $cart_count ); ?>
@@ -246,13 +223,6 @@ defined( 'ABSPATH' ) || exit;
     </div><!-- /.site-header__inner -->
 </header><!-- /.site-header -->
 
-
-<!-- ═══════════════════════════════════════════════════════════
-     OVERLAY RECHERCHE MOBILE
-     ─────────────────────────────────────────────────────────
-     .field      → ancre du dropdown (overflow:visible)
-     .input-wrap → style visuel desktop (overflow:hidden)
-     ═══════════════════════════════════════════════════════════ -->
 <!-- OVERLAY RECHERCHE MOBILE -->
 <div class="mobile-search-overlay"
      id="mobile-search-overlay"
@@ -282,11 +252,11 @@ defined( 'ABSPATH' ) || exit;
                     <?php get_template_part( 'template-parts/icons/search' ); ?>
                 </button>
 
-                <!-- ✕ CLOSE — à côté de la loupe, pas de background -->
-                <button class="mobile-search-overlay__close"
-                        id="mobile-search-close"
-                        aria-label="<?php esc_attr_e( 'Fermer', 'motta-child' ); ?>"
-                        type="button">✕</button>
+                <!-- ✕ CLOSE -->
+                <a class="mobile-search-overlay__close"
+                   id="mobile-search-close"
+                   aria-label="<?php esc_attr_e( 'Fermer', 'motta-child' ); ?>"
+                   type="a">✕</a>
 
             </div><!-- /.input-wrap -->
 
@@ -304,12 +274,6 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- ═══════════════════════════════════════════════════════════
      MINI-CART DRAWER
-     ─────────────────────────────────────────────────────────
-     Ouvert par initMiniCart() dans header.js via capture phase.
-     Le clic sur #cart-open-btn est intercepté (e.preventDefault)
-     avant que WooCommerce ou Motta puissent rediriger vers /cart/.
-     Contenu : woocommerce_mini_cart() = données WC 100% natives.
-     CSS     : section 6 de header.css (.mini-cart)
      ═══════════════════════════════════════════════════════════ -->
 <div class="mini-cart" id="mini-cart"
      role="dialog"
@@ -319,13 +283,13 @@ defined( 'ABSPATH' ) || exit;
 
     <div class="mini-cart__header">
         <h2 class="mini-cart__title">Shopping Cart</h2>
-        <button class="mini-cart__close" id="mini-cart-close"
+        <a class="mini-cart__close" id="mini-cart-close"
                 aria-label="<?php esc_attr_e( 'Fermer', 'motta-child' ); ?>"
-                type="button">✕</button>
+                type="a">✕</a>
     </div>
 
     <!-- Affiché 4s après jQuery 'added_to_cart' -->
-    <div class="mini-cart__success" id="mini-cart-success" hidden>
+    <div class="mini-cart__notice mini-cart__notice--success" id="mini-cart-success" hidden>
         ✓ <?php esc_html_e( 'Successfully Added To Your Cart', 'motta-child' ); ?>
     </div>
     
@@ -349,11 +313,6 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- ═══════════════════════════════════════════════════════════
      DRAWER NAV MOBILE
-     ─────────────────────────────────────────────────────────
-     S'ouvre depuis la gauche au clic sur le hamburger.
-     hidden = caché par défaut (CSS : display:flex toujours)
-     mobile-nav--open = translateX(0) → visible
-     Géré par : initMobileNav() dans header.js
      ═══════════════════════════════════════════════════════════ -->
 <aside class="mobile-nav"
        id="mobile-nav"
@@ -367,10 +326,10 @@ defined( 'ABSPATH' ) || exit;
             <?php esc_html_e( 'Menu', 'motta-child' ); ?>
         </span>
         <!-- Bouton fermer — id géré par initMobileNav() -->
-        <button class="mobile-nav__close"
+        <a class="mobile-nav__close"
                 id="mobile-nav-close"
                 aria-label="<?php esc_attr_e( 'Fermer le menu', 'motta-child' ); ?>"
-        type="button">✕</button>
+                type="a">✕</a>
     </div>
 
     <!-- Liens de navigation -->
@@ -392,9 +351,6 @@ defined( 'ABSPATH' ) || exit;
     endif;
     ?>
     <hr>
-    <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>">
-        <?php esc_html_e( 'Mon compte', 'motta-child' ); ?>
-    </a>
 </nav>
 
 </aside>
@@ -405,10 +361,6 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- ═══════════════════════════════════════════════════════════
      CONTENU PRINCIPAL
-     ─────────────────────────────────────────────────────────
-     #site-content et #main sont les wrappers WooCommerce/Motta.
-     do_action('motta_after_site_content_open') injecte
-     le breadcrumb et le titre de page sur les pages non-home.
      ═══════════════════════════════════════════════════════════ -->
 <div id="site-content" class="site-content">
     <?php

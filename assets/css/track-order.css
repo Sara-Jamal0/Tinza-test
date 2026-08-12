@@ -16,7 +16,6 @@
 
     .track-order-wrapper {
       background-color: #FFFFFF;
-      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -44,44 +43,56 @@
       margin-bottom: 14px;
       text-align: center;
     }
+
     .track-heading span {
       color: #A87A63;
       font-style: italic;
     }
 
-    .track-sub {
-      font-size: 15px;
-      color: #5a5a5a;
-      line-height: 1.75;
-      margin-bottom: 40px;
-      max-width: 460px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .track-card {
-      background-color: #FAFAFA;
+    .track-card-container {
       border-radius: 14px;
-      padding: 32px 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .track-field { margin-bottom: 22px; width: 100%; }
-
-    .track-field label {
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #A87A63;
-        margin: 0 0 20px 0;
+    .track-card p {
+      font-size: 15px !important;
+      color: #8a8078;
+      line-height: 1.75;
+      margin-bottom: 20px !important;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
-    .track-field input[type="text"],
-    .track-field input[type="email"] {
+    .track-footer {
+      font-size: 13px;
+      color: #8a8078;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .track-footer a {
+      color: #9b3a1e;
+      text-decoration: none;
+    }
+
+
+    /* Map your custom form styles to WooCommerce elements */
+    .woocommerce-form-track-order {
+        /* Copy styles from .your-custom-form-class here */
+      border-radius: 14px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 650px !important;
+    }
+
+  
+    .woocommerce-form-track-order .form-row input.input-text {
+        /* Copy styles from .your-custom-input-field here */
         padding: 14px 16px;
         font-size: 14px;
         color: #161A17;
@@ -90,12 +101,22 @@
         border-radius: 8px;
         box-shadow: none; /* important: removes their shadow */
         height: auto;     /* override fixed height */
-        width: 100%;
+        width: 100%;        /* ensures input field doesn't overflow on smaller screens */
     }
-    .track-field input::placeholder { color: #b0a89e; }
-    .track-field input:focus { border-color: #9b3a1e; }
 
-    .track-btn {
+    .woocommerce-form-track-order .form-tracking-order-info {
+      background-color: #FAFAFA;
+      margin-top: 20px !important;
+      border-radius: 14px;
+      padding: 32px 28px !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 450px !important;
+    }
+
+    .woocommerce-form-track-order button.button {
+        /* Copy styles from .your-custom-btn-class here */
       display: inline-block;
       background-color: #161A17;
       color: #FFFFFF;
@@ -111,16 +132,167 @@
       box-shadow: 0 4px 18px rgba(155, 78, 56, 0.25);
       letter-spacing: 0.01em;
     }
-    .track-btn:hover { background-color: #7A3B1E; }
 
-    .track-footer {
-      margin-top: 32px;
-      font-size: 13px;
-      color: #8a8078;
-      text-align: center;
-      line-height: 1.6;
+    .woocommerce-form-track-order button.button:hover {
+      background-color: #7A3B1E;
     }
-    .track-footer a {
-      color: #9b3a1e;
-      text-decoration: none;
+
+    .woocommerce-form-track-order .form-row label {
+        font-size: 13px !important;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #A87A63;
+        margin: 0 0 20px 0;
+    }
+
+    /* Override WooCommerce default side-by-side splits on desktop layout */
+    .woocommerce-form-track-order .form-row-first,
+    .woocommerce-form-track-order .form-row-last {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .woocommerce {
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .woocommerce .woocommerce-order-details__title {
+      font-weight: 500;
+    }
+    
+    /* --- Order Details Section Title --- */
+    .woocommerce-order-details__title {
+        font-family: "Playfair Display", "Chillax", serif; /* Premium serif accent */
+        font-size: 1.8rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin-bottom: 24px;
+        color: #1a1a1a;
+    }
+
+    /* --- Table Reset & Layout --- */
+    table.woocommerce-table--order-details {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 32px;
+    }
+
+    /* --- Table Headers --- */
+    table.woocommerce-table--order-details thead th {
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #707070;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 12px 0;
+        text-align: left;
+    }
+
+    table.woocommerce-table--order-details thead th.product-total {
+        text-align: right;
+    }
+
+    /* --- Table Body (Products) --- */
+    table.woocommerce-table--order-details tbody td {
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f0;
+        vertical-align: top;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Product Meta (Vendor, variations, etc.) */
+    table.woocommerce-table--order-details tbody td .wc-item-meta,
+    table.woocommerce-table--order-details tbody td .vendor-name {
+        margin-top: 6px;
+        font-size: 0.85rem;
+        color: #8c8c8c;
+    }
+
+    /* --- Table Footer (Subtotal, Total, Payment) --- */
+    table.woocommerce-table--order-details tfoot th {
+        padding: 16px 0;
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #505050;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    table.woocommerce-table--order-details tfoot td {
+        padding: 16px 0;
+        font-size: 0.95rem;
+        text-align: right;
+        color: #1a1a1a;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Highlight the final total row */
+    table.woocommerce-table--order-details tfoot tr:nth-last-child(2) th,
+    table.woocommerce-table--order-details tfoot tr:nth-last-child(2) td {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* Align values correctly */
+    table.woocommerce-table--order-details td.product-total,
+    table.woocommerce-table--order-details tbody td:last-child {
+        text-align: right;
+    }
+
+    /* ==========================================================================
+      Responsive Breakpoints
+      ========================================================================== */
+
+    /* Tablet & Smaller Screens */
+    @media (max-width: 768px) {
+        .track-heading {
+            font-size: 32px; /* Scales down giant text so it doesn't awkward-wrap */
+        }
+        
+        .track-order-wrapper {
+            padding: 30px 16px; /* Slightly tighter padding on container */
+        }
+
+        .woocommerce-form-track-order .form-row input.input-text {
+            width: 100%; /* Ensures input field doesn't overflow on smaller screens */
+
+        }
+
+        .woocommerce-form-track-order {
+          width: 100% !important; 
+        }
+    }
+
+    /* Mobile Screens */
+    @media (max-width: 480px) {
+        .track-heading {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .woocommerce-form-track-order .form-tracking-order-info {
+            padding: 24px 16px !important; /* Prevents container layout crowding */
+            width: 100% !important; /* Ensures the order info container fits within mobile screens */
+        }
+
+        .woocommerce-form-track-order .form-row input.input-text {
+            width: 100%; /* Ensures input field doesn't overflow on smaller screens */
+        }
+        
+        .track-card p {
+            font-size: 14px !important; /* Slightly more readable body scale for tiny devices */
+        }
+
+        .woocommerce-form-track-order {
+          width: 350px !important; 
+        }
     }

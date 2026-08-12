@@ -1,22 +1,15 @@
-/* ============================================================
-   products-grid.css
-   LOCATION : motta-child/assets/css/products-grid.css
-   ────────────────────────────────────────────────────────────
-   Targets BOTH naming conventions (.tz-pcard AND .tinza-card)
-   and FORCES a 4-column grid layout — neutralising the
-   Swiper / horizontal slider that the parent theme applies.
-   ============================================================ */
+/* ════════════════════════════════════════════════════════════
+   Tinza Child Theme — products-grid.css
+   ════════════════════════════════════════════════════════════ */
 
 
 /* ════════════════════════════════════════════════════════════
-   0. KILL SWIPER on product grids
-   The parent theme wraps ul.products in .swiper-wrapper which
-   makes them slide one card at a time. We disable that here.
+   1. SWIPER RESET
    ════════════════════════════════════════════════════════════ */
 .tz-products .swiper,
 .tz-products .swiper-container,
-.tz-sale     .swiper,
-.tz-sale     .swiper-container,
+.tz-sale .swiper,
+.tz-sale .swiper-container,
 .tinza-tabs__panel .swiper,
 .tinza-tabs__panel .swiper-container,
 .tinza-products-wrap .swiper,
@@ -25,28 +18,12 @@
     width:    100% !important;
 }
 
-.tz-products .swiper-wrapper,
-.tz-sale     .swiper-wrapper,
-.tinza-tabs__panel .swiper-wrapper,
-.tinza-products-wrap .swiper-wrapper,
-ul.products.swiper-wrapper,
-ul.tinza-products.swiper-wrapper {
-    display:               grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    transform:             none !important;
-    flex-wrap:             wrap !important;
-    width:                 100% !important;
-    gap:                   20px !important;
-    margin:                0 !important;
-    padding:               0 !important;
-}
-
 .tz-products .swiper-button-prev,
 .tz-products .swiper-button-next,
 .tz-products .swiper-pagination,
-.tz-sale     .swiper-button-prev,
-.tz-sale     .swiper-button-next,
-.tz-sale     .swiper-pagination,
+.tz-sale .swiper-button-prev,
+.tz-sale .swiper-button-next,
+.tz-sale .swiper-pagination,
 .tinza-tabs__panel .swiper-button-prev,
 .tinza-tabs__panel .swiper-button-next,
 .tinza-tabs__panel .swiper-pagination {
@@ -54,7 +31,7 @@ ul.tinza-products.swiper-wrapper {
 }
 
 .tz-products .swiper-slide,
-.tz-sale     .swiper-slide,
+.tz-sale .swiper-slide,
 .tinza-tabs__panel .swiper-slide {
     width:        auto !important;
     margin-right: 0 !important;
@@ -63,22 +40,36 @@ ul.tinza-products.swiper-wrapper {
 
 
 /* ════════════════════════════════════════════════════════════
-   1. SECTIONS WRAPPERS
+   2. SECTION WRAPPERS
    ════════════════════════════════════════════════════════════ */
 .tz-products,
 .tz-sale,
 .tinza-new-arrivals {
+    display:     block;
+    clear:       both;
+    float:       none;
+    position:    relative;
     width:       100%;
-    max-width:   1318px;
-    margin:      0 auto;
-    padding:     32px 60px;
+    max-width:   1380px;
+    margin:      0 auto 40px;
+    padding:     32px 40px;
     box-sizing:  border-box;
     font-family: 'Chillax', sans-serif;
 }
 
+.tinza-new-arrivals { margin-bottom: 0; }
+
+.tz-products::after,
+.tz-sale::after,
+.tinza-new-arrivals::after {
+    content: "";
+    display: table;
+    clear:   both;
+}
+
 
 /* ════════════════════════════════════════════════════════════
-   2. SECTION HEADER (title + arrow)
+   3. SECTION HEADER
    ════════════════════════════════════════════════════════════ */
 .tz-section-head {
     display:     flex;
@@ -86,15 +77,25 @@ ul.tinza-products.swiper-wrapper {
     gap:         2px;
     margin:      0 0 32px;
 }
+
 .tz-section-head__title {
     font-family:    'Chillax', sans-serif;
     font-weight:    600;
-    font-size:      24px;
+    font-size:      20px;
     line-height:    34px;
     letter-spacing: -0.01em;
     color:          #161A17;
     margin:         0;
 }
+
+.tz-section-head__title-link {
+    display:         flex;
+    align-items:     center;
+    text-decoration: none;
+}
+.tz-section-head__title-link .tz-section-head__title { transition: color .2s ease; }
+.tz-section-head__title-link:hover .tz-section-head__title { color: #A87A63; }
+
 .tz-section-head__arrow {
     display:         flex;
     align-items:     center;
@@ -106,12 +107,16 @@ ul.tinza-products.swiper-wrapper {
 }
 .tz-section-head__arrow:hover { transform: translateX(4px); }
 .tz-section-head__arrow svg {
-    width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.5; fill: none;
+    width:        18px;
+    height:       18px;
+    stroke:       currentColor;
+    stroke-width: 2.5;
+    fill:         none;
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   3. GRID — 4 COLUMNS DESKTOP
+   4. GRID
    ════════════════════════════════════════════════════════════ */
 ul.tz-products__grid,
 ul.tz-sale__grid,
@@ -119,10 +124,17 @@ ul.tinza-products,
 .tz-products ul.products,
 .tz-sale ul.products,
 .tinza-tabs__panel ul.tinza-products,
-.tinza-tabs__panel ul.products {
+.tinza-tabs__panel ul.products,
+.tz-products .swiper-wrapper,
+.tz-sale .swiper-wrapper,
+.tinza-tabs__panel .swiper-wrapper,
+ul.products.swiper-wrapper,
+ul.tinza-products.swiper-wrapper {
     display:               grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     gap:                   20px !important;
+    align-items:           stretch !important;
+    justify-items:         stretch !important;
     list-style:            none !important;
     margin:                0 !important;
     padding:               0 !important;
@@ -139,28 +151,28 @@ ul.tinza-products > li,
 .tz-sale ul.products > li,
 .tinza-tabs__panel ul.tinza-products > li,
 .tinza-tabs__panel ul.products > li {
-    float:        none !important;
-    clear:        none !important;
-    width:        auto !important;
-    max-width:    none !important;
-    margin:       0 !important;
-    padding:      0 !important;
-    list-style:   none !important;
-    background:   transparent !important;
-    flex-shrink:  1 !important;
-    transform:    none !important;
+    float:       none !important;
+    clear:       none !important;
+    width:       auto !important;
+    max-width:   none !important;
+    margin:      0 !important;
+    padding:     0 !important;
+    list-style:  none !important;
+    background:  transparent !important;
+    flex-shrink: 1 !important;
+    transform:   none !important;
 }
 
 ul.tz-products__grid::before, ul.tz-products__grid::after,
-ul.tz-sale__grid::before,    ul.tz-sale__grid::after,
-ul.tinza-products::before,   ul.tinza-products::after {
+ul.tz-sale__grid::before,     ul.tz-sale__grid::after,
+ul.tinza-products::before,    ul.tinza-products::after {
     content: none !important;
     display: none !important;
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   4. CARD WRAPPER
+   5. PRODUCT CARD
    ════════════════════════════════════════════════════════════ */
 .tz-pcard,
 .tinza-card,
@@ -169,6 +181,8 @@ li.tinza-card {
     display:        flex !important;
     flex-direction: column !important;
     width:          100% !important;
+    height:         100% !important;
+    min-height:     450px !important;
     margin:         0 !important;
     padding:        0 !important;
     border:         none !important;
@@ -179,10 +193,6 @@ li.tinza-card {
     position:       relative !important;
 }
 
-
-/* ════════════════════════════════════════════════════════════
-   5. IMAGE WRAPPER
-   ════════════════════════════════════════════════════════════ */
 .tz-pcard__img,
 .tinza-card__img {
     position:      relative !important;
@@ -193,6 +203,7 @@ li.tinza-card {
     background:    #E5E0DA !important;
     margin:        0 !important;
     padding:       0 !important;
+    flex-shrink:   0 !important;
 }
 
 .tz-pcard__img a,
@@ -214,147 +225,82 @@ li.tinza-card {
     max-width:     100% !important;
     margin:        0 !important;
     padding:       0 !important;
-    transition:    transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition:    transform 350ms cubic-bezier(.4, 0, .2, 1);
 }
-.tz-pcard:hover    .tz-pcard__img img,
-.tinza-card:hover  .tinza-card__img img { transform: scale(1.04); }
+.tz-pcard:hover .tz-pcard__img img,
+.tinza-card:hover .tinza-card__img img { transform: scale(1.04); }
 
-
-/* ════════════════════════════════════════════════════════════
-   6. WISHLIST BUTTON — small white circle
-   ════════════════════════════════════════════════════════════ */
-button.tz-pcard__wish,
-button.tinza-card__wish,
-.tz-pcard__wish,
-.tinza-card__wish,
-.js-wish {
-    position:        absolute !important;
-    top:             10px !important;
-    right:           10px !important;
-    width:           28px !important;
-    height:          28px !important;
-    min-width:       28px !important;
-    max-width:       28px !important;
-    min-height:      28px !important;
-    max-height:      28px !important;
-    padding:         0 !important;
-    margin:          0 !important;
-    background:      rgba(255, 255, 255, 0.7) !important;
-    background-color: rgba(255, 255, 255, 0.7) !important;
-    background-image: none !important;
-    border:          none !important;
-    border-radius:   50% !important;
-    box-shadow:      none !important;
-    outline:         none !important;
-    display:         flex !important;
-    align-items:     center !important;
-    justify-content: center !important;
-    cursor:          pointer !important;
-    z-index:         3 !important;
-    color:           #161A17 !important;
-    text-shadow:     none !important;
-    font-size:       0 !important;
-    line-height:     1 !important;
-    text-transform:  none !important;
-    letter-spacing:  0 !important;
-    appearance:      none !important;
-    -webkit-appearance: none !important;
-    text-indent:     -9999px !important;
-    overflow:        hidden !important;
-}
-
-.tz-pcard__wish:hover,
-.tinza-card__wish:hover,
-.js-wish:hover {
-    background:       rgba(255, 255, 255, 0.95) !important;
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    color:            #A87A63 !important;
-}
-
-.tz-pcard__wish svg,
-.tinza-card__wish svg,
-.js-wish svg {
-    width:        18px !important;
-    height:       18px !important;
-    stroke:       currentColor !important;
-    stroke-width: 1.5 !important;
-    fill:         none !important;
-    display:      block !important;
-    margin:       0 !important;
-    text-indent:  0 !important;
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   7. CARD BODY
-   ════════════════════════════════════════════════════════════ */
 .tz-pcard__body,
 .tinza-card__body {
     display:        flex !important;
     flex-direction: column !important;
     align-items:    flex-start !important;
+    flex:           1 !important;
     width:          100% !important;
     padding:        12px 16px 16px !important;
-    gap:            10px !important;
+    gap:            6px !important;
     box-sizing:     border-box !important;
     margin:         0 !important;
     background:     transparent !important;
 }
 
-
-/* ════════════════════════════════════════════════════════════
-   8. PRODUCT TITLE
-   ════════════════════════════════════════════════════════════ */
 h3.tz-pcard__title,
 h3.tinza-card__name,
 h2.tinza-card__name,
 .tz-pcard__title,
 .tinza-card__name,
 .tinza-card .woocommerce-loop-product__title,
-.tz-pcard  .woocommerce-loop-product__title {
-    width:          100% !important;
-    margin:         0 !important;
-    padding:        0 !important;
-    font-family:    'Chillax', sans-serif !important;
-    font-weight:    500 !important;
-    font-size:      16px !important;
-    line-height:    22px !important;
-    letter-spacing: 0.005em !important;
-    color:          #161A17 !important;
-    text-transform: none !important;
-    text-align:     left !important;
-    white-space:    nowrap !important;
-    overflow:       hidden !important;
-    text-overflow:  ellipsis !important;
-    display:        block !important;
-    background:     transparent !important;
-    border:         none !important;
+.tz-pcard .woocommerce-loop-product__title {
+    display:         block !important;
+    width:           100% !important;
+    min-height:      44px !important;
+    max-height:      44px !important;
+    margin:          0 !important;
+    padding:         0 !important;
+    font-family:     'Chillax', sans-serif !important;
+    font-weight:     500 !important;
+    font-size:       16px !important;
+    line-height:     22px !important;
+    letter-spacing:  0.005em !important;
+    color:           #161A17 !important;
+    text-transform:  none !important;
+    text-align:      left !important;
+    overflow:        hidden !important;
+    text-overflow:   ellipsis !important;
+    background:      transparent !important;
+    border:          none !important;
     text-decoration: none !important;
-    text-shadow:    none !important;
+    text-shadow:     none !important;
 }
+
+/* Set both line-clamp values to 2 for a two-line title */
 .tz-pcard__title a,
 .tinza-card__name a,
 .tinza-card .woocommerce-loop-product__title a,
-.tz-pcard  .woocommerce-loop-product__title a {
-    color:           inherit !important;
-    text-decoration: none !important;
-    font-weight:     inherit !important;
-    font-size:       inherit !important;
-    line-height:     inherit !important;
-    background:      transparent !important;
-    border:          none !important;
+.tz-pcard .woocommerce-loop-product__title a {
+    display:            -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    line-clamp:         1 !important;
+    -webkit-box-orient: vertical !important;
+    white-space:        normal !important;
+    overflow:           hidden !important;
+    text-overflow:      ellipsis !important;
+    line-height:        1.4 !important;
+    color:              inherit !important;
+    text-decoration:    none !important;
+    font-weight:        inherit !important;
+    font-size:          inherit !important;
+    background:         transparent !important;
+    border:             none !important;
 }
 
-
-/* ════════════════════════════════════════════════════════════
-   9. SELLER ROW
-   ════════════════════════════════════════════════════════════ */
 .tz-pcard__seller,
 .tinza-card__seller,
 .tz-seller {
     display:     flex !important;
     align-items: center !important;
-    gap:         8px !important;
+    gap:         6px !important;
+    min-height:  40px !important;
     margin:      0 !important;
     padding:     0 !important;
 }
@@ -402,8 +348,8 @@ h2.tinza-card__name,
     font-size:      13px !important;
     line-height:    18px !important;
     text-transform: uppercase !important;
-    color:          #161A17 !important;
     letter-spacing: 0.005em !important;
+    color:          #161A17 !important;
     margin:         0 !important;
     padding:        0 !important;
     background:     transparent !important;
@@ -420,15 +366,8 @@ h2.tinza-card__name,
 }
 .tz-pcard__stars svg,
 .tinza-card__stars svg,
-.tz-stars svg {
-    width:  10px !important;
-    height: 10px !important;
-}
+.tz-stars svg { width: 10px !important; height: 10px !important; }
 
-
-/* ════════════════════════════════════════════════════════════
-   10. PRICE ROW
-   ════════════════════════════════════════════════════════════ */
 .tz-pcard__row,
 .tinza-card__footer,
 .price-row {
@@ -436,11 +375,11 @@ h2.tinza-card__name,
     flex-direction:  row !important;
     justify-content: space-between !important;
     align-items:     center !important;
+    flex-wrap:       wrap !important;
     width:           100% !important;
-    gap:             8px !important;
+    gap:             4px !important;
     margin:          0 !important;
     padding:         0 !important;
-    flex-wrap:       wrap !important;
     background:      transparent !important;
 }
 
@@ -454,7 +393,6 @@ h2.tinza-card__name,
     background:  transparent !important;
 }
 
-/* Sale / current price — green */
 .tz-pcard__price,
 .tinza-card__price-sale,
 .tinza-card__price,
@@ -471,27 +409,20 @@ h2.tinza-card__name,
 .tinza-card .price ins,
 .tinza-card .price ins bdi,
 .tinza-card .price .woocommerce-Price-amount {
-    font-family:     'Chillax', sans-serif !important;
-    font-weight:     600 !important;
-    font-size:       18px !important;
-    line-height:     25px !important;
-    color:           #065F15 !important;
-    text-decoration: none !important;
-    background:      transparent !important;
+    font-family:      'Chillax', sans-serif !important;
+    font-weight:      600 !important;
+    font-size:        18px !important;
+    line-height:      25px !important;
+    color:            #065F15 !important;
+    text-decoration:  none !important;
+    background:       transparent !important;
     background-color: transparent !important;
-    margin:          0 !important;
-    padding:         0 !important;
-    box-shadow:      none !important;
-    border:          none !important;
+    margin:           0 !important;
+    padding:          0 !important;
+    box-shadow:       none !important;
+    border:           none !important;
 }
 
-.tz-pcard__prices ins,
-.tinza-card__price ins,
-.tinza-card .price ins {
-    text-decoration: none !important;
-}
-
-/* Old price — strikethrough grey */
 .tz-pcard__price-old,
 .tinza-card__price-reg,
 .tz-pcard__prices del,
@@ -505,21 +436,20 @@ h2.tinza-card__name,
 .tinza-card .price del,
 .tinza-card .price del bdi,
 .tinza-card .price del .woocommerce-Price-amount {
-    font-family:     'Chillax', sans-serif !important;
-    font-weight:     400 !important;
-    font-size:       15px !important;
-    line-height:     22px !important;
-    text-decoration: line-through !important;
-    color:           #5A5A5A !important;
-    background:      transparent !important;
+    font-family:      'Chillax', sans-serif !important;
+    font-weight:      400 !important;
+    font-size:        15px !important;
+    line-height:      22px !important;
+    text-decoration:  line-through !important;
+    color:            #5A5A5A !important;
+    background:       transparent !important;
     background-color: transparent !important;
-    margin:          0 !important;
-    padding:         0 !important;
-    opacity:         1 !important;
-    box-shadow:      none !important;
+    margin:           0 !important;
+    padding:          0 !important;
+    opacity:          1 !important;
+    box-shadow:       none !important;
 }
 
-/* Free shipping pill */
 .tz-pcard__ship,
 .tinza-card__badge,
 .tz-badge-ship {
@@ -543,7 +473,7 @@ h2.tinza-card__name,
 
 
 /* ════════════════════════════════════════════════════════════
-   11. NEUTRALIZE WooCommerce / Motta noise inside cards
+   6. WOOCOMMERCE / MOTTA RESET
    ════════════════════════════════════════════════════════════ */
 .tz-pcard .added_to_cart,
 .tz-pcard .add_to_cart_button,
@@ -570,9 +500,175 @@ h2.tinza-card__name,
 
 
 /* ════════════════════════════════════════════════════════════
-   12. RESPONSIVE — TABLET ≤ 1024px → 2 cols
+   7. PAGER
+   ════════════════════════════════════════════════════════════ */
+.tinza-tabs__pager,
+.tinza-sale__pager {
+    display:        flex !important;
+    flex-direction: row !important;
+    align-items:    center !important;
+    background:     transparent !important;
+    border-radius:  16px !important;
+    padding:        20px 16px !important;
+    box-sizing:     border-box !important;
+    width:          100% !important;
+    gap:            12px !important;
+}
+
+.tinza-tabs__pages,
+.tinza-sale__pages {
+    flex:      1 !important;
+    min-width: 0 !important;
+    width:     auto !important;
+}
+
+.tinza-tabs__page,
+.tinza-sale__page { display: none !important; }
+
+.tinza-tabs__page.is-active,
+.tinza-sale__page.is-active { display: block !important; }
+
+.tinza-tabs__page ul.tinza-products,
+.tinza-sale__page ul.tz-sale__grid {
+    display:               grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap:                   16px !important;
+    list-style:            none !important;
+    margin:                0 !important;
+    padding:               0 !important;
+    width:                 100% !important;
+    overflow:              visible !important;
+    transform:             none !important;
+}
+
+.tinza-tabs__page ul.tinza-products > li,
+.tinza-sale__page ul.tz-sale__grid > li {
+    width:             auto !important;
+    flex-shrink:       unset !important;
+    scroll-snap-align: none !important;
+}
+
+.tinza-tabs__page li.tinza-card,
+.tinza-tabs__page .tinza-card,
+.tz-sale .tinza-sale__page .tz-pcard,
+.tz-sale .tinza-sale__page li.tz-pcard {
+    min-height: unset !important;
+    max-height: unset !important;
+    height:     auto !important;
+}
+
+.tinza-tabs__page h3.tinza-card__name,
+.tinza-tabs__page .tinza-card__name,
+.tinza-tabs__page .tinza-card__name a,
+.tz-sale .tinza-sale__page h3.tz-pcard__title,
+.tz-sale .tinza-sale__page .tz-pcard__title,
+.tinza-sale__page .tz-pcard__title a {
+    min-height:  unset !important;
+    max-height:  unset !important;
+    font-size:   13px !important;
+    line-height: 1.3 !important;
+}
+
+.tinza-tabs__page .tinza-card__seller-name,
+.tinza-sale__page .tz-pcard__seller-name { font-size: 11px !important; }
+
+.tinza-tabs__page .tz-pcard__price,
+.tinza-tabs__page .tz-pcard__price-old,
+.tinza-sale__page .tz-pcard__price,
+.tinza-sale__page .tz-pcard__price-old { font-size: 14px !important; }
+
+.tinza-tabs__page .tinza-card__body,
+.tinza-tabs__page .tz-pcard__body,
+.tinza-sale__page .tz-pcard__body { padding: 8px 10px 10px !important; gap: 4px !important; }
+
+.tinza-tabs__page .tinza-card__avatar,
+.tinza-tabs__page .tz-pcard__avatar,
+.tinza-sale__page .tz-pcard__avatar {
+    width:     24px !important;
+    height:    24px !important;
+    min-width: 24px !important;
+}
+
+.tinza-tabs__arrow,
+.tinza-sale__arrow {
+    display:         flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    align-self:      flex-start !important;
+    flex-shrink:     0 !important;
+    width:           44px !important;
+    height:          44px !important;
+    min-width:       44px !important;
+    margin-top:      calc(10% - 39.6px) !important;
+    background:      #A87A63 !important;
+    border:          none !important;
+    border-radius:   50% !important;
+    font-size:       26px !important;
+    line-height:     1 !important;
+    color:           #FFFFFF !important;
+    cursor:          pointer !important;
+    padding:         0 !important;
+    position:        static !important;
+    transform:       none !important;
+    transition:      background .2s ease !important;
+}
+.tinza-tabs__arrow:hover,
+.tinza-sale__arrow:hover { background: #8F6450 !important; }
+
+.tinza-tabs__arrow:disabled,
+.tinza-sale__arrow:disabled { display: none !important; }
+
+
+/* ════════════════════════════════════════════════════════════
+   8. SEE ALL CARD
+   ════════════════════════════════════════════════════════════ */
+.tinza-card__img--vp,
+.tz-pcard__img--vp { background: #E1E2DC !important; }
+
+.tinza-card__img--vp .tinza-card__voir-plus-cta,
+.tz-pcard__img--vp .tz-pcard__voir-plus-cta {
+    display:         flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    width:           100% !important;
+    height:          100% !important;
+    text-decoration: none !important;
+}
+
+.tinza-card__voir-plus,
+.tz-pcard__voir-plus {
+    display:         inline-flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    padding:         6px 8px !important;
+    background:      #A87A63 !important;
+    color:           #FFFFFF !important;
+    border-radius:   6px !important;
+    font-family:     'Chillax', sans-serif !important;
+    font-weight:     400 !important;
+    font-size:       10px !important;
+    letter-spacing:  0.03em !important;
+    text-transform:  uppercase !important;
+    white-space:     nowrap !important;
+    pointer-events:  auto !important;
+    transition:      background .2s !important;
+}
+
+.tinza-card--voir-plus .tinza-card__body,
+.tz-pcard--voir-plus .tz-pcard__body,
+.tinza-card--voir-plus .tinza-card__wish,
+.tz-pcard--voir-plus .tz-pcard__wish { display: none !important; }
+
+
+/* ════════════════════════════════════════════════════════════
+   9. TABLET <= 1024px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+
+    .tz-products,
+    .tz-sale,
+    .tinza-new-arrivals { padding: 24px 32px !important; }
+
     ul.tz-products__grid,
     ul.tz-sale__grid,
     ul.tinza-products,
@@ -581,26 +677,42 @@ h2.tinza-card__name,
     .tinza-tabs__panel ul.tinza-products,
     .tinza-tabs__panel ul.products,
     .tz-products .swiper-wrapper,
-    .tz-sale     .swiper-wrapper,
+    .tz-sale .swiper-wrapper,
     .tinza-tabs__panel .swiper-wrapper,
     ul.products.swiper-wrapper,
     ul.tinza-products.swiper-wrapper {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 16px !important;
     }
-    .tz-products,
-    .tz-sale,
-    .tinza-new-arrivals { padding: 24px !important; }
+
+    .tinza-tabs__pager,
+    .tinza-sale__pager { padding: 16px 12px !important; gap: 10px !important; }
+
+    .tinza-tabs__page ul.tinza-products,
+    .tinza-sale__page ul.tz-sale__grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .tinza-tabs__arrow,
+    .tinza-sale__arrow {
+        width:      38px !important;
+        height:     38px !important;
+        min-width:  38px !important;
+        font-size:  22px !important;
+        margin-top: calc(10% - 33.4px) !important;
+    }
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   13. RESPONSIVE — MOBILE ≤ 768px → horizontal scroll
+   10. MOBILE <= 768px
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
     .tz-products,
     .tz-sale,
-    .tinza-new-arrivals { padding: 20px 0 20px 16px !important; }
+    .tinza-new-arrivals { padding: 16px 0 16px 12px !important; }
 
     ul.tz-products__grid,
     ul.tz-sale__grid,
@@ -610,7 +722,7 @@ h2.tinza-card__name,
     .tinza-tabs__panel ul.tinza-products,
     .tinza-tabs__panel ul.products,
     .tz-products .swiper-wrapper,
-    .tz-sale     .swiper-wrapper,
+    .tz-sale .swiper-wrapper,
     .tinza-tabs__panel .swiper-wrapper,
     ul.products.swiper-wrapper,
     ul.tinza-products.swiper-wrapper {
@@ -623,6 +735,7 @@ h2.tinza-card__name,
         gap:                        12px !important;
         padding-right:              16px !important;
     }
+
     ul.tz-products__grid::-webkit-scrollbar,
     ul.tz-sale__grid::-webkit-scrollbar,
     ul.tinza-products::-webkit-scrollbar { display: none !important; }
@@ -640,7 +753,7 @@ h2.tinza-card__name,
     }
 
     .tz-pcard__body,
-    .tinza-card__body  { padding: 10px 12px 14px !important; }
+    .tinza-card__body { padding: 10px 12px 14px !important; }
 
     .tz-pcard__title,
     .tinza-card__name { font-size: 15px !important; }
@@ -648,218 +761,51 @@ h2.tinza-card__name,
     .tz-pcard__price,
     .tinza-card__price-sale,
     .tinza-card__price { font-size: 16px !important; }
+
+    .tinza-tabs__pager,
+    .tz-sale > .tinza-sale__pager {
+        background:    transparent !important;
+        padding:       0 !important;
+        gap:           0 !important;
+        border-radius: 0 !important;
+    }
+
+    .tinza-tabs__arrow,
+    .tinza-sale__arrow { display: none !important; }
+
+    /* display:contents flattens page + ul so every card becomes
+       a direct child of the scrollable container */
+    .tinza-tabs__page, .tinza-tabs__page.is-active,
+    .tinza-sale__page, .tinza-sale__page.is-active,
+    .tinza-tabs__page ul.tinza-products,
+    .tinza-sale__page ul.tz-sale__grid { display: contents !important; }
+
+    .tinza-tabs__pages,
+    .tinza-sale__pages {
+        display:                    flex !important;
+        overflow-x:                 auto !important;
+        scroll-snap-type:           x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap:                        10px !important;
+        padding:                    0 16px 4px 0 !important;
+        width:                      100% !important;
+    }
+    .tinza-tabs__pages::-webkit-scrollbar,
+    .tinza-sale__pages::-webkit-scrollbar { display: none !important; }
+
+    .tinza-tabs__page ul.tinza-products > li,
+    .tinza-sale__page ul.tz-sale__grid > li {
+        flex-shrink:       0 !important;
+        width:             160px !important;
+        scroll-snap-align: start !important;
+    }
 }
 
 
 /* ════════════════════════════════════════════════════════════
-   14. CORRECTION ALIGNEMENT CARTES — MÊME HAUTEUR
+   11. SMALL MOBILE <= 420px
    ════════════════════════════════════════════════════════════ */
-/* Force toutes les cartes à avoir la même hauteur */
-.tz-pcard,
-.tinza-card,
-li.tz-pcard,
-li.tinza-card,
-.tinza-product-card {
-    height: 100% !important;
-    min-height: 450px !important;
+@media (max-width: 420px) {
+    .tinza-tabs__page ul.tinza-products > li,
+    .tinza-sale__page ul.tz-sale__grid > li { width: 130px !important; }
 }
-
-/* Force le body à prendre tout l'espace restant */
-.tz-pcard__body,
-.tinza-card__body,
-.tinza-product-card__body {
-    flex: 1 !important;
-}
-
-/* Force les titres à hauteur fixe (max 2 lignes) */
-h3.tz-pcard__title,
-.tz-pcard__title,
-.tinza-card__name,
-.tinza-product-card__title {
-    min-height: 44px !important;
-    max-height: 44px !important;
-}
-
-h3.tz-pcard__title a,
-.tz-pcard__title a,
-.tinza-card__name a,
-.tinza-product-card__title a {
-    display: -webkit-box !important;
-    line-clamp: 2 !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    white-space: normal !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    line-height: 1.4 !important;
-}
-
-/* Force la section seller à hauteur fixe */
-.tz-pcard__seller,
-.tinza-card__seller,
-.tinza-product-card__shop {
-    min-height: 50px !important;
-}
-
-/* Force le prix à rester en bas */
-.tz-pcard__row,
-.tinza-card__footer,
-.tinza-product-card__footer {
-    margin-top: auto !important;
-    padding-top: 12px !important;
-}
-
-/* Force le grid à aligner toutes les cartes */
-ul.tz-products__grid,
-.tz-products__grid {
-    align-items: stretch !important;
-}
-
-/* Force toutes les images à être strictement carrées */
-.tz-pcard__img,
-.tinza-card__img,
-.tinza-product-card__image-wrap {
-    flex-shrink: 0 !important;
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   15. EMPILEMENT VERTICAL DES SECTIONS
-   ════════════════════════════════════════════════════════════ */
-
-/* Forcer l'empilement vertical des sections */
-.tz-products,
-.tz-sale,
-.tinza-new-arrivals,
-section[id*="products"],
-section[id*="sale"] {
-    display: block !important;
-    clear: both !important;
-    float: none !important;
-    position: relative !important;
-}
-
-/* Forcer qu'aucune section ne flotte à côté d'une autre */
-.tz-products::after,
-.tz-sale::after,
-.tinza-new-arrivals::after {
-    content: "" !important;
-    display: table !important;
-    clear: both !important;
-}
-
-/* Supprimer tout margin/padding qui pourrait créer des espacements indésirables */
-.tz-products + .tz-sale,
-.tz-sale + .tz-products,
-.tz-products + .tinza-new-arrivals,
-.tz-sale + .tinza-new-arrivals {
-    margin-top: 0 !important;
-}
-
-/* Ajouter un espacement cohérent entre les sections */
-.tz-products {
-    margin-bottom: 40px !important;
-}
-
-.tz-sale {
-    margin-top: 0 !important;
-    margin-bottom: 40px !important;
-}
-
-.tinza-new-arrivals {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-/* FORCE l'ordre d'affichage des sections */
-.tz-products {
-    order: 1 !important;
-}
-
-.tz-sale {
-    order: 2 !important;
-}
-
-.tinza-new-arrivals {
-    order: 3 !important;
-}
-
-/* S'assurer que le conteneur parent permet l'empilement */
-.tz-products__inner,
-.tz-sale__inner,
-.tinza-section__inner {
-    display: block !important;
-    clear: both !important;
-}
-
-/* Éviter tout inline-block ou flex qui casserait l'empilement */
-.tz-products,
-.tz-sale,
-.tinza-new-arrivals {
-    display: block !important;
-    flex: none !important;
-}
-
-
-
-
-
-/* ════════════════════════════════════════════════════════════
-   19. CORRECTION TOTALE : LARGEUR PLEINE POUR SALE (DESKTOP)
-   ════════════════════════════════════════════════════════════ */
-
-@media (min-width: 1025px) {
-    /* Cibler la section elle-même et tous les parents possibles (Elementor, thème, etc.) */
-    .tz-sale,
-    .tz-sale .elementor-widget-container,
-    .tz-sale .elementor-element,
-    .tz-sale .elementor-column,
-    .tz-sale .elementor-widget-wrap,
-    .tz-sale .elementor-element-populated,
-    .tz-sale > div,
-    .tz-sale + *,
-    *:has(> .tz-sale) {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
-        left: auto !important;
-        right: auto !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        flex: 0 0 100% !important;
-    }
-
-    /* Reappliquer les dimensions souhaitées à la section elle-même */
-    .tz-sale {
-        max-width: 1318px !important;
-        width: 100% !important;
-        padding: 32px 60px !important;
-        margin: 0 auto 40px auto !important;
-        box-sizing: border-box !important;
-    }
-
-    /* La grille prend toute la largeur disponible */
-    .tz-sale .tz-sale__grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 20px !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Forcer les cartes à la même hauteur que les products */
-    .tz-sale .tz-pcard {
-        min-height: 480px !important;
-        max-height: 480px !important;
-    }
-
-    /* Supprimer tout décalage du titre */
-    .tz-sale .tz-section-head {
-        padding-right: 0 !important;
-        margin-bottom: 32px !important;
-    }
-}
-

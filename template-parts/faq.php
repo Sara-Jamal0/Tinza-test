@@ -1,20 +1,21 @@
 <?php
 /**
- * FAQ
- * File : motta-child/template-parts/faq.php
- * CSS  : motta-child/assets/css/faq.css   (enqueued via functions.php)
- * JS   : motta-child/assets/js/faq.js     (enqueued via functions.php)
+ * Section: FAQ
  */
-
 $faq = [
     [
-        'q'    => 'Are all products on Tinza authentic and handmade?',
-        'a'    => 'Yes. Every piece listed on Tinza is handcrafted by vetted artisans. Each product goes through a quality and authenticity review before being made available on our platform.',
+        'q'    => 'Are the products handmade?',
+        'a'    => 'Many of our products are handcrafted by skilled artisans using traditional metalworking techniques passed down through generations. Because each piece is made by hand, slight variations in texture, finish, or color may occur, making every item unique and full of character.',
         'open' => true,
     ],
     [
-        'q'    => 'What is your return and money-back policy?',
-        'a'    => 'We offer a full money-back guarantee. If you are not satisfied, you can request a return within 14 days of receiving your order. You also have a 24-hour cancellation window after placing your order.',
+        'q'    => 'Are your products made from real copper and brass?',
+        'a'    => 'Yes. Tinza specializes in authentic copper and brass home décor, kitchenware, lighting, and accessories. We carefully select products made from genuine materials and provide detailed product descriptions so you can shop with confidence.',
+        'open' => false,
+    ],
+    [
+        'q'    => 'Do you ship internationally, and how long does delivery take?',
+        'a'    => ' Yes, Tinza ships to customers around the world. Delivery times vary depending on your location and the specific product ordered. Most orders are delivered within 5–15 business days, and tracking information is provided once your order has been shipped.',
         'open' => false,
     ],
 ];

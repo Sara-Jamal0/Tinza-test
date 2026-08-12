@@ -3,41 +3,173 @@
  */
 
 
-/* ── Section ─────────────────────────────────────────── */
+/* --- Banner Container --- */
 .tinza-banner {
-    margin-top:    48px;   /* Espace au-dessus */
-    margin-bottom: 64px;   /* Espace en dessous */
+    font-family: Chillax;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 60px 80px;
+    overflow: hidden;
 }
 
-/* ── Wrapper centré ──────────────────────────────────── */
-.tinza-banner__wrap {
-    width:      100%;
-    max-width:  1432px;    /* Largeur max Figma */
-    margin:     0 auto;    /* Centrage horizontal */
-    padding:    0 54px;    /* Marges latérales desktop */
-    box-sizing: border-box;
-}
-
-/* ── Image ───────────────────────────────────────────── */
-.tinza-banner__img {
-    display:       block;          /* Supprime l'espace inline sous l'image */
-    width:         100%;           /* Pleine largeur du wrapper */
-    height:        auto;           /* Hauteur proportionnelle */
-    border-radius: 12px;           /* Arrondi identique aux autres sections */
-    object-fit:    cover;          /* Recadrage si la taille est différente */
-}
-
-
-/* ── Tablet ≤ 1024px ─────────────────────────────────── */
-@media (max-width: 1024px) {
-    .tinza-banner__wrap { padding: 0 24px; }
-}
-
-/* ── Mobile ≤ 768px ──────────────────────────────────── */
-@media (max-width: 768px) {
+/* Responsive adjustment for screens larger than mobile */
+@media (min-width: 768px) {
     .tinza-banner {
-        margin-top:    32px;
-        margin-bottom: 48px;
+        grid-template-columns: 1fr 1fr; /* Image left, text right */
     }
-    .tinza-banner__wrap { padding: 0 16px; }
+}
+
+/* --- Left Side: Image Container & Hover Effect --- */
+.banner-image {
+    width: 100%;
+    height: 320px;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* --- Right Side: Elegant Typography --- */
+.tinza-banner__wrap {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+/* Title: Bold yet refined */
+.banner-title {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #A87A63; /* Rich near-black */
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.banner-title span {
+    color: #1a1a1a; /* Darker accent for emphasis */
+    font-weight: 500;
+}
+
+/* Body Text: Breathable and clean */
+.banner-text {
+    line-height: 1.7;
+    font-size: 15px;
+    color: #1a1a1a; 
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.banner-phrase {
+    line-height: 1.7;
+    font-size: 15px;
+    color: #1a1a1a; 
+    font-weight: 300;
+}
+
+/* Tags: The subtle, sophisticated footer */
+.byline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #A87A63;
+    font-weight: 400;
+  }
+
+
+  /* --- Mobile Responsive Adjustments --- */
+    @media (max-width: 767px) {
+        .tinza-banner {
+            padding: 40px 20px;
+            gap: 24px;
+        }
+
+        .banner-image {
+            order: 2;
+            height: 220px;
+            margin-top: 0;
+        }
+
+        .tinza-banner__wrap {
+            order: 1;
+            padding-left: 0;
+            text-align: center;
+        }
+
+        .banner-title {
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+        
+        .byline {
+            justify-content: center;
+        }
+    }
+
+
+    /* --- Fix mobile 400px–767px --- */
+@media (min-width: 400px) and (max-width: 767px) {
+    .tinza-banner {
+        padding: 24px 16px;
+        gap: 16px;
+    }
+
+    .banner-image {
+        height: 160px;
+    }
+
+    .banner-title {
+        font-size: 20px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+
+    .banner-text,
+    .banner-phrase {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .byline {
+        gap: 6px;
+        font-size: 11px;
+        flex-wrap: wrap;
+    }
+}
+
+
+    /* --- Ultra-Small Mobile Responsive Adjustments (Under 400px) --- */
+@media (max-width: 400px) {
+    .tinza-banner {
+        padding: 25px 12px;
+        gap: 16px;
+    }
+
+    .banner-image {
+        height: 160px;
+    }
+
+    .banner-title {
+        font-size: 20px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+
+    .banner-text, 
+    .banner-phrase {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .byline {
+        gap: 6px;
+        font-size: 10px;
+        flex-wrap: wrap;
+    }
 }

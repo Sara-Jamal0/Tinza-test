@@ -12,6 +12,7 @@
     });
     get_header();
 
+
 ?>
 
 <body>
@@ -31,7 +32,7 @@
             </p>
         </div>
         <div class="hero-image">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pic3.png" alt="Contact Us Hero Image">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/contact.webp" alt="Contact Us Hero Image">
         </div>
     </section>
  
@@ -40,29 +41,7 @@
             <div class="contact-wrap">
 
             <!-- RIGHT: Form card -->
-                <form class="form-card">
-                    <h2>Send us a message</h2>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="Ellis Thorne" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="email_address" placeholder="elias@example.com"  required/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="Tell us how we can help…"></textarea>
-                    </div>
-
-                    <button class="btn-submit">
-                        Submit inquiry
-                    </button>
-                </form>
+                    <?php echo do_shortcode('[contact-form-7 id="1f16354" title="Untitled"]'); ?>
 
                 <!-- LEFT: Info column -->
                 <div class="info-col">
@@ -74,11 +53,11 @@
                     </div>
 
                     <ul class="help-list">
-                        <li>Product inquiries &amp; availability</li>
-                        <li>Bulk and wholesale orders</li>
-                        <li>Custom commission requests</li>
-                        <li>Order support and tracking</li>
-                        <li>Returns, exchanges &amp; refunds</li>
+                        <li>Shopping &amp; Products</li>
+                        <li>Orders &amp; Shipping</li>
+                        <li>Returns &amp; Issues</li>
+                        <li>Quality &amp; Warranty</li>
+                        <li>Customization</li>
                     </ul>
 
                     <p class="faq-note">
@@ -87,7 +66,7 @@
                             <a href="<?php echo get_permalink(get_page_by_path('help-center')); ?>">
                                 help center 
                             </a>
-                        </span>↗
+                        </span>
                     </p>
 
                     <div class="reach-block">
@@ -98,16 +77,15 @@
                         </div>
                         <div>
                             <h4>Reach us directly</h4>
-                            <p>email@example.com</p>
+                            <p>support@tinza.com</p>
                         </div>
                     </div>
                 </div>
-
-                
-
             </div>
             </section>
 
         
     
 </body>
+
+<?php get_footer(); ?>
